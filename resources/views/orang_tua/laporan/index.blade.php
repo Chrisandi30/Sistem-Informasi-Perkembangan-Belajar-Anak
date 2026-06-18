@@ -5,7 +5,7 @@
         <h1 class="mb-2 break-words text-[30px] font-extrabold text-[#1d2533] max-[700px]:text-[26px]">Perkembangan Anak</h1>
 
         <div class="portal-mobile-card mb-4 rounded-[28px] border border-[var(--portal-line)] bg-white shadow-[0_16px_36px_rgba(41,60,89,0.08)]">
-            <div class="p-[26px] max-[700px]:p-4">
+            <div class="p-[26px] max-[700px]:px-2 max-[700px]:py-3">
                 <form method="get" class="row g-3 align-items-end" id="orangTuaLaporanFilterForm">
                     <div class="col-md-4">
                         <label class="form-label fw-semibold">Bulan</label>
@@ -35,7 +35,7 @@
         <div id="orangTuaLaporanResults">
             @if(! $shouldShowReports)
                 <div class="rounded-[26px] border border-[var(--portal-line)] bg-white shadow-[0_16px_36px_rgba(41,60,89,0.08)]">
-                    <div class="p-[26px] max-[700px]:p-4">
+                    <div class="p-[26px] max-[700px]:px-2 max-[700px]:py-3">
                         <div class="break-words rounded-[18px] border border-dashed border-[#c9d6e5] bg-[#f9fbfe] p-[22px] text-center text-[#5e7084]">Silakan pilih bulan dan tahun terlebih dahulu.</div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                         $detailGroups = $item->groupedDetailsByCategory();
                     @endphp
                     <div class="portal-mobile-card mb-4 rounded-[26px] border border-[var(--portal-line)] bg-white shadow-[0_16px_36px_rgba(41,60,89,0.08)]">
-                        <div class="p-[26px] max-[700px]:p-4">
+                        <div class="p-[26px] max-[700px]:px-2 max-[700px]:py-3">
                             <div class="mb-[22px] flex items-start justify-between gap-4 max-[700px]:flex-col max-[700px]:items-stretch">
                                 <div>
                                     <div class="mb-[6px] break-words text-[15px] font-extrabold text-[#1f2937]">Laporan {{ $monthOptions[$item->bulan] ?? $item->bulan }}/{{ $item->tahun }}</div>
@@ -67,7 +67,7 @@
                             </div>
 
                             @foreach($detailGroups as $kategori => $details)
-                                <div class="mb-4 rounded-[24px] border border-[#d8e5f4] bg-[linear-gradient(180deg,_#ffffff_0%,_#fbfdff_100%)] px-[22px] pt-[22px] pb-[10px] max-[700px]:rounded-[18px] max-[700px]:px-3 max-[700px]:pt-[14px] max-[700px]:pb-1">
+                                <div class="mb-4 rounded-[24px] border border-[#d8e5f4] bg-[linear-gradient(180deg,_#ffffff_0%,_#fbfdff_100%)] px-[22px] pt-[22px] pb-[10px] max-[700px]:rounded-[16px] max-[700px]:px-4 max-[700px]:pt-[14px] max-[700px]:pb-1">
                                     <div class="mb-[18px] break-words text-[14px] font-extrabold uppercase tracking-[0.04em] text-[#6f86a6]">{{ $kategori }}</div>
                                     @foreach($details as $detail)
                                         @php
@@ -90,7 +90,7 @@
                                 </div>
                             @endforeach
 
-                            <div class="mb-4 rounded-[24px] border border-[#d8e5f4] bg-[linear-gradient(180deg,_#ffffff_0%,_#fbfdff_100%)] px-[22px] pt-[22px] pb-[10px] max-[700px]:rounded-[18px] max-[700px]:px-3 max-[700px]:pt-[14px] max-[700px]:pb-1">
+                            <div class="mb-4 rounded-[24px] border border-[#d8e5f4] bg-[linear-gradient(180deg,_#ffffff_0%,_#fbfdff_100%)] px-[22px] pt-[22px] pb-[10px] max-[700px]:rounded-[16px] max-[700px]:px-4 max-[700px]:pt-[14px] max-[700px]:pb-1">
                                 <div class="mb-[18px] break-words text-[14px] font-extrabold uppercase tracking-[0.04em] text-[#6f86a6]">Catatan Guru</div>
                                 @php
                                     $catatanText = trim((string) ($item->catatan_pengembangan ?? ''));
@@ -120,7 +120,7 @@
                     </div>
                 @empty
                     <div class="rounded-[26px] border border-[var(--portal-line)] bg-white shadow-[0_16px_36px_rgba(41,60,89,0.08)]">
-                        <div class="p-[26px] max-[700px]:p-4">
+                        <div class="p-[26px] max-[700px]:px-2 max-[700px]:py-3">
                             <div class="break-words rounded-[18px] border border-dashed border-[#c9d6e5] bg-[#f9fbfe] p-[22px] text-center text-[#5e7084]">Belum ada laporan perkembangan yang ditemukan untuk periode yang dipilih.</div>
                         </div>
                     </div>

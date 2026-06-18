@@ -102,8 +102,8 @@
             main {
                 width: 100%;
                 max-width: none;
-                padding-left: 8px !important;
-                padding-right: 8px !important;
+                padding-left: 4px !important;
+                padding-right: 4px !important;
             }
 
             .portal-wide-page {
@@ -120,9 +120,13 @@
                 margin-right: 0;
             }
 
-            .portal-mobile-card {
-                width: 100%;
-                max-width: none;
+            .laporan-page-wrap .portal-mobile-card {
+                position: relative;
+                left: 50%;
+                width: calc(100vw - 8px);
+                max-width: calc(100vw - 8px);
+                margin-left: calc(-50vw + 4px);
+                margin-right: 0;
             }
 
             .portal-profile-summary li {

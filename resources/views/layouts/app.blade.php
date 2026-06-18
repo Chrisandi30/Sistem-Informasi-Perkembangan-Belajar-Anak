@@ -477,7 +477,7 @@
 @endphp
 <div id="mobileSidebarOverlay" class="mobile-sidebar-overlay"></div>
 <div class="app-shell">
-    <aside id="appSidebar" class="sidebar flex flex-col overflow-y-auto border-r border-[var(--line)] bg-[var(--sidebar)] px-2.5 py-[22px]">
+    <aside id="appSidebar" class="sidebar flex flex-col border-r border-[var(--line)] bg-[var(--sidebar)] px-2.5 py-[22px]">
         <div class="sidebar-mobile-close mb-2 justify-end">
             <button type="button" id="mobileSidebarInnerToggle" aria-label="Tutup menu" class="sidebar-close-btn">
                 <i class="fas fa-xmark transition duration-200"></i>
@@ -495,7 +495,7 @@
             </div>
         </div>
 
-        <nav class="mt-[-15px] flex-1">
+        <nav class="sidebar-scroll-area mt-[-15px] min-h-0 flex-1">
                     <a href="{{ route('dashboard') }}" wire:navigate class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                         <i class="fas fa-house"></i>Dashboard
                     </a>

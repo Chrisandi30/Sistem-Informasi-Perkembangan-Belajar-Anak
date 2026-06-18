@@ -135,15 +135,32 @@
                 type="file"
                 wire:model="pas_foto"
                 class="form-control"
-                accept=".jpg,.jpeg,.png"
+                accept="image/jpeg,image/png,.jpg,.jpeg,.png"
                 onchange="
+                    if (!this.files || !this.files[0]) return;
+
+                    let selectedFile = this.files[0];
+                    const normalizedName = selectedFile.name.replace(/\.(jpe?g|png)\.(jpe?g|png)$/i, '.$1');
+
+                    if (normalizedName !== selectedFile.name && typeof DataTransfer !== 'undefined') {
+                        const transfer = new DataTransfer();
+                        selectedFile = new File([selectedFile], normalizedName, {
+                            type: selectedFile.type,
+                            lastModified: selectedFile.lastModified,
+                        });
+                        transfer.items.add(selectedFile);
+                        this.files = transfer.files;
+                    }
+
                     const preview = this.parentElement.querySelector('[data-pas-foto-preview]');
-                    if (!preview || !this.files || !this.files[0]) return;
-                    if (preview.dataset.objectUrl) URL.revokeObjectURL(preview.dataset.objectUrl);
-                    const objectUrl = URL.createObjectURL(this.files[0]);
-                    preview.dataset.objectUrl = objectUrl;
-                    preview.src = objectUrl;
-                    preview.style.display = 'block';
+                    if (!preview) return;
+
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        preview.src = event.target.result;
+                        preview.style.display = 'block';
+                    };
+                    reader.readAsDataURL(selectedFile);
                 "
             >
             <small class="text-muted">{{ $isEdit ? 'Kosongkan jika tidak ingin mengganti foto.' : 'Format JPG/JPEG/PNG, maksimal 2 MB.' }}</small>

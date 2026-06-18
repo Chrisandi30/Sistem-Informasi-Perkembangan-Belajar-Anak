@@ -5,6 +5,7 @@
 
         const getSidebar = () => document.querySelector('.sidebar');
         const getSidebarOverlay = () => document.getElementById('mobileSidebarOverlay');
+        const getSidebarScrollArea = () => document.querySelector('.sidebar-scroll-area') || getSidebar();
         const isMobileViewport = () => window.innerWidth <= 1000;
 
         const closeMobileSidebar = () => {
@@ -52,24 +53,24 @@
         };
 
         const restoreSidebarScroll = () => {
-            const sidebar = getSidebar();
-            if (!sidebar) {
+            const scrollArea = getSidebarScrollArea();
+            if (!scrollArea) {
                 return;
             }
 
             const savedScroll = sessionStorage.getItem(sidebarStorageKey);
             if (savedScroll !== null) {
-                sidebar.scrollTop = Number(savedScroll);
+                scrollArea.scrollTop = Number(savedScroll);
             }
         };
 
         const persistSidebarScroll = () => {
-            const sidebar = getSidebar();
-            if (!sidebar) {
+            const scrollArea = getSidebarScrollArea();
+            if (!scrollArea) {
                 return;
             }
 
-            sessionStorage.setItem(sidebarStorageKey, String(sidebar.scrollTop));
+            sessionStorage.setItem(sidebarStorageKey, String(scrollArea.scrollTop));
         };
 
         const restoreMenuState = () => {
@@ -235,7 +236,7 @@
         });
 
         document.addEventListener('scroll', function (event) {
-            if (event.target?.classList?.contains('sidebar')) {
+            if (event.target?.classList?.contains('sidebar-scroll-area')) {
                 persistSidebarScroll();
             }
         }, true);
