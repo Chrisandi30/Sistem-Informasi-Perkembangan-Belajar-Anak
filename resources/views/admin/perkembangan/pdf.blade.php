@@ -168,7 +168,7 @@
 </head>
 <body>
     @php
-        $logoPath = public_path('storage/images/logo.png');
+        $logoPath = storage_path('app/public/images/logo.png');
         $cleanText = function ($value) {
             $value = trim((string) ($value ?? '-'));
             $value = str_replace(['ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢', 'ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¢'], '', $value);

@@ -7,4 +7,3 @@
 @push('page-scripts')
     @include('partials.scripts.app-feedback')
 @endpush
-

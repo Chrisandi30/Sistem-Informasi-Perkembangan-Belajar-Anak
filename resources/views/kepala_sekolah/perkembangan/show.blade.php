@@ -1,10 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <h5 class="mb-3">Detail Laporan Perkembangan</h5>
+    <div class="review-detail-page">
+    <h5 class="mb-3 review-detail-title">
+        <span class="page-title-desktop">Detail Laporan Perkembangan</span>
+        <span class="page-title-mobile">Detail Laporan Perkembangan</span>
+    </h5>
 
-    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-        <div class="card-body p-4 p-lg-5">
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden review-detail-card">
+        <div class="card-body p-4 p-lg-5 review-detail-body">
             @php
                 $detailGroups = $perkembangan->groupedDetailsByCategory();
             @endphp
@@ -21,8 +25,8 @@
                 };
             @endphp
 
-            <section class="mb-5">
-                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <section class="mb-5 review-info-section">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3 review-info-heading">
                     <div style="font-size: 18px; font-weight: 800; color:#1d2533;">Informasi Laporan</div>
                     <span class="badge {{ $badge }}">{{ $label }}</span>
                 </div>
@@ -34,9 +38,9 @@
                 @endif
 
                 @if($perkembangan->status === 'revisi' && $perkembangan->catatan_validasi)
-                    <div class="mb-3 rounded-4 p-3" style="background:#fff8f8;">
+                    <div class="mb-3 rounded-4 p-3 review-revision-note" style="background:#fff8f8;">
                         <div class="fw-bold mb-1" style="color:#1d2533;">Catatan Revisi</div>
-                        <div class= style="white-space: pre-line; overflow-wrap:anywhere; text-align: justify; color:#1d2533;">{{ $perkembangan->catatan_validasi }}</div>
+                        <div style="white-space: pre-line; overflow-wrap:anywhere; text-align: justify; color:#1d2533;">{{ $perkembangan->catatan_validasi }}</div>
                     </div>
                 @endif
 
@@ -135,5 +139,6 @@
                 </details>
             @endif
         </div>
+    </div>
     </div>
 @endsection

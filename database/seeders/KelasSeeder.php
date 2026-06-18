@@ -9,7 +9,7 @@ class KelasSeeder extends Seeder
 {
     public function run(): void
     {
-        foreach (['TK A', 'TK B', 'TK C'] as $namaKelas) {
+        foreach (['TK A', 'TK B'] as $namaKelas) {
             Kelas::firstOrCreate(['nama_kelas' => $namaKelas]);
         }
     }

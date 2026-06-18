@@ -1,6 +1,6 @@
 <div>
-    <div class="row g-2 mb-3 align-items-end">
-        <div class="col-md-3 relative" style="max-width: 220px;">
+    <div class="row g-2 mb-3 align-items-end perkembangan-filters">
+        <div class="col-md-3 relative perkembangan-search" style="max-width: 220px;">
             <span class="pointer-events-none absolute left-[14px] top-1/2 z-[2] -translate-y-1/2 text-[14px] text-[#8a96ab]"><i class="fas fa-search"></i></span>
             <input type="text" class="form-control pl-10" placeholder="Search" wire:model.live.debounce.300ms="search">
         </div>
@@ -30,8 +30,8 @@
         </div>
     </div>
 
-    <div class="table-responsive">
-        <table class="table table-bordered table-sm align-middle">
+    <div class="table-responsive perkembangan-table-wrap">
+        <table class="table table-bordered table-sm align-middle perkembangan-list-table">
             <colgroup>
                 <col style="width: 28%;">
                 <col style="width: 18%;">

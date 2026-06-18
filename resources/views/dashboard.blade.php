@@ -141,6 +141,29 @@
         .dashboard-stat { padding: 20px; }
         .dashboard-stat-value { font-size: 27px; }
         .dashboard-stat-icon { width: 54px; height: 54px; font-size: 22px; }
+        .panel { padding: 16px; }
+        .kelas-item {
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+        }
+        .kelas-item > span:first-child {
+            min-width: 0;
+            flex: 1 1 auto;
+        }
+        .kelas-badge {
+            flex: 0 0 auto;
+            max-width: 55%;
+            white-space: normal;
+            text-align: center;
+            line-height: 1.35;
+            border-radius: 12px;
+        }
+        .kelas-badge-status {
+            flex: 0 1 55%;
+            width: 55%;
+            max-width: 55%;
+        }
     }
 </style>
 
@@ -231,7 +254,7 @@
             </li>
             <li class="kelas-item">
                 <span>Status laporan bulan ini</span>
-                <span class="kelas-badge">
+                <span class="kelas-badge kelas-badge-status">
                     {{ $statusLaporanGuruBulanIni['menunggu'] }} menunggu, {{ $statusLaporanGuruBulanIni['disetujui'] }} disetujui, {{ $statusLaporanGuruBulanIni['revisi'] }} revisi
                 </span>
             </li>

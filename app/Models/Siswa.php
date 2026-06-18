@@ -55,7 +55,9 @@ class Siswa extends Model
 
     public function getPasFotoUrlAttribute(): ?string
     {
-        return $this->pas_foto ? asset('storage/' . $this->pas_foto) : null;
+        return $this->pas_foto
+            ? route('media.public', ['path' => $this->pas_foto])
+            : null;
     }
 
     public function getJenisKelaminLabelAttribute(): string

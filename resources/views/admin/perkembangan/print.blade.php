@@ -231,6 +231,97 @@
             text-align: justify;
         }
 
+        @media screen and (max-width: 700px) {
+            .print-shell {
+                padding: 20px 12px;
+            }
+
+            .toolbar button,
+            .toolbar a {
+                min-width: 0;
+                width: min(240px, 100%);
+            }
+
+            .print-note {
+                max-width: 340px;
+                margin-bottom: 20px;
+            }
+
+            .print-page {
+                width: 100%;
+                max-width: 100%;
+                padding: 16px 14px;
+            }
+
+            .header-table {
+                width: 100%;
+                margin: 0;
+            }
+
+            .header-logo-cell {
+                width: 76px;
+                padding-right: 8px;
+            }
+
+            .header-logo {
+                width: 70px;
+            }
+
+            .header h1 {
+                font-size: 15px;
+            }
+
+            .header h2 {
+                font-size: 13px;
+            }
+
+            .header p {
+                font-size: 10px;
+            }
+
+            .meta-table {
+                table-layout: fixed;
+            }
+
+            .meta-table td {
+                padding: 2px;
+                font-size: 11px;
+                overflow-wrap: anywhere;
+            }
+
+            .meta-label {
+                width: 19%;
+                white-space: normal;
+            }
+
+            .meta-sep {
+                width: 4%;
+            }
+
+            .meta-gap {
+                width: 2%;
+            }
+
+            .section-heading {
+                padding: 7px 4px;
+                font-size: 14px;
+            }
+
+            .section-body {
+                padding: 8px 4px;
+            }
+
+            .entry-title {
+                font-size: 14px;
+            }
+
+            .entry-text,
+            .entry-label {
+                font-size: 12px;
+                line-height: 1.45;
+            }
+        }
+
         @media print {
             body {
                 background: #fff;
@@ -257,7 +348,7 @@
 </head>
 <body>
     @php
-        $logoPath = asset('storage/images/logo.png');
+        $logoPath = route('media.public', ['path' => 'images/logo.png']);
         $cleanText = function ($value) {
             $value = trim((string) ($value ?? '-'));
             $value = str_replace(['ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢', 'ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¢'], '', $value);

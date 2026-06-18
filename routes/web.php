@@ -18,7 +18,12 @@ use App\Http\Controllers\KepalaSekolah\ReviewPerkembanganController as KepalaSek
 use App\Http\Controllers\OrangTua\LaporanController;
 use App\Http\Controllers\OrangTua\PengumumanController as OrangTuaPengumumanController;
 use App\Http\Controllers\OrangTua\PortalController;
+use App\Http\Controllers\PublicMediaController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/media/{path}', [PublicMediaController::class, 'show'])
+    ->where('path', '.*')
+    ->name('media.public');
 
 Route::redirect('/', '/dashboard');
 Route::middleware('guest:admin,guru,kepala_sekolah,orang_tua')->group(function () {

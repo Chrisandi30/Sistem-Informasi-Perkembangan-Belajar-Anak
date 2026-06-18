@@ -105,7 +105,34 @@
     display: none !important;
 }
 
+.topbar-title-mobile,
+.page-title-mobile {
+    display: none;
+}
+
+.review-filters {
+    display: grid;
+    grid-template-columns: minmax(190px, 1.35fr) minmax(170px, 1.2fr) minmax(120px, .8fr) minmax(120px, .8fr) minmax(145px, .95fr);
+    gap: 12px;
+    align-items: end;
+}
+
+.review-filter {
+    min-width: 0;
+}
+
+.review-filter-search {
+    position: relative;
+}
+
+.review-filter .form-control,
+.review-filter .form-select {
+    width: 100%;
+}
+
 .content-inner .table-responsive {
+    width: 100%;
+    max-width: 100%;
     touch-action: pan-x pan-y;
     overscroll-behavior-x: contain;
     cursor: default;
@@ -135,6 +162,16 @@
 }
 
 @media (max-width: 1000px) {
+    .app-shell > section,
+    .content-inner {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .content-inner {
+        overflow-x: hidden;
+    }
+
     .content-inner .table {
         table-layout: auto;
         min-width: 900px;
@@ -246,8 +283,100 @@
 }
 
 @media (max-width: 700px) {
+    .topbar-title-desktop,
+    .page-title-desktop {
+        display: none;
+    }
+
+    .topbar-title-mobile,
+    .page-title-mobile {
+        display: inline;
+    }
+
+    .app-topbar {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+        gap: 8px;
+    }
+
+    .topbar-leading {
+        gap: 8px !important;
+    }
+
+    .topbar-title-mobile {
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .topbar-logout {
+        gap: 6px !important;
+        padding: 9px 11px !important;
+        font-size: 13px !important;
+    }
+
     .content-inner h5 {
         font-size: 24px;
+    }
+
+    .perkembangan-page-heading h5,
+    .review-page > h5 {
+        font-size: 18px;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    .perkembangan-filters > div,
+    .perkembangan-search {
+        width: 100%;
+        max-width: none !important;
+    }
+
+    .review-page {
+        padding-top: 0 !important;
+    }
+
+    .review-filters {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .review-list-table {
+        min-width: 760px !important;
+    }
+
+    .perkembangan-list-table {
+        min-width: 720px !important;
+    }
+
+    .review-detail-title {
+        font-size: 18px !important;
+        line-height: 1.25;
+        white-space: nowrap;
+    }
+
+    .review-detail-card {
+        border-radius: 16px !important;
+    }
+
+    .review-detail-body {
+        padding: 18px 16px !important;
+    }
+
+    .review-info-section {
+        margin-bottom: 28px !important;
+    }
+
+    .review-info-heading {
+        align-items: stretch !important;
+    }
+
+    .review-info-heading > .badge {
+        width: 100%;
+        padding: 7px 10px;
+    }
+
+    .review-revision-note {
+        padding: 14px !important;
     }
 
     .content-inner .btn,

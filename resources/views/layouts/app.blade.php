@@ -463,11 +463,16 @@
         request()->routeIs('guru.perkembangan.create') => 'Input Laporan',
         request()->routeIs('guru.perkembangan.show') => 'Detail Laporan',
         request()->routeIs('guru.perkembangan.edit') => 'Edit Laporan',
-        request()->routeIs('kepala-sekolah.review.*') => 'Review & Persetujuan',
+        request()->routeIs('kepala-sekolah.review.*') => 'Review & Persetujuan Laporan',
         request()->routeIs('kepala-sekolah.dashboard') => 'Dashboard',
         request()->routeIs('orang-tua.laporan.*') => 'Laporan Anak',
         request()->routeIs('orang-tua.pengumuman.*') => 'Pengumuman',
         default => 'Sistem Informasi TK',
+    };
+    $mobileTopbarTitle = match (true) {
+        request()->routeIs('kepala-sekolah.review.*') => 'Review & Persetujuan Laporan',
+        request()->routeIs('admin.laporan.perkembangan', 'admin.perkembangan.*') => 'Data Perkembangan',
+        default => $topbarTitle,
     };
 @endphp
 <div id="mobileSidebarOverlay" class="mobile-sidebar-overlay"></div>
@@ -481,7 +486,7 @@
         <div class="mt-[-23px] mb-4 ml-[-8px] px-2 transition-all duration-300">
             <div class="flex w-full items-center gap-3 py-2">
                 <div class="inline-flex h-[70px] w-[70px] shrink-0 items-center justify-center overflow-hidden rounded-full">
-                    <img src="{{ asset('storage/images/logo.png') }}" alt="Logo TK Winfield" class="h-full w-full object-contain">
+                    <img src="{{ route('media.public', ['path' => 'images/logo.png']) }}" alt="Logo TK Winfield" class="h-full w-full object-contain">
                 </div>
                 <div class="min-w-0 text-left">
                     <p class="m-0 whitespace-nowrap text-[19px] font-black uppercase leading-[1] tracking-normal text-[#7f1d1d]">TK WINFIELD</p>
@@ -539,12 +544,15 @@
     </aside>
 
     <section class="flex min-h-screen flex-col">
-        <div class="flex h-[72px] shrink-0 items-center justify-between border-b border-[var(--line)] bg-white px-[26px] max-[1000px]:px-[18px]">
-            <div class="flex min-w-0 items-center gap-3">
+        <div class="app-topbar flex h-[72px] shrink-0 items-center justify-between border-b border-[var(--line)] bg-white px-[26px] max-[1000px]:px-[18px]">
+            <div class="topbar-leading flex min-w-0 items-center gap-3">
                 <button type="button" id="mobileSidebarToggle" class="mobile-sidebar-toggle" aria-label="Buka menu">
                     <i class="fas fa-bars"></i>
                 </button>
-                <div class="truncate text-[18px] font-extrabold text-[#1f2937]">{{ $topbarTitle }}</div>
+                <div class="min-w-0 truncate text-[18px] font-extrabold text-[#1f2937]">
+                    <span class="topbar-title-desktop">{{ $topbarTitle }}</span>
+                    <span class="topbar-title-mobile">{{ $mobileTopbarTitle }}</span>
+                </div>
             </div>
             <div class="flex items-center gap-3">
                 @if(in_array($authUser->role, ['admin', 'guru', 'kepala_sekolah'], true))
@@ -559,7 +567,7 @@
                 <form action="{{ route('logout') }}" method="post" class="m-0 logout-form">
                     @csrf
                     <input type="hidden" name="guard" value="{{ $activeGuard }}">
-                    <button type="submit" class="inline-flex items-center gap-2 rounded-full border border-[#ead1d1] bg-[#fff5f5] px-[14px] py-[9px] text-[14px] font-bold text-[#7f1d1d] transition hover:border-[#7f1d1d] hover:bg-[#7f1d1d] hover:text-white">
+                    <button type="submit" class="topbar-logout inline-flex items-center gap-2 rounded-full border border-[#ead1d1] bg-[#fff5f5] px-[14px] py-[9px] text-[14px] font-bold text-[#7f1d1d] transition hover:border-[#7f1d1d] hover:bg-[#7f1d1d] hover:text-white">
                         <i class="fas fa-right-from-bracket"></i>
                         <span>Logout</span>
                     </button>

@@ -13,7 +13,6 @@ class MataPelajaranSeeder extends Seeder
         $mapel = [
             'TK A' => ['Mengenal Huruf', 'Mewarnai'],
             'TK B' => ['Membaca Dasar', 'Berhitung'],
-            'TK C' => ['Menulis', 'Berhitung Lanjutan'],
         ];
 
         foreach ($mapel as $kelasNama => $daftarMapel) {

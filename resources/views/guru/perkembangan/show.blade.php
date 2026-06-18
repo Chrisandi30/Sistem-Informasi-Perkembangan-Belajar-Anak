@@ -1,7 +1,10 @@
 @extends('layouts.app')
 @section('title', 'Detail Laporan Perkembangan')
 @section('content')
-<h5>Detail Laporan Perkembangan</h5>
+<h5 class="review-detail-title">
+    <span class="page-title-desktop">Detail Laporan Perkembangan</span>
+    <span class="page-title-mobile">Detail Laporan Perkembangan</span>
+</h5>
 <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
     <div class="card-body p-4 p-lg-5">
         @php

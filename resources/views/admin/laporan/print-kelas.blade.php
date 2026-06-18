@@ -212,7 +212,7 @@
                 <table class="header-table">
                     <tr>
                         <td class="header-logo-cell">
-                            <img src="{{ asset('storage/images/logo.png') }}" alt="Logo Winfield" class="header-logo">
+                            <img src="{{ route('media.public', ['path' => 'images/logo.png']) }}" alt="Logo Winfield" class="header-logo">
                         </td>
                         <td class="header-text">
                             <h1>LAPORAN KELAS</h1>

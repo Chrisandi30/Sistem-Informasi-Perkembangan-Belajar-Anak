@@ -131,15 +131,32 @@
         @endif
         <div class="col-md-4">
             <label class="form-label">Pas Foto Siswa</label>
-            <input type="file" wire:model="pas_foto" class="form-control" accept=".jpg,.jpeg,.png">
+            <input
+                type="file"
+                wire:model="pas_foto"
+                class="form-control"
+                accept=".jpg,.jpeg,.png"
+                onchange="
+                    const preview = this.parentElement.querySelector('[data-pas-foto-preview]');
+                    if (!preview || !this.files || !this.files[0]) return;
+                    if (preview.dataset.objectUrl) URL.revokeObjectURL(preview.dataset.objectUrl);
+                    const objectUrl = URL.createObjectURL(this.files[0]);
+                    preview.dataset.objectUrl = objectUrl;
+                    preview.src = objectUrl;
+                    preview.style.display = 'block';
+                "
+            >
             <small class="text-muted">{{ $isEdit ? 'Kosongkan jika tidak ingin mengganti foto.' : 'Format JPG/JPEG/PNG, maksimal 2 MB.' }}</small>
             @error('pas_foto') <small class="text-danger d-block">{{ $message }}</small> @enderror
             <div wire:loading wire:target="pas_foto" class="small text-muted mt-1">Mengunggah foto...</div>
-            @if($pas_foto)
-                <div class="mt-2"><img src="{{ $pas_foto->temporaryUrl() }}" alt="Preview pas foto" style="width: 90px; height: 110px; object-fit: cover; border-radius: 14px; border: 1px solid #d8e3ef;"></div>
-            @elseif($existingPasFotoUrl)
-                <div class="mt-2"><img src="{{ $existingPasFotoUrl }}" alt="Pas foto siswa" style="width: 90px; height: 110px; object-fit: cover; border-radius: 14px; border: 1px solid #d8e3ef;"></div>
-            @endif
+            <div class="mt-2" wire:ignore>
+                <img
+                    data-pas-foto-preview
+                    src="{{ $existingPasFotoUrl ?? '' }}"
+                    alt="Preview pas foto"
+                    style="width: 90px; height: 110px; object-fit: cover; border-radius: 14px; border: 1px solid #d8e3ef; {{ $existingPasFotoUrl ? '' : 'display:none;' }}"
+                >
+            </div>
         </div>
     </div>
 

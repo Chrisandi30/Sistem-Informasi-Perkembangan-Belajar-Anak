@@ -1,12 +1,12 @@
 <div>
-    <div class="row g-3 mb-4 mt-1 align-items-end flex-nowrap">
-        <div class="col-auto" style="width: 230px; position: relative;">
+    <div class="review-filters mb-4 mt-1">
+        <div class="review-filter review-filter-search">
             <span class="pointer-events-none" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); z-index:2; font-size:14px; color:#8a96ab;">
                 <i class="fas fa-search"></i>
             </span>
             <input type="text" class="form-control" style="padding-left: 44px;" placeholder="Search" wire:model.live.debounce.300ms="search">
         </div>
-        <div class="col-auto" style="width: 230px;">
+        <div class="review-filter">
             <select wire:model.live="kelas_id" class="form-select">
                 <option value="">Semua Kelas</option>
                 @foreach($kelasOptions as $k)
@@ -14,7 +14,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="col-auto" style="width: 150px;">
+        <div class="review-filter">
             <select wire:model.live="bulan" class="form-select">
                 <option value="">Semua Bulan</option>
                 @foreach($monthOptions as $monthNumber => $monthName)
@@ -22,7 +22,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="col-auto" style="width: 150px;">
+        <div class="review-filter">
             <select wire:model.live="tahun" class="form-select">
                 <option value="">Semua Tahun</option>
                 @foreach($yearOptions as $y)
@@ -30,7 +30,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="col-auto" style="width: 170px;">
+        <div class="review-filter">
             <select wire:model.live="status" class="form-select">
                 @foreach($statusOptions as $key => $label)
                     <option value="{{ $key }}">{{ $label }}</option>
@@ -39,8 +39,8 @@
         </div>
     </div>
 
-    <div class="table-responsive mt-2">
-        <table class="table table-bordered table-sm align-middle">
+    <div class="table-responsive mt-2 review-table-wrap">
+        <table class="table table-bordered table-sm align-middle review-list-table">
             <colgroup>
                 <col style="width: 26%;">
                 <col style="width: 12%;">
