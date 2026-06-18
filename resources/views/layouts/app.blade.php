@@ -400,8 +400,36 @@
     .alert-danger { background: #fff0f0; border-color: #f6c7c7; color: #8f2d2d; }
     .error-list { margin: 0; padding-left: 18px; }
 
-    /* Samakan lebar search dengan menu Siswa pada seluruh mode responsif. */
+    /* Susun filter review dalam lima kolom pada desktop. */
+    .review-filters {
+        display: grid !important;
+        grid-template-columns: minmax(240px, 1.5fr) repeat(4, minmax(140px, 1fr)) !important;
+        gap: 12px !important;
+        align-items: end;
+    }
+
+    .review-filter {
+        width: auto !important;
+        min-width: 0;
+        max-width: none !important;
+    }
+
+    .review-filter .form-control,
+    .review-filter .form-select {
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    /* Samakan lebar search dan filter pada seluruh mode responsif. */
     @media (max-width: 1000px) {
+        .review-filters {
+            grid-template-columns: minmax(0, 1fr) !important;
+        }
+
+        .review-filter {
+            width: 100% !important;
+        }
+
         .standard-search-wrap,
         .perkembangan-search,
         .review-filter-search {
