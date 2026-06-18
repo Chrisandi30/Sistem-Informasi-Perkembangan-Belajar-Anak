@@ -37,6 +37,7 @@ class SiswaForm extends Component
     public $pas_foto;
     public ?string $existingPasFotoUrl = null;
 
+    // Isi form dengan data lama ketika halaman digunakan untuk mengedit siswa.
     public function mount(?Siswa $siswa = null): void
     {
         $this->siswa = $siswa;
@@ -64,6 +65,7 @@ class SiswaForm extends Component
         $this->tahun_ajaran_id = (string) optional(TahunAjaran::where('is_active', true)->first())->id;
     }
 
+    // Validasi lalu simpan data siswa beserta akun orang tua.
     public function save()
     {
         $hadUserAccount = (bool) $this->siswa?->user_id;
@@ -75,6 +77,7 @@ class SiswaForm extends Component
                 $this->siswa->loadMissing('user');
                 $pasFoto = $this->siswa->pas_foto;
 
+                // Ganti file pas foto lama hanya jika pengguna memilih foto baru.
                 if ($this->pas_foto) {
                     if ($pasFoto) {
                         Storage::disk('public')->delete($pasFoto);
@@ -162,6 +165,7 @@ class SiswaForm extends Component
         return $this->redirectRoute('admin.siswa.index', navigate: true);
     }
 
+    // Aturan akun dibedakan antara proses tambah dan edit siswa.
     private function rules(): array
     {
         $rules = [

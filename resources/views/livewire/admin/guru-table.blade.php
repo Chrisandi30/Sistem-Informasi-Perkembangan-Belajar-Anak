@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/livewire/admin/guru-table.blade.php
+@endphp
 <div>
     @php
         $guruCellClass = '!px-4 align-middle';

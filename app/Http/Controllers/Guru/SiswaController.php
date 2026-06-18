@@ -1,5 +1,7 @@
 <?php
 
+// Controller: app/Http/Controllers/Guru/SiswaController.php
+
 namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;

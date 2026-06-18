@@ -1,5 +1,7 @@
 <?php
 
+// Controller: app/Http/Controllers/KepalaSekolah/ReviewPerkembanganController.php
+
 namespace App\Http\Controllers\KepalaSekolah;
 
 use App\Http\Controllers\Controller;
@@ -14,11 +16,13 @@ class ReviewPerkembanganController extends Controller
     {
     }
 
+    // Tampilkan daftar laporan yang perlu ditinjau kepala sekolah.
     public function index(Request $request)
     {
         return view('kepala_sekolah.perkembangan.index');
     }
 
+    // Ambil seluruh relasi yang dibutuhkan pada halaman detail laporan.
     public function show(Perkembangan $perkembangan)
     {
         $perkembangan->load(['siswa.kelas', 'siswa.tahunAjaran', 'guru.kelas', 'detailPerkembangans', 'validator']);
@@ -45,6 +49,7 @@ class ReviewPerkembanganController extends Controller
     {
         abort_if($perkembangan->status === 'disetujui', 422, 'Laporan ini sudah disetujui.');
 
+        // Simpan status persetujuan dan data validator secara atomik.
         DB::transaction(function () use ($perkembangan) {
             $perkembangan->update([
                 'status' => 'disetujui',
@@ -65,6 +70,7 @@ class ReviewPerkembanganController extends Controller
 
     public function reject(Request $request, Perkembangan $perkembangan)
     {
+        // Pastikan alasan revisi diisi sebelum laporan dikembalikan ke guru.
         $data = $request->validate([
             'catatan_validasi' => ['required', 'string', 'max:500'],
         ], [

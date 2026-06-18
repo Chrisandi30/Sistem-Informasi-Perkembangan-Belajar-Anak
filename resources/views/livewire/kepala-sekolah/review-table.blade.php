@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/livewire/kepala-sekolah/review-table.blade.php
+@endphp
 <div>
     <div class="review-filters mb-4 mt-1">
         <div class="review-filter review-filter-search">

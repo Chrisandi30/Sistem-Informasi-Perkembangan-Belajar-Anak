@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/admin/guru/edit.blade.php
+@endphp
 @extends('layouts.app')
 @section('title', 'Edit Data Guru')
 @section('content')

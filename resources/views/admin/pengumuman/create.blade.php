@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/admin/pengumuman/create.blade.php
+@endphp
 @extends('layouts.app')
 @section('title', 'Tambah Pengumuman')
 @section('content')

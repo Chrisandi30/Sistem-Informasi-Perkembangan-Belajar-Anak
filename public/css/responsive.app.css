@@ -33,6 +33,7 @@
     outline: none;
 }
 
+/* Lapisan gelap di belakang sidebar ketika menu mobile dibuka. */
 .mobile-sidebar-overlay {
     display: block;
     position: fixed;
@@ -69,6 +70,7 @@
     box-shadow: 0 22px 60px rgba(15, 23, 42, 0.18);
 }
 
+/* Area menu sidebar yang dapat digulir secara mandiri di perangkat mobile. */
 .sidebar-scroll-area {
     min-height: 0;
     overflow-x: hidden;
@@ -303,6 +305,7 @@
     }
 }
 
+/* Penyesuaian komponen untuk layar ponsel. */
 @media (max-width: 700px) {
     .topbar-title-desktop,
     .page-title-desktop {

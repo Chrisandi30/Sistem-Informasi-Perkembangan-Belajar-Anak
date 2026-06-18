@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/kepala_sekolah/perkembangan/index.blade.php
+@endphp
 @extends('layouts.app')
 
 @section('content')

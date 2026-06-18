@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/livewire/guru/siswa-table.blade.php
+@endphp
 <div>
     <div class="standard-search-wrap relative mb-3" style="max-width: 200px;">
         <span class="pointer-events-none absolute start-0 top-50 z-[2] translate-middle-y ms-3 text-[14px] text-[#8a96ab]"><i class="fas fa-search"></i></span>

@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/partials/scripts/app-sidebar-state.blade.php
+@endphp
 <script>
     (function () {
         const sidebarStorageKey = 'tk-winfield-sidebar-scroll';
@@ -8,6 +11,7 @@
         const getSidebarScrollArea = () => document.querySelector('.sidebar-scroll-area') || getSidebar();
         const isMobileViewport = () => window.innerWidth <= 1000;
 
+        // Tutup sidebar dan aktifkan kembali scroll halaman utama.
         const closeMobileSidebar = () => {
             const sidebar = getSidebar();
             const overlay = getSidebarOverlay();
@@ -52,6 +56,7 @@
             menu.open = false;
         };
 
+        // Kembalikan posisi menu terakhir setelah navigasi Livewire.
         const restoreSidebarScroll = () => {
             const scrollArea = getSidebarScrollArea();
             if (!scrollArea) {
@@ -95,6 +100,7 @@
             });
         };
 
+        // Jalankan animasi buka-tutup pada kelompok menu dropdown.
         const animateMenuToggle = (menu) => {
             const links = menu.querySelector('.dropdown-links');
             if (!links || menu.dataset.animating === '1') {

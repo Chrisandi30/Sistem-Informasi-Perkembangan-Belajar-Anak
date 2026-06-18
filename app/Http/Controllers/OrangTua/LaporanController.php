@@ -1,5 +1,7 @@
 <?php
 
+// Controller: app/Http/Controllers/OrangTua/LaporanController.php
+
 namespace App\Http\Controllers\OrangTua;
 
 use App\Http\Controllers\Controller;

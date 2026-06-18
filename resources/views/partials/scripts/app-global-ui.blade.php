@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/partials/scripts/app-global-ui.blade.php
+@endphp
 <script>
     (function () {
         const loadingOverlay = document.getElementById('appLoadingOverlay');

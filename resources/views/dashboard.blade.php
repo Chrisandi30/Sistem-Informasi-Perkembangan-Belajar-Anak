@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/dashboard.blade.php
+@endphp
 @extends('layouts.app')
 @section('title', 'Dashboard')
 @section('content')

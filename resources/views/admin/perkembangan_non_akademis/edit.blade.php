@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/admin/perkembangan_non_akademis/edit.blade.php
+@endphp
 @extends('layouts.app')
 @section('title', 'Edit Perkembangan Non Akademis')
 @section('content')

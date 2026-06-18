@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/auth/login.blade.php
+@endphp
 <!doctype html>
 <html lang="id">
 <head>

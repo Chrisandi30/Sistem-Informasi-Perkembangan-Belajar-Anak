@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/guru/siswa/partials/table.blade.php
+@endphp
 <div class="table-responsive">
     <table class="table table-bordered table-sm align-middle">
         <colgroup>

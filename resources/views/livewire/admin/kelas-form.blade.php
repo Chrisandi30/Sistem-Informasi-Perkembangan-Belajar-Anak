@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/livewire/admin/kelas-form.blade.php
+@endphp
 <form wire:submit="save" class="card card-body form-shell bg-white p-7">
     <div class="mb-3">
         <label class="form-label">Nama Kelas</label>

@@ -1,3 +1,8 @@
+@php
+    // View: resources/views/livewire/livesearch.blade.php
+@endphp
 <div>
-    {{-- The best athlete wants his opponent at his best. --}}
+    @php
+    // The best athlete wants his opponent at his best.
+@endphp
 </div>

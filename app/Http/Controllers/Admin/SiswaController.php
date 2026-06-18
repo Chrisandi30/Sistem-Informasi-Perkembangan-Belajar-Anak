@@ -1,5 +1,7 @@
 <?php
 
+// Controller: app/Http/Controllers/Admin/SiswaController.php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;

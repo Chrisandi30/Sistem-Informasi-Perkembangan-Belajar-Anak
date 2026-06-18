@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/partials/scripts/portal-page-feedback.blade.php
+@endphp
 <script>
     (function () {
         const state = window.__tkWinfieldPortalFeedback || (window.__tkWinfieldPortalFeedback = {

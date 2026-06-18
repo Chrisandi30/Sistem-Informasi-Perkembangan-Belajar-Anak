@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/livewire/admin/perkembangan-table.blade.php
+@endphp
 <div>
     <div class="row g-2 mb-3 align-items-end perkembangan-filters">
         <div class="standard-search-wrap col-md-3 relative perkembangan-search" style="max-width: 220px;">

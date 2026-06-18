@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/admin/akun/index.blade.php
+@endphp
 @extends('layouts.app')
 @section('title', 'Kelola Akun')
 @section('content')

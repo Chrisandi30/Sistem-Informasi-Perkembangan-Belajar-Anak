@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/guru/perkembangan/show.blade.php
+@endphp
 @extends('layouts.app')
 @section('title', 'Detail Laporan Perkembangan')
 @section('content')

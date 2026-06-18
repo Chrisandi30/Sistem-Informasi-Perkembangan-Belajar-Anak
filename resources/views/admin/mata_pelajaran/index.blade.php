@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/admin/mata_pelajaran/index.blade.php
+@endphp
 @extends('layouts.app')
 @section('title', 'Daftar Mata Pelajaran')
 @section('content')

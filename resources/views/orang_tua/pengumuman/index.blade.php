@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/orang_tua/pengumuman/index.blade.php
+@endphp
 @extends('layouts.orang_tua')
 
 @section('content')

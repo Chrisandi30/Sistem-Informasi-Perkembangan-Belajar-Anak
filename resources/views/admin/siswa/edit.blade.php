@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/admin/siswa/edit.blade.php
+@endphp
 @extends('layouts.app')
 @section('title', 'Edit Siswa')
 @section('content')

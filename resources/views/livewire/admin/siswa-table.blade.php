@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/livewire/admin/siswa-table.blade.php
+@endphp
 <div>
     @php
         $siswaCellClass = '!px-[0.85rem] align-middle min-w-0 [overflow-wrap:anywhere] break-normal';

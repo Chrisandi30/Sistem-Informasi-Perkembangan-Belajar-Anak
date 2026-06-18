@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/livewire/admin/perkembangan-non-akademis-form.blade.php
+@endphp
 <form wire:submit="save" class="card card-body form-shell bg-white p-7">
     <div class="grid gap-4 md:grid-cols-2">
         <div class="mb-3 md:mb-0">

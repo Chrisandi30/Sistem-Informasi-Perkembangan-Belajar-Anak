@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/admin/guru/create.blade.php
+@endphp
 @extends('layouts.app')
 @section('title', 'Tambah Guru')
 @section('content')

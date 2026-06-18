@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/admin/perkembangan/index.blade.php
+@endphp
 @extends('layouts.app')
 @section('title', 'Perkembangan Siswa')
 @section('content')

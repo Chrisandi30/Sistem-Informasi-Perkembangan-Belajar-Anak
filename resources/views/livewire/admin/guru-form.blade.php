@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/livewire/admin/guru-form.blade.php
+@endphp
 <form wire:submit="save" class="card card-body form-shell bg-white p-7">
     <div class="row g-3">
         <div class="col-md-6"><label class="form-label">Nama</label><input type="text" wire:model.defer="nama" class="form-control" required>@error('nama') <small class="text-danger">{{ $message }}</small> @enderror</div>

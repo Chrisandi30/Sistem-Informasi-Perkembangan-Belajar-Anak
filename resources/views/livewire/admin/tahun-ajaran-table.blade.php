@@ -1,3 +1,6 @@
+@php
+    // View: resources/views/livewire/admin/tahun-ajaran-table.blade.php
+@endphp
 <div>
     <div class="table-responsive">
         <table class="table table-bordered align-middle">
