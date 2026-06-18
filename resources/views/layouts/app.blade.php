@@ -550,8 +550,7 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="min-w-0 truncate text-[18px] font-extrabold text-[#1f2937]">
-                    <span class="topbar-title-desktop">{{ $topbarTitle }}</span>
-                    <span class="topbar-title-mobile">{{ $mobileTopbarTitle }}</span>
+                    <span>{{ $topbarTitle }}</span>
                 </div>
             </div>
             <div class="flex items-center gap-3">
