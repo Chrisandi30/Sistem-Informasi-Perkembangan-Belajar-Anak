@@ -107,7 +107,7 @@
         <table class="header-table">
             <tr>
                 <td class="header-logo-cell">
-                    <img src="{{ storage_path('app/public/images/logo.png') }}" alt="Logo Winfield" class="header-logo">
+                    <img src="{{ public_path('images/logo.png') }}" alt="Logo Winfield" class="header-logo">
                 </td>
                 <td class="header-text">
                     <h1>LAPORAN KELAS</h1>

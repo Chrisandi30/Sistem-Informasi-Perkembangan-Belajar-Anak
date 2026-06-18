@@ -55,7 +55,7 @@ class PerkembanganController extends Controller
             403
         );
 
-        $perkembangan->load(['siswa.tahunAjaran', 'detailPerkembangans']);
+        $perkembangan->load(['siswa.kelas', 'siswa.tahunAjaran', 'guru', 'detailPerkembangans', 'validator']);
         $monthOptions = $this->monthOptions();
 
         return view('guru.perkembangan.show', compact('perkembangan', 'monthOptions'));

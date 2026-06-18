@@ -1,10 +1,11 @@
 @extends('layouts.orang_tua')
 
 @section('content')
+    <div class="portal-wide-page">
     <h1 class="mb-2 break-words text-[30px] font-extrabold text-[#1f2937] max-[700px]:text-[26px]">Profil Siswa</h1>
 
     @if(!$siswa)
-        <div class="rounded-[24px] border border-[var(--portal-line)] bg-white shadow-[0_16px_36px_rgba(41,60,89,0.08)]">
+        <div class="portal-mobile-card rounded-[24px] border border-[var(--portal-line)] bg-white shadow-[0_16px_36px_rgba(41,60,89,0.08)]">
             <div class="flex h-full flex-col p-[20px] max-[700px]:p-4">
                 <div class="break-words rounded-[18px] border border-dashed border-[#c9d6e5] bg-[#f9fbfe] p-[22px] text-center text-[#5e7084]">
                     Akun orang tua ini belum terhubung ke data siswa. Silakan hubungi admin sekolah untuk menghubungkan akun Anda.
@@ -14,7 +15,7 @@
     @else
         <div class="grid grid-cols-[minmax(320px,.9fr)_minmax(0,1.8fr)] items-stretch gap-[22px] max-[1100px]:grid-cols-1">
             <div>
-                <div class="rounded-[24px] border border-[var(--portal-line)] bg-white px-6 py-7 text-center shadow-[0_16px_36px_rgba(41,60,89,0.08)] max-[700px]:px-4 max-[700px]:py-5">
+                <div class="portal-mobile-card rounded-[24px] border border-[var(--portal-line)] bg-white px-6 py-7 text-center shadow-[0_16px_36px_rgba(41,60,89,0.08)] max-[700px]:px-4 max-[700px]:py-5">
                     <div class="mx-auto mb-4 flex h-[172px] w-[140px] items-center justify-center overflow-hidden rounded-[26px] border-4 border-white bg-[linear-gradient(135deg,_#4b74a1,_#2f4b67)] text-[46px] font-extrabold text-white shadow-[0_14px_30px_rgba(47,75,103,0.24)] max-[700px]:h-[150px] max-[700px]:w-[120px]">
                         @if($siswa->pas_foto_url)
                             <img src="{{ $siswa->pas_foto_url }}" alt="Pas foto {{ $siswa->nama }}" class="block h-full w-full object-cover">
@@ -28,7 +29,7 @@
                         {{ $siswa->kelas?->nama_kelas ?? 'Belum ada kelas' }}
                     </div>
 
-                    <ul class="m-0 list-none p-0 text-start">
+                    <ul class="portal-profile-summary m-0 list-none p-0 text-start">
                         <li class="grid grid-cols-[128px_minmax(0,1fr)] gap-4 border-b border-[#edf2f7] py-3 text-[#506277]"><span class="whitespace-nowrap">Nama</span><strong class="block min-w-0 break-words text-right text-[#1f2937]">{{ $siswa->nama ?: '-' }}</strong></li>
                         <li class="grid grid-cols-[128px_minmax(0,1fr)] gap-4 border-b border-[#edf2f7] py-3 text-[#506277]"><span class="whitespace-nowrap">NISN</span><strong class="block min-w-0 break-words text-right text-[#1f2937]">{{ $siswa->nisn ?: '-' }}</strong></li>
                         <li class="grid grid-cols-[128px_minmax(0,1fr)] gap-4 border-b border-[#edf2f7] py-3 text-[#506277]"><span class="whitespace-nowrap">Tahun Ajaran</span><strong class="block min-w-0 break-words text-right text-[#1f2937]">{{ $siswa->tahunAjaran?->tahun_ajaran ?: '-' }}</strong></li>
@@ -38,7 +39,7 @@
             </div>
 
             <div class="h-full">
-                <div class="h-full rounded-[24px] border border-[var(--portal-line)] bg-white shadow-[0_16px_36px_rgba(41,60,89,0.08)]">
+                <div class="portal-mobile-card h-full rounded-[24px] border border-[var(--portal-line)] bg-white shadow-[0_16px_36px_rgba(41,60,89,0.08)]">
                     <div class="flex h-full flex-col p-[20px] max-[700px]:p-4">
                         <h2 class="mb-[9px] break-words text-[18px] font-extrabold text-[#1f2937]">Data Lengkap Siswa</h2>
                         <div class="grid flex-1 grid-cols-2 auto-rows-fr gap-2 max-[700px]:grid-cols-1">
@@ -59,4 +60,5 @@
             </div>
         </div>
     @endif
+    </div>
 @endsection

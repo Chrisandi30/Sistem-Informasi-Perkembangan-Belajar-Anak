@@ -75,7 +75,7 @@
 
 <div class="w-full max-w-[440px] rounded-2xl border border-[#dedee6] bg-white px-9 pb-8 pt-10 shadow-[0_10px_30px_rgba(19,20,24,0.06)] md:px-7 md:pb-7 md:pt-9 sm:rounded-xl sm:px-6 sm:pb-6 sm:pt-8">
     <div class="text-center">
-        <img src="{{ route('media.public', ['path' => 'images/logo.png']) }}" alt="Logo TK" class="mx-auto mb-1 block w-full max-w-[156px]">
+        <img src="{{ asset('images/logo.png') }}" alt="Logo TK" class="mx-auto mb-1 block w-full max-w-[156px]">
         <h1 class="mt-1 text-[22px] font-bold tracking-[-0.02em] text-[#1d1d23]">Selamat Datang!</h1>
         <p class="mt-1 text-[15px] font-medium italic text-[#7b8190]">Silahkan Login</p>
     </div>

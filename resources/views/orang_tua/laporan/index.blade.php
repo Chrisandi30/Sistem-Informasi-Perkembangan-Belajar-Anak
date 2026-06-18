@@ -1,10 +1,10 @@
 @extends('layouts.orang_tua')
 
 @section('content')
-    <div class="laporan-page-wrap">
+    <div class="laporan-page-wrap portal-wide-page">
         <h1 class="mb-2 break-words text-[30px] font-extrabold text-[#1d2533] max-[700px]:text-[26px]">Perkembangan Anak</h1>
 
-        <div class="mb-4 rounded-[28px] border border-[var(--portal-line)] bg-white shadow-[0_16px_36px_rgba(41,60,89,0.08)]">
+        <div class="portal-mobile-card mb-4 rounded-[28px] border border-[var(--portal-line)] bg-white shadow-[0_16px_36px_rgba(41,60,89,0.08)]">
             <div class="p-[26px] max-[700px]:p-4">
                 <form method="get" class="row g-3 align-items-end" id="orangTuaLaporanFilterForm">
                     <div class="col-md-4">
@@ -53,7 +53,7 @@
                     @php
                         $detailGroups = $item->groupedDetailsByCategory();
                     @endphp
-                    <div class="mb-4 rounded-[26px] border border-[var(--portal-line)] bg-white shadow-[0_16px_36px_rgba(41,60,89,0.08)]">
+                    <div class="portal-mobile-card mb-4 rounded-[26px] border border-[var(--portal-line)] bg-white shadow-[0_16px_36px_rgba(41,60,89,0.08)]">
                         <div class="p-[26px] max-[700px]:p-4">
                             <div class="mb-[22px] flex items-start justify-between gap-4 max-[700px]:flex-col max-[700px]:items-stretch">
                                 <div>

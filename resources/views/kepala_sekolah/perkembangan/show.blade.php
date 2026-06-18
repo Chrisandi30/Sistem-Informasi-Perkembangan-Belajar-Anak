@@ -2,10 +2,7 @@
 
 @section('content')
     <div class="review-detail-page">
-    <h5 class="mb-3 review-detail-title">
-        <span class="page-title-desktop">Detail Laporan Perkembangan</span>
-        <span class="page-title-mobile">Detail Laporan Perkembangan</span>
-    </h5>
+    <h5 class="mb-3 review-detail-title">Detail Laporan Perkembangan</h5>
 
     <div class="card border-0 shadow-sm rounded-4 overflow-hidden review-detail-card">
         <div class="card-body p-4 p-lg-5 review-detail-body">

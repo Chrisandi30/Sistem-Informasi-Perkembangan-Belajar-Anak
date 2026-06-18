@@ -99,10 +99,44 @@
         }
 
         @media (max-width: 700px) {
+            main {
+                width: 100%;
+                max-width: none;
+                padding-left: 8px !important;
+                padding-right: 8px !important;
+            }
+
+            .portal-wide-page {
+                width: 100%;
+                max-width: none;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
             .laporan-page-wrap {
-                width: calc(100% + 24px);
-                margin-left: -12px;
-                margin-right: -12px;
+                width: 100%;
+                max-width: none;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .portal-mobile-card {
+                width: 100%;
+                max-width: none;
+            }
+
+            .portal-profile-summary li {
+                grid-template-columns: 92px minmax(0, 1fr) !important;
+                gap: 12px !important;
+            }
+
+            .portal-profile-summary li > span {
+                white-space: normal !important;
+            }
+
+            .portal-profile-summary li > strong {
+                font-size: 14px;
+                line-height: 1.4;
             }
         }
     </style>

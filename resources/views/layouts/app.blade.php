@@ -398,7 +398,7 @@
     .error-list { margin: 0; padding-left: 18px; }
 
 </style>
-<link rel="stylesheet" href="{{ asset('css/responsive.app.css') }}">
+<link rel="stylesheet" href="{{ asset('css/responsive.app.css') }}?v={{ filemtime(public_path('css/responsive.app.css')) }}">
 </head>
 <body class="m-0 h-full bg-[var(--bg)] text-[var(--text)] [font-family:'Inter',sans-serif]">
 <div id="appLoadingOverlay" class="app-loading-overlay" aria-hidden="true">
@@ -486,7 +486,7 @@
         <div class="mt-[-23px] mb-4 ml-[-8px] px-2 transition-all duration-300">
             <div class="flex w-full items-center gap-3 py-2">
                 <div class="inline-flex h-[70px] w-[70px] shrink-0 items-center justify-center overflow-hidden rounded-full">
-                    <img src="{{ route('media.public', ['path' => 'images/logo.png']) }}" alt="Logo TK Winfield" class="h-full w-full object-contain">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo TK Winfield" class="h-full w-full object-contain">
                 </div>
                 <div class="min-w-0 text-left">
                     <p class="m-0 whitespace-nowrap text-[19px] font-black uppercase leading-[1] tracking-normal text-[#7f1d1d]">TK WINFIELD</p>

@@ -1,10 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Detail Laporan Perkembangan')
 @section('content')
-<h5 class="review-detail-title">
-    <span class="page-title-desktop">Detail Laporan Perkembangan</span>
-    <span class="page-title-mobile">Detail Laporan Perkembangan</span>
-</h5>
+<h5 class="review-detail-title">Detail Laporan Perkembangan</h5>
 <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
     <div class="card-body p-4 p-lg-5">
         @php
@@ -28,6 +25,12 @@
                 <span class="badge {{ $statusBadge }}">{{ $statusLabel }}</span>
             </div>
 
+            @if($perkembangan->validated_at)
+                <div class="mb-3 text small" style="color:#1d2533;">
+                    Validasi: {{ $perkembangan->validated_at->format('d/m/Y H:i') }} ({{ $perkembangan->validator?->name ?? '-' }})
+                </div>
+            @endif
+
             @if($perkembangan->status === 'revisi' && $perkembangan->catatan_validasi)
                 <div class="mb-3 rounded-4 p-3" style="background:#fff8f8;">
                     <div class="fw-bold mb-1" style="color:#7a1b1b;">Catatan Revisi</div>
@@ -36,16 +39,23 @@
             @endif
 
             <div class="row g-3">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="rounded-4 px-4 py-3 h-100" style="background:#f8fbff;">
-                        <div class="text small mb-1 font-bold text-[#1d2533]": >Siswa</div>
-                        <div style="font-weight:800; color:#1d2533  ; font-size:17px;">{{ $perkembangan->siswa->nama }}</div>
+                        <div class="text small mb-1 font-bold text-[#1d2533]">Siswa</div>
+                        <div style="font-weight:800; color:#1d2533; font-size:17px;">{{ $perkembangan->siswa?->nama ?? '-' }}</div>
+                        <div class="text-muted small mb-1 font-bold text-[#1d2533]">{{ $perkembangan->siswa?->kelas?->nama_kelas ?? '-' }}</div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="rounded-4 px-4 py-3 h-100" style="background:#f8fbff;">
                         <div class="text small mb-1 font-bold text-[#1d2533]">Periode</div>
                         <div style="font-weight:800; color:#1d2533; font-size:17px;">{{ $monthOptions[$perkembangan->bulan] ?? $perkembangan->bulan }}/{{ $perkembangan->tahun }}</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="rounded-4 px-4 py-3 h-100" style="background:#f8fbff;">
+                        <div class="text small mb-1 font-bold text-[#1d2533]">Guru</div>
+                        <div style="font-weight:800; color:#1d2533; font-size:17px;">{{ $perkembangan->guru?->nama ?? '-' }}</div>
                     </div>
                 </div>
             </div>

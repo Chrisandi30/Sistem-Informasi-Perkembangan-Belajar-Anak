@@ -58,6 +58,12 @@
     z-index: 1200;
     width: 248px;
     height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 0;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom)) !important;
+    overflow-y: auto !important;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
     border-right: 1px solid var(--line);
     border-bottom: 0;
     transform: translateX(-100%);
@@ -268,6 +274,8 @@
         z-index: auto;
         width: auto;
         height: 100vh !important;
+        height: 100dvh !important;
+        padding-bottom: 22px !important;
         transform: none;
         box-shadow: none;
     }
