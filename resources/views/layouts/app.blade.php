@@ -183,25 +183,46 @@
         display: none;
     }
 
-    /* Aturan inti sidebar disimpan di layout agar tidak bergantung pada CSS eksternal hosting. */
+    /* Sidebar tetap setinggi layar; hanya daftar menu yang digulir. */
     .sidebar {
+        display: flex !important;
+        flex-direction: column !important;
         height: 100vh !important;
         height: 100dvh !important;
         max-height: 100vh !important;
         max-height: 100dvh !important;
-        overflow-x: hidden !important;
-        overflow-y: scroll !important;
-        overscroll-behavior-y: contain;
-        touch-action: pan-y;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: calc(56px + env(safe-area-inset-bottom)) !important;
+        overflow: hidden !important;
+        padding-bottom: 0 !important;
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
 
+    .sidebar > .sidebar-mobile-close,
+    .sidebar > .sidebar-mobile-close + div {
+        flex: 0 0 auto;
+    }
+
     .sidebar-scroll-area {
-        min-height: max-content !important;
-        overflow: visible !important;
+        display: block !important;
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        height: auto !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        overscroll-behavior-y: contain;
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: calc(56px + env(safe-area-inset-bottom)) !important;
+        scrollbar-width: thin;
+    }
+
+    .sidebar-scroll-area::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .sidebar-scroll-area::-webkit-scrollbar-thumb {
+        background: #c8ced8;
+        border-radius: 999px;
     }
 
     @media (min-width: 1001px) {
@@ -209,10 +230,6 @@
             position: sticky !important;
             top: 0;
         }
-    }
-
-    .sidebar::-webkit-scrollbar {
-        display: none;
     }
 
     .content-inner h5 {
@@ -553,7 +570,7 @@
 @endphp
 <div id="mobileSidebarOverlay" class="mobile-sidebar-overlay"></div>
 <div class="app-shell">
-    <aside id="appSidebar" class="sidebar flex flex-col border-r border-[var(--line)] bg-[var(--sidebar)] px-2.5 py-[22px]" style="height:100dvh; max-height:100dvh; overflow-x:hidden; overflow-y:scroll; touch-action:pan-y; -webkit-overflow-scrolling:touch;">
+    <aside id="appSidebar" class="sidebar flex flex-col border-r border-[var(--line)] bg-[var(--sidebar)] px-2.5 py-[22px]">
         <div class="sidebar-mobile-close mb-2 justify-end">
             <button type="button" id="mobileSidebarInnerToggle" aria-label="Tutup menu" class="sidebar-close-btn">
                 <i class="fas fa-xmark transition duration-200"></i>
@@ -571,7 +588,7 @@
             </div>
         </div>
 
-        <nav class="sidebar-scroll-area mt-[-15px] flex-1">
+        <nav class="sidebar-scroll-area mt-[-15px] min-h-0 flex-1">
                     <a href="{{ route('dashboard') }}" wire:navigate class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                         <i class="fas fa-house"></i>Dashboard
                     </a>
