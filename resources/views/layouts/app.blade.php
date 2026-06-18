@@ -183,9 +183,32 @@
         display: none;
     }
 
+    /* Aturan inti sidebar disimpan di layout agar tidak bergantung pada CSS eksternal hosting. */
     .sidebar {
+        height: 100vh !important;
+        height: 100dvh !important;
+        max-height: 100vh !important;
+        max-height: 100dvh !important;
+        overflow-x: hidden !important;
+        overflow-y: scroll !important;
+        overscroll-behavior-y: contain;
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: calc(56px + env(safe-area-inset-bottom)) !important;
         -ms-overflow-style: none;
         scrollbar-width: none;
+    }
+
+    .sidebar-scroll-area {
+        min-height: max-content !important;
+        overflow: visible !important;
+    }
+
+    @media (min-width: 1001px) {
+        .sidebar {
+            position: sticky !important;
+            top: 0;
+        }
     }
 
     .sidebar::-webkit-scrollbar {
@@ -530,7 +553,7 @@
 @endphp
 <div id="mobileSidebarOverlay" class="mobile-sidebar-overlay"></div>
 <div class="app-shell">
-    <aside id="appSidebar" class="sidebar flex flex-col border-r border-[var(--line)] bg-[var(--sidebar)] px-2.5 py-[22px]">
+    <aside id="appSidebar" class="sidebar flex flex-col border-r border-[var(--line)] bg-[var(--sidebar)] px-2.5 py-[22px]" style="height:100dvh; max-height:100dvh; overflow-x:hidden; overflow-y:scroll; touch-action:pan-y; -webkit-overflow-scrolling:touch;">
         <div class="sidebar-mobile-close mb-2 justify-end">
             <button type="button" id="mobileSidebarInnerToggle" aria-label="Tutup menu" class="sidebar-close-btn">
                 <i class="fas fa-xmark transition duration-200"></i>

@@ -2,14 +2,14 @@
     // View: resources/views/livewire/kepala-sekolah/review-table.blade.php
 @endphp
 <div>
-    <div class="review-filters mb-4 mt-1">
-        <div class="review-filter review-filter-search">
+    <div class="review-filters mb-4 mt-1" style="display:grid; grid-template-columns:minmax(240px,1.5fr) repeat(4,minmax(140px,1fr)); gap:12px; align-items:end;">
+        <div class="review-filter review-filter-search" style="position:relative; min-width:0;">
             <span class="pointer-events-none" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); z-index:2; font-size:14px; color:#8a96ab;">
                 <i class="fas fa-search"></i>
             </span>
             <input type="text" class="form-control" style="padding-left: 44px;" placeholder="Search" wire:model.live.debounce.300ms="search">
         </div>
-        <div class="review-filter">
+        <div class="review-filter" style="min-width:0;">
             <select wire:model.live="kelas_id" class="form-select">
                 <option value="">Semua Kelas</option>
                 @foreach($kelasOptions as $k)
@@ -17,7 +17,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="review-filter">
+        <div class="review-filter" style="min-width:0;">
             <select wire:model.live="bulan" class="form-select">
                 <option value="">Semua Bulan</option>
                 @foreach($monthOptions as $monthNumber => $monthName)
@@ -25,7 +25,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="review-filter">
+        <div class="review-filter" style="min-width:0;">
             <select wire:model.live="tahun" class="form-select">
                 <option value="">Semua Tahun</option>
                 @foreach($yearOptions as $y)
@@ -33,7 +33,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="review-filter">
+        <div class="review-filter" style="min-width:0;">
             <select wire:model.live="status" class="form-select">
                 @foreach($statusOptions as $key => $label)
                     <option value="{{ $key }}">{{ $label }}</option>
