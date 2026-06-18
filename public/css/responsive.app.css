@@ -61,8 +61,13 @@
     height: 100vh !important;
     height: 100dvh !important;
     min-height: 0;
-    padding-bottom: 0 !important;
-    overflow: hidden !important;
+    padding-bottom: calc(48px + env(safe-area-inset-bottom)) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     border-right: 1px solid var(--line);
     border-bottom: 0;
     transform: translateX(-100%);
@@ -70,20 +75,15 @@
     box-shadow: 0 22px 60px rgba(15, 23, 42, 0.18);
 }
 
-/* Area menu sidebar yang dapat digulir secara mandiri di perangkat mobile. */
-.sidebar-scroll-area {
-    min-height: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding-bottom: calc(40px + env(safe-area-inset-bottom));
-    overscroll-behavior-y: contain;
-    touch-action: pan-y;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+.sidebar::-webkit-scrollbar {
+    display: none;
 }
 
-.sidebar-scroll-area::-webkit-scrollbar {
-    display: none;
+.sidebar-scroll-area {
+    min-height: auto;
+    overflow: visible;
+    padding-bottom: 0;
+    touch-action: auto;
 }
 
 .sidebar.mobile-open {
@@ -290,7 +290,9 @@
         width: auto;
         height: 100vh !important;
         height: 100dvh !important;
-        padding-bottom: 22px !important;
+        padding-bottom: 48px !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
         transform: none;
         box-shadow: none;
     }

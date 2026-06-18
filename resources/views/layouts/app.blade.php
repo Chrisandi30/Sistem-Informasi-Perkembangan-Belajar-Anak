@@ -400,6 +400,26 @@
     .alert-danger { background: #fff0f0; border-color: #f6c7c7; color: #8f2d2d; }
     .error-list { margin: 0; padding-left: 18px; }
 
+    /* Samakan lebar search dengan menu Siswa pada seluruh mode responsif. */
+    @media (max-width: 1000px) {
+        .standard-search-wrap,
+        .perkembangan-search,
+        .review-filter-search {
+            display: block !important;
+            width: 100% !important;
+            max-width: none !important;
+            flex: 0 0 100% !important;
+        }
+
+        .standard-search-wrap .form-control,
+        .perkembangan-search .form-control,
+        .review-filter-search .form-control {
+            display: block;
+            width: 100% !important;
+            max-width: none !important;
+        }
+    }
+
 </style>
 <link rel="stylesheet" href="{{ asset('css/responsive.app.css') }}?v={{ filemtime(public_path('css/responsive.app.css')) }}">
 </head>
@@ -498,7 +518,7 @@
             </div>
         </div>
 
-        <nav class="sidebar-scroll-area mt-[-15px] min-h-0 flex-1">
+        <nav class="sidebar-scroll-area mt-[-15px] flex-1">
                     <a href="{{ route('dashboard') }}" wire:navigate class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                         <i class="fas fa-house"></i>Dashboard
                     </a>

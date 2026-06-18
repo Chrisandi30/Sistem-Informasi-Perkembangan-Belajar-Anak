@@ -8,7 +8,7 @@
 
         const getSidebar = () => document.querySelector('.sidebar');
         const getSidebarOverlay = () => document.getElementById('mobileSidebarOverlay');
-        const getSidebarScrollArea = () => document.querySelector('.sidebar-scroll-area') || getSidebar();
+        const getSidebarScrollArea = () => getSidebar();
         const isMobileViewport = () => window.innerWidth <= 1000;
 
         // Tutup sidebar dan aktifkan kembali scroll halaman utama.
@@ -242,7 +242,7 @@
         });
 
         document.addEventListener('scroll', function (event) {
-            if (event.target?.classList?.contains('sidebar-scroll-area')) {
+            if (event.target?.classList?.contains('sidebar')) {
                 persistSidebarScroll();
             }
         }, true);
