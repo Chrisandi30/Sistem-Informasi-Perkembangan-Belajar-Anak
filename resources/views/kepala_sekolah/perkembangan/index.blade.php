@@ -2,6 +2,7 @@
     // View: resources/views/kepala_sekolah/perkembangan/index.blade.php
 @endphp
 @extends('layouts.app')
+@section('title', 'Review & Persetujuan')
 
 @section('content')
     <div class="pt-3 review-page">

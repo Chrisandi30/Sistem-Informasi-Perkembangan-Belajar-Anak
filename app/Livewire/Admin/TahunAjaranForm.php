@@ -11,7 +11,8 @@ class TahunAjaranForm extends Component
     public ?TahunAjaran $tahunAjaran = null;
 
     public string $tahun_ajaran = '';
-    public bool $is_active = false;
+    // Simpan nilai select sebagai string agar opsi edit selalu sesuai kondisi database.
+    public string $is_active = '0';
 
     public function mount(?TahunAjaran $tahun_ajaran = null): void
     {
@@ -19,7 +20,7 @@ class TahunAjaranForm extends Component
 
         if ($this->isEditing()) {
             $this->tahun_ajaran = $tahun_ajaran->tahun_ajaran ?? '';
-            $this->is_active = (bool) $tahun_ajaran->is_active;
+            $this->is_active = $tahun_ajaran->is_active ? '1' : '0';
         }
     }
 
@@ -27,8 +28,11 @@ class TahunAjaranForm extends Component
     {
         $data = $this->validate([
             'tahun_ajaran' => ['required', 'string', 'max:10', Rule::unique('tahun_ajaran', 'tahun_ajaran')->ignore($this->tahunAjaran?->id)],
-            'is_active' => ['required', 'boolean'],
+            'is_active' => ['required', Rule::in(['0', '1'])],
         ]);
+
+        // Ubah nilai select menjadi boolean sebelum disimpan ke database.
+        $data['is_active'] = $data['is_active'] === '1';
 
         if ($data['is_active']) {
             TahunAjaran::query()->update(['is_active' => false]);
