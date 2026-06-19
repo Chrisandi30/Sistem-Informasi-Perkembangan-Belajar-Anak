@@ -77,7 +77,7 @@
                     };
                 @endphp
                 <tr>
-                    <td class="fw-bold">{{ $p->siswa?->nama ?? '-' }}</td>
+                    <td>{{ $p->siswa?->nama ?? '-' }}</td>
                     <td>{{ $p->kelas?->nama_kelas ?? $p->siswa?->kelas?->nama_kelas ?? '-' }}</td>
                     <td>{{ $monthOptions[$p->bulan] ?? $p->bulan }} / {{ $p->tahun }}</td>
                     <td>{{ $p->guru?->nama ?? '-' }}</td>
