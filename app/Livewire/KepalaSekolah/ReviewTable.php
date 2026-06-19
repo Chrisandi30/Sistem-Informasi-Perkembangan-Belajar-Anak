@@ -23,9 +23,10 @@ class ReviewTable extends Component
 
     public function mount(): void
     {
-        // Default: tampilkan laporan periode berjalan, tanpa mengunci status.
-        $this->bulan = now()->month;
-        $this->tahun = now()->year;
+        // Default: tampilkan seluruh laporan; filter digunakan sesuai kebutuhan.
+        $this->kelas_id = null;
+        $this->bulan = null;
+        $this->tahun = null;
         $this->status = '';
     }
 
@@ -64,8 +65,10 @@ class ReviewTable extends Component
         $search = trim($this->search);
 
         $query = Perkembangan::with(['siswa.kelas', 'guru.kelas', 'kelas', 'validator'])
-            ->latest('tahun')
-            ->latest('bulan');
+            ->orderByDesc('tahun')
+            ->orderByDesc('bulan')
+            ->orderByDesc('created_at')
+            ->orderByDesc('id');
 
         if ($this->status !== '') {
             $query->where('status', $this->status);
