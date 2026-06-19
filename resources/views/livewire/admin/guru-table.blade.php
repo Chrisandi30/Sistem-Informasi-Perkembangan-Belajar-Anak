@@ -44,7 +44,7 @@
                         <td class="{{ $guruCellClass }} whitespace-nowrap text-center">{{ $guru->kelas->nama_kelas }}</td>
                         <td class="{{ $guruCellClass }} min-w-0 whitespace-nowrap">
                             <div class="flex flex-nowrap items-center justify-center gap-[8px]">
-                                <a href="{{ route('admin.guru.edit', $guru) }}" wire:navigate class="{{ $guruActionButtonClass }} btn-outline-primary"><i class="fas fa-pen"></i></a>
+                                <a href="{{ route('admin.guru.edit', ['guru' => $guru, 'return_to' => route('admin.guru.index', ['page' => $gurus->currentPage()])]) }}" wire:navigate class="{{ $guruActionButtonClass }} btn-outline-primary"><i class="fas fa-pen"></i></a>
                                 <button type="button" class="{{ $guruActionButtonClass }} btn-outline-danger btn-delete" wire:click="deleteGuru({{ $guru->id }})">
                                     <i class="fas fa-trash"></i>
                                 </button>

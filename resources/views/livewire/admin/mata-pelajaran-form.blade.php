@@ -32,7 +32,7 @@
             <span wire:loading.remove wire:target="save">{{ $isEdit ? 'Simpan Perubahan' : 'Simpan' }}</span>
             <span wire:loading wire:target="save">Memproses...</span>
         </button>
-        <a href="{{ route('admin.mata-pelajaran.index') }}" class="btn btn-cancel">Batal</a>
+        <a href="{{ $returnTo }}" class="btn btn-cancel">Batal</a>
     </div>
 </form>
 

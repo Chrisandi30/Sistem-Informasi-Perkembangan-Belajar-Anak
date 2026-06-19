@@ -2,13 +2,16 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\ReturnsToIndex;
 use App\Models\Kelas;
 use App\Models\MataPelajaran;
 use Livewire\Component;
 
 class MataPelajaranForm extends Component
 {
-    public ?MataPelajaran $mataPelajaran = null;
+
+    use ReturnsToIndex;
+public ?MataPelajaran $mataPelajaran = null;
 
     public string $nama_mapel = '';
     public string $kelas_id = '';
@@ -16,7 +19,9 @@ class MataPelajaranForm extends Component
 
     public function mount(?MataPelajaran $mataPelajaran = null): void
     {
-        $this->mataPelajaran = $mataPelajaran;
+
+        $this->initializeReturnTo(route('admin.mata-pelajaran.index'));
+$this->mataPelajaran = $mataPelajaran;
         if ($this->isEditing()) {
             $this->nama_mapel = $mataPelajaran->nama_mapel ?? '';
             $this->kelas_id = (string) $mataPelajaran->kelas_id;
@@ -46,7 +51,7 @@ class MataPelajaranForm extends Component
             session()->flash('success', 'Mata pelajaran berhasil ditambahkan.');
         }
 
-        return $this->redirectRoute('admin.mata-pelajaran.index', navigate: true);
+        return $this->redirectToIndex();
     }
 
     private function isEditing(): bool

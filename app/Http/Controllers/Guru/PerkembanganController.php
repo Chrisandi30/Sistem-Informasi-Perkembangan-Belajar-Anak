@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Guru;
 use App\Http\Controllers\Controller;
 use App\Models\Perkembangan;
 use App\Models\Siswa;
+use App\Support\SafeReturnUrl;
 use Illuminate\Http\Request;
 
 class PerkembanganController extends Controller
@@ -47,7 +48,7 @@ class PerkembanganController extends Controller
         return view('guru.perkembangan.index', compact('perkembangans', 'siswas', 'monthOptions', 'yearOptions'));
     }
 
-    public function show(Perkembangan $perkembangan)
+    public function show(Request $request, Perkembangan $perkembangan)
     {
         $guru = auth()->user()->guru;
         abort_if(
@@ -59,8 +60,9 @@ class PerkembanganController extends Controller
 
         $perkembangan->load(['siswa.kelas', 'siswa.tahunAjaran', 'guru', 'detailPerkembangans', 'validator']);
         $monthOptions = $this->monthOptions();
+        $returnTo = SafeReturnUrl::fromRequest($request, route('guru.perkembangan.index'));
 
-        return view('guru.perkembangan.show', compact('perkembangan', 'monthOptions'));
+        return view('guru.perkembangan.show', compact('perkembangan', 'monthOptions', 'returnTo'));
     }
 
     public function create()

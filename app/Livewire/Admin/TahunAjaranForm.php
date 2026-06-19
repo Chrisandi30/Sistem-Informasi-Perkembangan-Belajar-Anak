@@ -2,13 +2,16 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\ReturnsToIndex;
 use App\Models\TahunAjaran;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class TahunAjaranForm extends Component
 {
-    public ?TahunAjaran $tahunAjaran = null;
+
+    use ReturnsToIndex;
+public ?TahunAjaran $tahunAjaran = null;
 
     public string $tahun_ajaran = '';
     // Simpan nilai select sebagai string agar opsi edit selalu sesuai kondisi database.
@@ -16,7 +19,9 @@ class TahunAjaranForm extends Component
 
     public function mount(?TahunAjaran $tahun_ajaran = null): void
     {
-        $this->tahunAjaran = $tahun_ajaran;
+
+        $this->initializeReturnTo(route('admin.tahun-ajaran.index'));
+$this->tahunAjaran = $tahun_ajaran;
 
         if ($this->isEditing()) {
             $this->tahun_ajaran = $tahun_ajaran->tahun_ajaran ?? '';
@@ -46,7 +51,7 @@ class TahunAjaranForm extends Component
             session()->flash('success', 'Data tahun ajaran berhasil ditambahkan.');
         }
 
-        return $this->redirectRoute('admin.tahun-ajaran.index', navigate: true);
+        return $this->redirectToIndex();
     }
 
     private function isEditing(): bool

@@ -2,19 +2,24 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\ReturnsToIndex;
 use App\Models\Kelas;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 
 class KelasForm extends Component
 {
-    public ?Kelas $kelas = null;
+
+    use ReturnsToIndex;
+public ?Kelas $kelas = null;
 
     public string $nama_kelas = '';
 
     public function mount(?Kelas $kelas = null): void
     {
-        $this->kelas = $kelas;
+
+        $this->initializeReturnTo(route('admin.kelas.index'));
+$this->kelas = $kelas;
         if ($this->isEditing()) {
             $this->nama_kelas = $kelas->nama_kelas ?? '';
         }
@@ -34,7 +39,7 @@ class KelasForm extends Component
             session()->flash('success', 'Data kelas berhasil ditambahkan.');
         }
 
-        return $this->redirectRoute('admin.kelas.index', navigate: true);
+        return $this->redirectToIndex();
     }
 
     private function isEditing(): bool

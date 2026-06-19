@@ -30,7 +30,7 @@
                         <td>{{ $item->tanggal_terbit->format('d-m-Y') }}</td>
                         <td>{{ $item->tanggal_berakhir?->format('d-m-Y') }}</td>
                         <td class="text-start">
-                            <a href="{{ route('admin.pengumuman.edit', $item) }}" wire:navigate class="btn btn-sm btn-outline-primary"><i class="fas fa-pen"></i></a>
+                            <a href="{{ route('admin.pengumuman.edit', ['pengumuman' => $item, 'return_to' => route('admin.pengumuman.index', ['page' => $pengumuman->currentPage()])]) }}" wire:navigate class="btn btn-sm btn-outline-primary"><i class="fas fa-pen"></i></a>
                             <button type="button" class="btn btn-sm btn-outline-danger btn-delete" wire:click="deletePengumuman({{ $item->id }})">
                                 <i class="fas fa-trash"></i>
                             </button>

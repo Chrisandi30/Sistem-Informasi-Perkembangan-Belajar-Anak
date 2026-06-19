@@ -2,13 +2,16 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\ReturnsToIndex;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 
 class AkunForm extends Component
 {
-    public ?User $akun = null;
+
+    use ReturnsToIndex;
+public ?User $akun = null;
 
     public string $name = '';
     public string $username = '';
@@ -19,7 +22,9 @@ class AkunForm extends Component
 
     public function mount(?User $akun = null): void
     {
-        $this->akun = $akun;
+
+        $this->initializeReturnTo(route('admin.akun.index'));
+$this->akun = $akun;
 
         if ($this->isEditing()) {
             $this->name = $akun->name ?? '';
@@ -64,7 +69,7 @@ class AkunForm extends Component
             session()->flash('success', 'Akun berhasil ditambahkan.');
         }
 
-        return $this->redirectRoute('admin.akun.index', navigate: true);
+        return $this->redirectToIndex();
     }
 
     private function rules(): array

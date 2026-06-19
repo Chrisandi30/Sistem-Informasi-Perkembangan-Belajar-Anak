@@ -2,12 +2,15 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\ReturnsToIndex;
 use App\Models\PerkembanganNonAkademis;
 use Livewire\Component;
 
 class PerkembanganNonAkademisForm extends Component
 {
-    public ?PerkembanganNonAkademis $perkembanganNonAkademis = null;
+
+    use ReturnsToIndex;
+public ?PerkembanganNonAkademis $perkembanganNonAkademis = null;
 
     public string $kategori_aspek = '';
     public string $nama_aspek = '';
@@ -16,7 +19,9 @@ class PerkembanganNonAkademisForm extends Component
 
     public function mount(?PerkembanganNonAkademis $perkembanganNonAkademis = null): void
     {
-        $this->perkembanganNonAkademis = $perkembanganNonAkademis;
+
+        $this->initializeReturnTo(route('admin.perkembangan-non-akademis.index'));
+$this->perkembanganNonAkademis = $perkembanganNonAkademis;
 
         if ($this->isEditing()) {
             $this->kategori_aspek = $perkembanganNonAkademis->kategori_aspek ?? '';
@@ -50,7 +55,7 @@ class PerkembanganNonAkademisForm extends Component
             session()->flash('success', 'Aspek perkembangan non akademis berhasil ditambahkan.');
         }
 
-        return $this->redirectRoute('admin.perkembangan-non-akademis.index', navigate: true);
+        return $this->redirectToIndex();
     }
 
     private function isEditing(): bool

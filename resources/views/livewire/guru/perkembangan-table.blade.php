@@ -61,8 +61,8 @@
                             <span class="badge {{ $statusBadge }}">{{ $statusLabel }}</span>
                         </td>
                         <td class="text-start">
-                            <a href="{{ route('guru.perkembangan.show', $item) }}" wire:navigate class="btn btn-sm btn-outline-info"><i class="fas fa-eye"></i></a>
-                            <a href="{{ route('guru.perkembangan.edit', $item) }}" wire:navigate class="btn btn-sm btn-outline-primary" title="{{ $item->status === 'disetujui' ? 'Edit akan mengirim ulang untuk validasi' : 'Edit' }}">
+                            <a href="{{ route('guru.perkembangan.show', ['perkembangan' => $item, 'return_to' => route('guru.perkembangan.index', ['page' => $perkembangans->currentPage()])]) }}" wire:navigate class="btn btn-sm btn-outline-info"><i class="fas fa-eye"></i></a>
+                            <a href="{{ route('guru.perkembangan.edit', ['perkembangan' => $item, 'return_to' => route('guru.perkembangan.index', ['page' => $perkembangans->currentPage()])]) }}" wire:navigate class="btn btn-sm btn-outline-primary" title="{{ $item->status === 'disetujui' ? 'Edit akan mengirim ulang untuk validasi' : 'Edit' }}">
                                 <i class="fas fa-pen"></i>
                             </a>
                             <button type="button" class="btn btn-sm btn-outline-danger btn-delete" wire:click="deletePerkembangan({{ $item->id }})">

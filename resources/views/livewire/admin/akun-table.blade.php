@@ -50,7 +50,7 @@
                             </span>
                         </td>
                         <td class="text-start" style="min-width: 132px; white-space: nowrap;">
-                            <a href="{{ route('admin.akun.edit', $user) }}" wire:navigate class="btn btn-sm btn-outline-primary"><i class="fas fa-pen"></i></a>
+                            <a href="{{ route('admin.akun.edit', ['akun' => $user, 'return_to' => route('admin.akun.index', ['page' => $users->currentPage()])]) }}" wire:navigate class="btn btn-sm btn-outline-primary"><i class="fas fa-pen"></i></a>
                             @if($user->role === 'admin')
                                 <button type="button" class="btn btn-sm btn-outline-secondary opacity-50 cursor-not-allowed" disabled title="Akun admin tidak dapat dihapus">
                                     <i class="fas fa-trash"></i>

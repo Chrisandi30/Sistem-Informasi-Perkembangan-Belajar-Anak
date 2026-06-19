@@ -83,7 +83,7 @@
                     <td>{{ $p->guru?->nama ?? '-' }}</td>
                     <td><span class="badge {{ $badge }}">{{ $label }}</span></td>
                     <td class="text-start">
-                        <a href="{{ route('kepala-sekolah.review.show', $p) }}" wire:navigate class="btn btn-sm btn-outline-info" aria-label="Detail" title="Detail">
+                        <a href="{{ route('kepala-sekolah.review.show', ['perkembangan' => $p, 'return_to' => route('kepala-sekolah.review.index', ['page' => $perkembangans->currentPage()])]) }}" wire:navigate class="btn btn-sm btn-outline-info" aria-label="Detail" title="Detail">
                             <i class="fas fa-eye"></i>
                         </a>
                     </td>

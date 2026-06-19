@@ -19,7 +19,7 @@
                     <tr>
                         <td>{{ $item->nama_kelas }}</td>
                         <td class="text-start">
-                            <a href="{{ route('admin.kelas.edit', $item) }}" wire:navigate class="btn btn-sm btn-outline-primary"><i class="fas fa-pen"></i></a>
+                            <a href="{{ route('admin.kelas.edit', ['kela' => $item, 'return_to' => route('admin.kelas.index', ['page' => $kelas->currentPage()])]) }}" wire:navigate class="btn btn-sm btn-outline-primary"><i class="fas fa-pen"></i></a>
                             <button type="button" class="btn btn-sm btn-outline-danger btn-delete" wire:click="deleteKelas({{ $item->id }})">
                                 <i class="fas fa-trash"></i>
                             </button>

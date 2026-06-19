@@ -91,10 +91,10 @@
     </div>
 
     <div class="mt-4 d-flex flex-wrap justify-content-end gap-3">
-        <a href="{{ route('admin.siswa.index') }}" class="btn btn-cancel no-cancel-confirm">
+        <a href="{{ $returnTo }}" class="btn btn-cancel no-cancel-confirm">
             Kembali
         </a>
-        <a href="{{ route('admin.siswa.edit', $siswa) }}" wire:navigate class="btn btn-save">
+        <a href="{{ route('admin.siswa.edit', ['siswa' => $siswa, 'return_to' => $returnTo]) }}" wire:navigate class="btn btn-save">
             Edit
         </a>
     </div>

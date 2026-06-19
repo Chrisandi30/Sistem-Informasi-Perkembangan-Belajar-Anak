@@ -112,10 +112,10 @@
             @endif
 
             <div class="mt-6 flex flex-wrap justify-end gap-3">
-                <a href="{{ route('kepala-sekolah.review.index') }}" class="btn btn-cancel no-cancel-confirm">Kembali</a>
+                <a href="{{ $returnTo }}" class="btn btn-cancel no-cancel-confirm">Kembali</a>
 
                 @if($perkembangan->status !== 'disetujui')
-                    <form method="post" action="{{ route('kepala-sekolah.review.approve', $perkembangan) }}">
+                    <form method="post" action="{{ route('kepala-sekolah.review.approve', ['perkembangan' => $perkembangan, 'return_to' => $returnTo]) }}">
                         @csrf
                         <button class="btn btn-save" type="submit">Setujui</button>
                     </form>
@@ -128,7 +128,7 @@
                         Minta Revisi
                     </summary>
                     <div class="mt-3">
-                        <form method="post" action="{{ route('kepala-sekolah.review.reject', $perkembangan) }}">
+                        <form method="post" action="{{ route('kepala-sekolah.review.reject', ['perkembangan' => $perkembangan, 'return_to' => $returnTo]) }}">
                             @csrf
                             <label class="form-label fw-bold">Catatan Revisi</label>
                             <textarea name="catatan_validasi" class="form-control rounded-4" rows="3" placeholder="Tulis catatan revisi...">{{ old('catatan_validasi', $perkembangan->catatan_validasi) }}</textarea>

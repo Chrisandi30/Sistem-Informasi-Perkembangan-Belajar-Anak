@@ -2,12 +2,15 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\ReturnsToIndex;
 use App\Models\Pengumuman;
 use Livewire\Component;
 
 class PengumumanForm extends Component
 {
-    public ?Pengumuman $pengumuman = null;
+
+    use ReturnsToIndex;
+public ?Pengumuman $pengumuman = null;
 
     public string $judul = '';
     public string $tanggal_terbit = '';
@@ -16,7 +19,9 @@ class PengumumanForm extends Component
 
     public function mount(?Pengumuman $pengumuman = null): void
     {
-        $this->pengumuman = $pengumuman;
+
+        $this->initializeReturnTo(route('admin.pengumuman.index'));
+$this->pengumuman = $pengumuman;
         if ($this->isEditing()) {
             $this->judul = $pengumuman->judul ?? '';
             $this->tanggal_terbit = $pengumuman->tanggal_terbit?->format('Y-m-d') ?? '';
@@ -42,7 +47,7 @@ class PengumumanForm extends Component
             session()->flash('success', 'Pengumuman berhasil ditambahkan.');
         }
 
-        return $this->redirectRoute('admin.pengumuman.index', navigate: true);
+        return $this->redirectToIndex();
     }
 
     private function isEditing(): bool

@@ -62,8 +62,8 @@
                         <td class="{{ $siswaCellClass }} whitespace-nowrap">{{ $siswa->kelas->nama_kelas }}</td>
                         <td class="{{ $siswaCellClass }} !w-auto whitespace-nowrap">
                             <div class="flex flex-nowrap items-center justify-start gap-[6px]">
-                                <a href="{{ route('admin.siswa.show', $siswa) }}" wire:navigate class="{{ $siswaActionButtonClass }} btn-outline-info"><i class="fas fa-eye"></i></a>
-                                <a href="{{ route('admin.siswa.edit', $siswa) }}" wire:navigate class="{{ $siswaActionButtonClass }} btn-outline-primary"><i class="fas fa-pen"></i></a>
+                                <a href="{{ route('admin.siswa.show', ['siswa' => $siswa, 'return_to' => route('admin.siswa.index', ['page' => $siswas->currentPage()])]) }}" wire:navigate class="{{ $siswaActionButtonClass }} btn-outline-info"><i class="fas fa-eye"></i></a>
+                                <a href="{{ route('admin.siswa.edit', ['siswa' => $siswa, 'return_to' => route('admin.siswa.index', ['page' => $siswas->currentPage()])]) }}" wire:navigate class="{{ $siswaActionButtonClass }} btn-outline-primary"><i class="fas fa-pen"></i></a>
                                 <button type="button" class="{{ $siswaActionButtonClass }} btn-outline-danger btn-delete" wire:click="deleteSiswa({{ $siswa->id }})">
                                     <i class="fas fa-trash"></i>
                                 </button>

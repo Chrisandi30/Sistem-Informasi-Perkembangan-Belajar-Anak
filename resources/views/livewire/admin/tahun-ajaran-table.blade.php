@@ -35,7 +35,7 @@
                                     <i class="fas fa-check"></i>
                                 </button>
                             @endif
-                            <a href="{{ route('admin.tahun-ajaran.edit', $item) }}" wire:navigate class="btn btn-sm btn-outline-primary"><i class="fas fa-pen"></i></a>
+                            <a href="{{ route('admin.tahun-ajaran.edit', ['tahun_ajaran' => $item, 'return_to' => route('admin.tahun-ajaran.index', ['page' => $tahunAjaran->currentPage()])]) }}" wire:navigate class="btn btn-sm btn-outline-primary"><i class="fas fa-pen"></i></a>
                             <button type="button" class="btn btn-sm btn-outline-danger btn-delete" wire:click="deleteTahunAjaran({{ $item->id }})">
                                 <i class="fas fa-trash"></i>
                             </button>

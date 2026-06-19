@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Guru;
 
+use App\Livewire\Concerns\ReturnsToIndex;
 use App\Models\MataPelajaran;
 use App\Models\Perkembangan;
 use App\Models\PerkembanganNonAkademis;
@@ -13,6 +14,8 @@ use Livewire\Component;
 
 class PerkembanganForm extends Component
 {
+    use ReturnsToIndex;
+
     public ?Perkembangan $perkembangan = null;
     public string $siswa_id = '';
     public string $bulan = '';
@@ -33,6 +36,7 @@ class PerkembanganForm extends Component
         $guru = auth()->user()?->guru;
         abort_unless($guru, 403);
 
+        $this->initializeReturnTo(route('guru.perkembangan.index'));
         $this->guru_id = (string) $guru->id;
         $this->perkembangan = $perkembangan;
         $this->bulan = (string) now()->month;
@@ -146,11 +150,12 @@ class PerkembanganForm extends Component
             session()->flash('success', 'Laporan bulanan berhasil diperbarui.');
         }
 
-        // Setelah tambah laporan kembali ke daftar siswa; setelah edit kembali ke data perkembangan.
-        return $this->redirectRoute(
-            $wasEditing ? 'guru.perkembangan.index' : 'guru.siswa.index',
-            navigate: true,
-        );
+        // Setelah tambah laporan kembali ke daftar siswa; setelah edit kembali ke halaman data perkembangan sebelumnya.
+        if ($wasEditing) {
+            return $this->redirectToIndex();
+        }
+
+        return $this->redirectRoute('guru.siswa.index', navigate: true);
     }
 
     private function currentGuru()

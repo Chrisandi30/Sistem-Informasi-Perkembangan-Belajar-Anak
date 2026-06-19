@@ -76,7 +76,7 @@
                 <span wire:loading.remove wire:target="save">{{ $isEdit ? 'Simpan Perubahan' : 'Simpan' }}</span>
                 <span wire:loading wire:target="save">Memproses...</span>
             </button>
-            <a href="{{ $isEdit ? route('guru.perkembangan.index') : route('guru.siswa.index') }}" class="btn btn-cancel">Batal</a>
+            <a href="{{ $isEdit ? $returnTo : route('guru.siswa.index') }}" class="btn btn-cancel">Batal</a>
         </div>
     </div>
 </form>

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\ReturnsToIndex;
 use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\User;
@@ -11,7 +12,9 @@ use Livewire\Component;
 
 class GuruForm extends Component
 {
-    public ?Guru $guru = null;
+
+    use ReturnsToIndex;
+public ?Guru $guru = null;
 
     public string $nama = '';
     public string $nuptk = '';
@@ -24,7 +27,9 @@ class GuruForm extends Component
 
     public function mount(?Guru $guru = null): void
     {
-        $this->guru = $guru;
+
+        $this->initializeReturnTo(route('admin.guru.index'));
+$this->guru = $guru;
 
         if ($this->isEditing()) {
             $this->nama = $guru->nama ?? '';
@@ -115,7 +120,7 @@ class GuruForm extends Component
             session()->flash('success', 'Guru dan akun login berhasil ditambahkan.');
         }
 
-        return $this->redirectRoute('admin.guru.index', navigate: true);
+        return $this->redirectToIndex();
     }
 
     private function requiresPassword(): bool

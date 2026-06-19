@@ -7,6 +7,7 @@ namespace App\Http\Controllers\KepalaSekolah;
 use App\Http\Controllers\Controller;
 use App\Models\Perkembangan;
 use App\Services\WhatsAppService;
+use App\Support\SafeReturnUrl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,7 +24,7 @@ class ReviewPerkembanganController extends Controller
     }
 
     // Ambil seluruh relasi yang dibutuhkan pada halaman detail laporan.
-    public function show(Perkembangan $perkembangan)
+    public function show(Request $request, Perkembangan $perkembangan)
     {
         $perkembangan->load(['siswa.kelas', 'siswa.tahunAjaran', 'guru.kelas', 'detailPerkembangans', 'validator']);
 
@@ -42,7 +43,9 @@ class ReviewPerkembanganController extends Controller
             12 => 'Desember',
         ];
 
-        return view('kepala_sekolah.perkembangan.show', compact('perkembangan', 'monthOptions'));
+        $returnTo = SafeReturnUrl::fromRequest($request, route('kepala-sekolah.review.index'));
+
+        return view('kepala_sekolah.perkembangan.show', compact('perkembangan', 'monthOptions', 'returnTo'));
     }
 
     public function approve(Request $request, Perkembangan $perkembangan)
@@ -65,7 +68,9 @@ class ReviewPerkembanganController extends Controller
             $this->whatsAppService->sendWebsiteLink($siswa, $message);
         }
 
-        return redirect()->route('kepala-sekolah.review.index')->with('success', 'Laporan berhasil disetujui.');
+        $returnTo = SafeReturnUrl::fromRequest($request, route('kepala-sekolah.review.index'));
+
+        return redirect()->to($returnTo)->with('success', 'Laporan berhasil disetujui.');
     }
 
     public function reject(Request $request, Perkembangan $perkembangan)
@@ -86,6 +91,8 @@ class ReviewPerkembanganController extends Controller
             ]);
         });
 
-        return redirect()->route('kepala-sekolah.review.index')->with('success', 'Revisi berhasil dikirim. Catatan sudah tersimpan.');
+        $returnTo = SafeReturnUrl::fromRequest($request, route('kepala-sekolah.review.index'));
+
+        return redirect()->to($returnTo)->with('success', 'Revisi berhasil dikirim. Catatan sudah tersimpan.');
     }
 }

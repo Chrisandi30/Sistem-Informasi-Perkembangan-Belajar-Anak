@@ -34,7 +34,7 @@
                         </td>
                         <td class="text-start text-nowrap non-akademis-aksi-cell">
                             <div class="flex flex-nowrap items-center justify-start gap-[6px]">
-                                <a href="{{ route('admin.perkembangan-non-akademis.edit', $item) }}" wire:navigate class="{{ $nonAkademisActionButtonClass }} btn-outline-primary"><i class="fas fa-pen"></i></a>
+                                <a href="{{ route('admin.perkembangan-non-akademis.edit', ['perkembangan_non_akademi' => $item, 'return_to' => route('admin.perkembangan-non-akademis.index', ['page' => $items->currentPage()])]) }}" wire:navigate class="{{ $nonAkademisActionButtonClass }} btn-outline-primary"><i class="fas fa-pen"></i></a>
                                 <button type="button" class="{{ $nonAkademisActionButtonClass }} btn-outline-danger btn-delete" wire:click.prevent="deletePerkembanganNonAkademis({{ $item->id }})">
                                     <i class="fas fa-trash"></i>
                                 </button>

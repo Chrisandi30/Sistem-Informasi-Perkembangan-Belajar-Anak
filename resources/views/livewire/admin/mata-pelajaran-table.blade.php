@@ -27,7 +27,7 @@
                             </span>
                         </td>
                         <td class="text-start text-nowrap">
-                            <a href="{{ route('admin.mata-pelajaran.edit', $item) }}" wire:navigate class="btn btn-sm btn-outline-primary"><i class="fas fa-pen"></i></a>
+                            <a href="{{ route('admin.mata-pelajaran.edit', ['mata_pelajaran' => $item, 'return_to' => route('admin.mata-pelajaran.index', ['page' => $mataPelajarans->currentPage()])]) }}" wire:navigate class="btn btn-sm btn-outline-primary"><i class="fas fa-pen"></i></a>
                             <button type="button" class="btn btn-sm btn-outline-danger btn-delete" wire:click.prevent="deleteMataPelajaran({{ $item->id }})">
                                 <i class="fas fa-trash"></i>
                             </button>

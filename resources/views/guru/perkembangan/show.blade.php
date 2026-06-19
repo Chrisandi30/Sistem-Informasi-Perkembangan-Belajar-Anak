@@ -108,8 +108,8 @@
     @endif
 
         <div class="mt-6 flex flex-wrap justify-end gap-3">
-            <a href="{{ route('guru.perkembangan.index') }}" class="btn btn-cancel no-cancel-confirm">Kembali</a>
-            <a href="{{ route('guru.perkembangan.edit', $perkembangan) }}" wire:navigate class="btn btn-save">Edit Laporan</a>
+            <a href="{{ $returnTo }}" class="btn btn-cancel no-cancel-confirm">Kembali</a>
+            <a href="{{ route('guru.perkembangan.edit', ['perkembangan' => $perkembangan, 'return_to' => $returnTo]) }}" wire:navigate class="btn btn-save">Edit Laporan</a>
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Concerns\ReturnsToIndex;
 use App\Models\Kelas;
 use App\Models\Siswa;
 use App\Models\TahunAjaran;
@@ -14,7 +15,7 @@ use Livewire\Features\SupportFileUploads\WithFileUploads;
 
 class SiswaForm extends Component
 {
-    use WithFileUploads;
+    use ReturnsToIndex, WithFileUploads;
 
     public ?Siswa $siswa = null;
 
@@ -40,7 +41,9 @@ class SiswaForm extends Component
     // Isi form dengan data lama ketika halaman digunakan untuk mengedit siswa.
     public function mount(?Siswa $siswa = null): void
     {
-        $this->siswa = $siswa;
+
+        $this->initializeReturnTo(route('admin.siswa.index'));
+$this->siswa = $siswa;
 
         if ($this->isEditing()) {
             $this->nama = $siswa->nama ?? '';
@@ -125,7 +128,7 @@ class SiswaForm extends Component
                 ? 'Data siswa berhasil diubah.'
                 : 'Data siswa berhasil diubah dan akun orang tua baru berhasil dibuat.');
 
-            return $this->redirectRoute('admin.siswa.index', navigate: true);
+            return $this->redirectToIndex();
         }
 
         DB::transaction(function () use ($data, $nomorKontak) {
@@ -162,7 +165,7 @@ class SiswaForm extends Component
 
         session()->flash('success', 'Siswa dan akun orang tua berhasil ditambahkan.');
 
-        return $this->redirectRoute('admin.siswa.index', navigate: true);
+        return $this->redirectToIndex();
     }
 
     // Aturan akun dibedakan antara proses tambah dan edit siswa.

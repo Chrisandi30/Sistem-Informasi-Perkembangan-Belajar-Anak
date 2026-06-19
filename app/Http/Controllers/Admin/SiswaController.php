@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Kelas;
 use App\Models\Siswa;
 use App\Models\User;
+use App\Support\SafeReturnUrl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -26,11 +27,12 @@ class SiswaController extends Controller
         return view('admin.siswa.create', compact('kelas'));
     }
 
-    public function show(Siswa $siswa)
+    public function show(Request $request, Siswa $siswa)
     {
         $siswa->load(['kelas', 'tahunAjaran', 'user']);
+        $returnTo = SafeReturnUrl::fromRequest($request, route('admin.siswa.index'));
 
-        return view('admin.siswa.show', compact('siswa'));
+        return view('admin.siswa.show', compact('siswa', 'returnTo'));
     }
 
     public function store(Request $request)
