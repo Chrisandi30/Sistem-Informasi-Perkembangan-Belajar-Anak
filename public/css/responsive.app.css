@@ -324,6 +324,38 @@
 
 /* Penyesuaian komponen untuk layar ponsel. */
 @media (max-width: 700px) {
+    /* Jaga input tanggal tetap penuh dan dapat dipilih pada browser ponsel. */
+    .content-inner input[type="date"].form-control {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: 46px !important;
+        padding: 10px 12px !important;
+        box-sizing: border-box !important;
+        color: #1d2533 !important;
+        background-color: #fff !important;
+        font-size: 16px !important;
+        line-height: 1.25 !important;
+        -webkit-appearance: auto;
+        appearance: auto;
+    }
+
+    .content-inner input[type="date"].form-control::-webkit-date-and-time-value {
+        min-width: 0;
+        text-align: left;
+    }
+
+    .content-inner input[type="date"].form-control::-webkit-calendar-picker-indicator {
+        display: block;
+        flex: 0 0 auto;
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        padding: 2px;
+        opacity: 1;
+        cursor: pointer;
+    }
     .topbar-title-desktop,
     .page-title-desktop {
         display: none;

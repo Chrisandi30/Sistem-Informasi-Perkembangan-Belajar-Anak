@@ -3,6 +3,7 @@
 @endphp
 <script>
     (function () {
+        const loginUrl = @json(route('login'));
         const loadingOverlay = document.getElementById('appLoadingOverlay');
         const loadingText = document.getElementById('appLoadingText');
         let livewireHookBound = false;
@@ -27,6 +28,30 @@
 
             document.body.classList.remove('page-loading');
         };
+
+        const redirectExpiredSession = () => {
+            hideLoading();
+
+            if (window.location.href !== loginUrl) {
+                window.location.replace(loginUrl);
+            }
+        };
+
+        // Tangkap status 419 dari seluruh request fetch, termasuk request internal Livewire.
+        if (!window.__tkSessionFetchBound && typeof window.fetch === 'function') {
+            window.__tkSessionFetchBound = true;
+            const nativeFetch = window.fetch.bind(window);
+
+            window.fetch = async (...args) => {
+                const response = await nativeFetch(...args);
+
+                if (response.status === 419) {
+                    redirectExpiredSession();
+                }
+
+                return response;
+            };
+        }
 
         const navigateWithLoading = (link) => {
             const href = link.getAttribute('href');
@@ -79,8 +104,13 @@
                     hideLoading();
                 });
 
-                fail(() => {
+                fail(({ status, preventDefault }) => {
                     hideLoading();
+
+                    if (status === 419) {
+                        preventDefault();
+                        redirectExpiredSession();
+                    }
                 });
             });
         };
@@ -176,21 +206,4 @@
         }, true);
     })();
 
-        // Tangani session kedaluwarsa pada request Livewire tanpa menampilkan Page Expired.
-        document.addEventListener('livewire:init', () => {
-            if (!window.Livewire || typeof window.Livewire.hook !== 'function') {
-                return;
-            }
-
-            window.Livewire.hook('request', ({ fail }) => {
-                fail(({ status, preventDefault }) => {
-                    if (status !== 419) {
-                        return;
-                    }
-
-                    preventDefault();
-                    window.location.href = '{{ route('login') }}';
-                });
-            });
-        });
 </script>

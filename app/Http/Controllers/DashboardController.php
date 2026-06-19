@@ -131,12 +131,23 @@ class DashboardController extends Controller
         }
 
         if ($user->role === 'kepala_sekolah') {
-            $menungguValidasi = Perkembangan::where('status', 'menunggu')->count();
-            $revisi = Perkembangan::where('status', 'revisi')->count();
-            $disetujui = Perkembangan::where('status', 'disetujui')->count();
-
             $bulan = now()->month;
             $tahun = now()->year;
+
+            // Hitung seluruh status berdasarkan periode laporan bulan berjalan.
+            $laporanPeriodeBerjalan = Perkembangan::query()
+                ->where('bulan', $bulan)
+                ->where('tahun', $tahun);
+
+            $menungguValidasi = (clone $laporanPeriodeBerjalan)
+                ->where('status', 'menunggu')
+                ->count();
+            $revisi = (clone $laporanPeriodeBerjalan)
+                ->where('status', 'revisi')
+                ->count();
+            $disetujui = (clone $laporanPeriodeBerjalan)
+                ->where('status', 'disetujui')
+                ->count();
 
             $statusValidasiPerKelas = Kelas::withCount([
                 'perkembangans as menunggu_count' => fn ($q) => $q->where('status', 'menunggu')->where('bulan', $bulan)->where('tahun', $tahun),
@@ -148,7 +159,7 @@ class DashboardController extends Controller
                 $this->statCard('Menunggu', $menungguValidasi, 'Laporan belum diperiksa', 'accent-orange', 'fa-hourglass-half'),
                 $this->statCard('Disetujui', $disetujui, 'Laporan sudah disetujui', 'accent-green', 'fa-circle-check'),
                 $this->statCard('Revisi', $revisi, 'Laporan perlu perbaikan', 'accent-red', 'fa-pen-to-square'),
-                $this->statCard('Laporan Bulan Ini', Perkembangan::where('bulan', $bulan)->where('tahun', $tahun)->count(), 'Total laporan periode berjalan', 'accent-violet', 'fa-calendar-days'),
+                $this->statCard('Laporan Bulan Ini', (clone $laporanPeriodeBerjalan)->count(), 'Total laporan periode berjalan', 'accent-violet', 'fa-calendar-days'),
             ];
 
             return view('dashboard', compact('kepsekStats', 'statusValidasiPerKelas'));

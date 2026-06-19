@@ -5,9 +5,7 @@
 
 @section('content')
     <div class="portal-wide-page">
-    <div class="mb-7">
-        <h1 class="m-0 break-words text-[34px] font-extrabold leading-tight text-[#1f2937] max-[700px]:text-[27px]">Pengumuman</h1>
-    </div>
+    <h1 class="mb-2 break-words text-[30px] font-extrabold text-[#1f2937] max-[700px]:text-[26px]">Pengumuman</h1>
 
     <div class="space-y-4">
         @forelse($pengumuman as $item)
