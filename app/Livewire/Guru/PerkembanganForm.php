@@ -146,7 +146,11 @@ class PerkembanganForm extends Component
             session()->flash('success', 'Laporan bulanan berhasil diperbarui.');
         }
 
-        return $this->redirectRoute('guru.perkembangan.index', navigate: true);
+        // Setelah tambah laporan kembali ke daftar siswa; setelah edit kembali ke data perkembangan.
+        return $this->redirectRoute(
+            $wasEditing ? 'guru.perkembangan.index' : 'guru.siswa.index',
+            navigate: true,
+        );
     }
 
     private function currentGuru()

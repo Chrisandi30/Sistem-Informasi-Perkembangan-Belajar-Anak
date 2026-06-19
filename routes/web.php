@@ -21,6 +21,9 @@ use App\Http\Controllers\OrangTua\PortalController;
 use App\Http\Controllers\PublicMediaController;
 use Illuminate\Support\Facades\Route;
 
+// Cegah endpoint internal Livewire dibuka langsung melalui GET.
+Route::get('/livewire/update', fn () => redirect()->route('login'));
+
 Route::get('/media/{path}', [PublicMediaController::class, 'show'])
     ->where('path', '.*')
     ->name('media.public');

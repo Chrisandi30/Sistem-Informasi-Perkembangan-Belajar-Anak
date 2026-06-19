@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Pengumuman;
+use Illuminate\Support\Facades\Schema;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -36,16 +37,29 @@ class PengumumanTable extends Component
     {
         $search = trim($this->search);
 
-        $pengumuman = Pengumuman::when($search !== '', function ($query) use ($search) {
-                $query->where(function ($subQuery) use ($search) {
-                    $subQuery->where('judul', 'like', "%{$search}%")
-                        ->orWhere('isi', 'like', "%{$search}%")
-                        ->orWhere('tanggal_terbit', 'like', "%{$search}%")
-                        ->orWhere('tanggal_mulai', 'like', "%{$search}%")
-                        ->orWhere('tanggal_berakhir', 'like', "%{$search}%");
+        // Gunakan hanya kolom yang benar-benar tersedia agar search aman pada database hosting.
+        $availableColumns = collect(Schema::getColumnListing('pengumuman'));
+        $searchableColumns = collect([
+            'judul',
+            'isi',
+            'tanggal_terbit',
+            'tanggal_berakhir',
+        ])->filter(fn ($column) => $availableColumns->contains($column))->values();
+
+        $pengumuman = Pengumuman::query()
+            ->when($search !== '' && $searchableColumns->isNotEmpty(), function ($query) use ($search, $searchableColumns) {
+                $query->where(function ($subQuery) use ($search, $searchableColumns) {
+                    foreach ($searchableColumns as $index => $column) {
+                        $method = $index === 0 ? 'where' : 'orWhere';
+                        $subQuery->{$method}($column, 'like', "%{$search}%");
+                    }
                 });
             })
-            ->latest('tanggal_terbit')
+            ->when(
+                $availableColumns->contains('tanggal_terbit'),
+                fn ($query) => $query->latest('tanggal_terbit'),
+                fn ($query) => $query->latest('id'),
+            )
             ->paginate($this->perPage);
 
         return view('livewire.admin.pengumuman-table', [
