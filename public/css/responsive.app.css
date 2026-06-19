@@ -57,17 +57,16 @@
     top: 0;
     left: 0;
     z-index: 1200;
+    display: flex !important;
+    flex-direction: column !important;
     width: 248px;
     height: 100vh !important;
     height: 100dvh !important;
+    max-height: 100vh !important;
+    max-height: 100dvh !important;
     min-height: 0;
-    padding-bottom: calc(48px + env(safe-area-inset-bottom)) !important;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-    overscroll-behavior-y: contain;
-    touch-action: pan-y;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    padding-bottom: 0 !important;
+    overflow: hidden !important;
     border-right: 1px solid var(--line);
     border-bottom: 0;
     transform: translateX(-100%);
@@ -75,15 +74,27 @@
     box-shadow: 0 22px 60px rgba(15, 23, 42, 0.18);
 }
 
-.sidebar::-webkit-scrollbar {
-    display: none;
+.sidebar-scroll-area {
+    display: block !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom)) !important;
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
 }
 
-.sidebar-scroll-area {
-    min-height: auto;
-    overflow: visible;
-    padding-bottom: 0;
-    touch-action: auto;
+.sidebar-scroll-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-scroll-area::-webkit-scrollbar-thumb {
+    background: #c8ced8;
+    border-radius: 999px;
 }
 
 .sidebar.mobile-open {
@@ -286,13 +297,17 @@
 
     .sidebar {
         position: sticky;
+        top: 0;
         z-index: auto;
+        display: flex !important;
+        flex-direction: column !important;
         width: auto;
         height: 100vh !important;
         height: 100dvh !important;
-        padding-bottom: 48px !important;
-        overflow-x: hidden !important;
-        overflow-y: auto !important;
+        max-height: 100vh !important;
+        max-height: 100dvh !important;
+        padding-bottom: 0 !important;
+        overflow: hidden !important;
         transform: none;
         box-shadow: none;
     }
