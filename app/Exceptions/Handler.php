@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -23,6 +24,17 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
+        // Arahkan pengguna langsung ke login ketika session atau token CSRF kedaluwarsa.
+        $this->renderable(function (TokenMismatchException $exception, $request) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'redirect' => route('login'),
+                ], 419);
+            }
+
+            return redirect()->route('login');
+        });
+
         $this->reportable(function (Throwable $e) {
             //
         });

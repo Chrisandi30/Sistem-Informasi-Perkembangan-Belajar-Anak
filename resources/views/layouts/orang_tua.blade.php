@@ -125,13 +125,26 @@
                 margin-right: 0;
             }
 
-            .laporan-page-wrap .portal-mobile-card {
+            /* card Profil, Perkembangan, dan Pengumuman. */
+            .portal-wide-page .portal-mobile-card {
                 position: relative;
                 left: 50%;
                 width: calc(100vw - 8px);
                 max-width: calc(100vw - 8px);
                 margin-left: calc(-50vw + 4px);
                 margin-right: 0;
+            }
+
+            .portal-wide-page > h1,
+            .portal-wide-page > div:first-child h1 {
+                position: relative;
+                left: 50%;
+                width: calc(100vw - 16px);
+                max-width: calc(100vw - 16px);
+                margin-left: calc(-50vw + 8px) !important;
+                margin-right: 0 !important;
+                padding-left: 0 !important;
+                text-align: left !important;
             }
 
             .portal-profile-summary li {

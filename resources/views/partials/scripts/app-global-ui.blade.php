@@ -175,4 +175,22 @@
             showLoading('Memuat halaman...');
         }, true);
     })();
+
+        // Tangani session kedaluwarsa pada request Livewire tanpa menampilkan Page Expired.
+        document.addEventListener('livewire:init', () => {
+            if (!window.Livewire || typeof window.Livewire.hook !== 'function') {
+                return;
+            }
+
+            window.Livewire.hook('request', ({ fail }) => {
+                fail(({ status, preventDefault }) => {
+                    if (status !== 419) {
+                        return;
+                    }
+
+                    preventDefault();
+                    window.location.href = '{{ route('login') }}';
+                });
+            });
+        });
 </script>
