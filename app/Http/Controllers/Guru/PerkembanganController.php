@@ -19,8 +19,10 @@ class PerkembanganController extends Controller
 
         $query = Perkembangan::with(['siswa.tahunAjaran'])
             ->where('guru_id', $guru->id)
-            ->latest('tahun')
-            ->latest('bulan');
+            ->orderByDesc('tahun')
+            ->orderByDesc('bulan')
+            ->orderByDesc('created_at')
+            ->orderByDesc('id');
 
         if ($request->filled('siswa_id')) {
             $query->where('siswa_id', $request->integer('siswa_id'));

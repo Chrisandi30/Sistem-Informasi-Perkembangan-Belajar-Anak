@@ -86,8 +86,10 @@ class PerkembanganTable extends Component
                     }
                 });
             })
-            ->latest('tahun')
-            ->latest('bulan');
+            ->orderByDesc('tahun')
+            ->orderByDesc('bulan')
+            ->orderByDesc('created_at')
+            ->orderByDesc('id');
 
         $perkembangans = $query->paginate($this->perPage);
         $siswas = Siswa::where('kelas_id', $guru->kelas_id)->orderBy('nama')->get();
