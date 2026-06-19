@@ -36,9 +36,13 @@ class PerkembanganForm extends Component
         $guru = auth()->user()?->guru;
         abort_unless($guru, 403);
 
-        $this->initializeReturnTo(route('guru.perkembangan.index'));
         $this->guru_id = (string) $guru->id;
         $this->perkembangan = $perkembangan;
+        $this->initializeReturnTo(
+            $this->isEditing()
+                ? route('guru.perkembangan.index')
+                : route('guru.siswa.index')
+        );
         $this->bulan = (string) now()->month;
         $this->tahun = (string) now()->year;
 
@@ -150,12 +154,8 @@ class PerkembanganForm extends Component
             session()->flash('success', 'Laporan bulanan berhasil diperbarui.');
         }
 
-        // Setelah tambah laporan kembali ke daftar siswa; setelah edit kembali ke halaman data perkembangan sebelumnya.
-        if ($wasEditing) {
-            return $this->redirectToIndex();
-        }
-
-        return $this->redirectRoute('guru.siswa.index', navigate: true);
+        // Setelah simpan, kembali ke halaman daftar asal beserta posisi pagination-nya.
+        return $this->redirectToIndex();
     }
 
     private function currentGuru()

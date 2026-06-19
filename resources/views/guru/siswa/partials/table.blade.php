@@ -18,7 +18,14 @@
                 <tr>
                     <td>{{ $siswa->nama }}</td>
                     <td>
-                        <a href="{{ route('guru.perkembangan.create', ['siswa' => $siswa->id]) }}" wire:navigate class="btn btn-save btn-sm">
+                        <a href="{{ route('guru.perkembangan.create', [
+                            'siswa' => $siswa->id,
+                            'return_to' => route('guru.siswa.index', array_filter([
+                                'search' => $search,
+                                'per_page' => $perPage,
+                                'page' => $siswas->currentPage(),
+                            ], fn ($value) => $value !== null && $value !== '')),
+                        ]) }}" wire:navigate class="btn btn-save btn-sm">
                             <i class="fas fa-file-pen me-1"></i> Isi Laporan
                         </a>
                     </td>
