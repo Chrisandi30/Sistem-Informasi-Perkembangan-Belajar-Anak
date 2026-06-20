@@ -93,8 +93,10 @@ class PerkembanganTable extends Component
                     })->orWhereHas('guru', fn ($guruQuery) => $guruQuery->where('nama', 'like', "%{$search}%"));
                 });
             })
-            ->latest('tahun')
-            ->latest('bulan')
+            ->orderByDesc('tahun')
+            ->orderByDesc('bulan')
+            ->orderByDesc('created_at')
+            ->orderByDesc('id')
             ->paginate($this->perPage);
 
         return view('livewire.admin.perkembangan-table', [

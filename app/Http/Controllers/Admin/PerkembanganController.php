@@ -16,8 +16,10 @@ class PerkembanganController extends Controller
     public function index(Request $request)
     {
         $query = Perkembangan::with(['siswa.kelas', 'siswa.tahunAjaran', 'guru.kelas', 'kelas', 'detailPerkembangans'])
-            ->latest('tahun')
-            ->latest('bulan');
+            ->orderByDesc('tahun')
+            ->orderByDesc('bulan')
+            ->orderByDesc('created_at')
+            ->orderByDesc('id');
 
         if ($request->filled('kelas_id')) {
             $query->where('kelas_id', $request->integer('kelas_id'));
