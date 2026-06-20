@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 class PerkembanganController extends Controller
 {
+    // Tampilkan daftar data pada halaman utama.
     public function index(Request $request)
     {
         $guru = auth()->user()->guru;
@@ -50,6 +51,7 @@ class PerkembanganController extends Controller
         return view('guru.perkembangan.index', compact('perkembangans', 'siswas', 'monthOptions', 'yearOptions'));
     }
 
+    // Tampilkan detail data yang dipilih.
     public function show(Request $request, Perkembangan $perkembangan)
     {
         $guru = auth()->user()->guru;
@@ -67,6 +69,7 @@ class PerkembanganController extends Controller
         return view('guru.perkembangan.show', compact('perkembangan', 'monthOptions', 'returnTo'));
     }
 
+    // Tampilkan halaman untuk menambahkan data.
     public function create()
     {
         $guru = auth()->user()->guru;
@@ -75,6 +78,7 @@ class PerkembanganController extends Controller
         return view('guru.perkembangan.create');
     }
 
+    // Tampilkan halaman untuk mengubah data.
     public function edit(Perkembangan $perkembangan)
     {
         $guru = auth()->user()->guru;
@@ -88,6 +92,7 @@ class PerkembanganController extends Controller
         return view('guru.perkembangan.edit', compact('perkembangan'));
     }
 
+    // Hapus data yang dipilih dari database.
     public function destroy(Perkembangan $perkembangan)
     {
         $guru = auth()->user()->guru;
@@ -103,6 +108,7 @@ class PerkembanganController extends Controller
         return back()->with('success', 'Laporan berhasil dihapus.');
     }
 
+    // Sediakan daftar nama bulan untuk filter.
     private function monthOptions(): array
     {
         return [
@@ -121,6 +127,7 @@ class PerkembanganController extends Controller
         ];
     }
 
+    // Susun daftar tahun yang dapat dipilih.
     private function filterYearOptions(array $years = []): array
     {
         $currentYear = now()->year;

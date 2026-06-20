@@ -2,6 +2,7 @@
 
 // Model: app/Models/MataPelajaran.php
 
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,6 +20,7 @@ class MataPelajaran extends Model
         'is_active' => 'boolean',
     ];
 
+    // Siapkan data laporan berdasarkan kelas.
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);

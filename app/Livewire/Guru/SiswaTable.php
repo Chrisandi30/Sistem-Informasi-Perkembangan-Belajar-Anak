@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Guru/SiswaTable.php
+
 namespace App\Livewire\Guru;
 
 use App\Models\Siswa;
@@ -15,16 +17,19 @@ class SiswaTable extends Component
     public string $search = '';
     public int $perPage = 5;
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingSearch(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingPerPage(): void
     {
         $this->resetPage();
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         $guru = auth()->user()?->guru;

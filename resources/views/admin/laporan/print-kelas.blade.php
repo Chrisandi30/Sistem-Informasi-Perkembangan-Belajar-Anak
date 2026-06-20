@@ -212,6 +212,7 @@
 
         <div class="print-page">
             <div class="header">
+                {{-- Tabel untuk menampilkan daftar data sistem. --}}
                 <table class="header-table">
                     <tr>
                         <td class="header-logo-cell">
@@ -235,6 +236,7 @@
                     $tahunAjaranKelas = $k->siswas->first(fn ($siswa) => !is_null($siswa->tahun_ajaran_id))?->tahunAjaran
                         ?? $k->siswas->first()?->tahunAjaran;
                 @endphp
+                {{-- Tabel untuk menampilkan daftar data sistem. --}}
                 <table class="info-table">
                     <tr>
                         <td class="info-label">Guru</td>
@@ -252,6 +254,7 @@
                         <td>{{ $tahunAjaranKelas->tahun_ajaran ?? '-' }}</td>
                     </tr>
                 </table>
+                {{-- Tabel untuk menampilkan daftar data sistem. --}}
                 <table>
                     <thead>
                         <tr>

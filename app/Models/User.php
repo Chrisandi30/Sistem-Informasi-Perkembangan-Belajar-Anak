@@ -30,11 +30,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    // Definisikan relasi model untuk data guru.
     public function guru()
     {
         return $this->hasOne(Guru::class);
     }
 
+    // Definisikan relasi model untuk data siswa.
     public function siswa()
     {
         return $this->hasOne(Siswa::class);

@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/SiswaTable.php
+
 namespace App\Livewire\Admin;
 
 use App\Models\Kelas;
@@ -19,21 +21,25 @@ class SiswaTable extends Component
     public string $kelas_id = '';
     public int $perPage = 5;
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingSearch(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingKelasId(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingPerPage(): void
     {
         $this->resetPage();
     }
 
+    // Hapus siswa beserta data terkait yang mengikuti relasi.
     public function deleteSiswa(int $id): void
     {
         DB::transaction(function () use ($id) {
@@ -55,6 +61,7 @@ class SiswaTable extends Component
         $this->dispatch('app-feedback', type: 'success', message: 'Data siswa berhasil dihapus.');
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         $search = trim($this->search);

@@ -87,6 +87,7 @@
 
     <div id="appAuthMeta" data-success='@json(session("success"))' data-errors='@json($errors->all())' hidden></div>
 
+    {{-- Form untuk menerima dan mengirim data pengguna. --}}
     <form method="post" action="{{ route('login.attempt') }}" class="auth-login-form mt-7 space-y-4">
         @csrf
 

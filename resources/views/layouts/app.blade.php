@@ -656,6 +656,7 @@
                         <div class="h-10 w-px bg-[#e5d7d8]"></div>
                     </div>
                 @endif
+                {{-- Form untuk menerima dan mengirim data pengguna. --}}
                 <form action="{{ route('logout') }}" method="post" class="m-0 logout-form">
                     @csrf
                     <input type="hidden" name="guard" value="{{ $activeGuard }}">

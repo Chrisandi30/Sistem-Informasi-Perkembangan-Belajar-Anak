@@ -12,6 +12,7 @@
     </div>
 
     <div class="table-responsive">
+        {{-- Tabel untuk menampilkan daftar data sistem. --}}
         <table class="table table-bordered table-sm align-middle guru-table w-full min-w-0 table-fixed">
             <colgroup>
                 <col class="w-[19%]">

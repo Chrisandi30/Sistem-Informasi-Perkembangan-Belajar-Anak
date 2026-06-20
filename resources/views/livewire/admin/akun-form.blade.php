@@ -1,6 +1,7 @@
 @php
     // View: resources/views/livewire/admin/akun-form.blade.php
 @endphp
+{{-- Form untuk menerima dan mengirim data pengguna. --}}
 <form wire:submit="save" class="card card-body form-shell bg-white p-7">
     <div class="grid gap-4 md:grid-cols-2">
         <div>

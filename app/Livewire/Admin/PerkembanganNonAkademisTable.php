@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/PerkembanganNonAkademisTable.php
+
 namespace App\Livewire\Admin;
 
 use App\Models\PerkembanganNonAkademis;
@@ -15,16 +17,19 @@ class PerkembanganNonAkademisTable extends Component
     public string $search = '';
     public int $perPage = 5;
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingSearch(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingPerPage(): void
     {
         $this->resetPage();
     }
 
+    // Tangani proses delete perkembangan non akademis.
     public function deletePerkembanganNonAkademis(int $id): void
     {
         $item = PerkembanganNonAkademis::findOrFail($id);
@@ -34,6 +39,7 @@ class PerkembanganNonAkademisTable extends Component
         $this->dispatch('app-feedback', type: 'success', message: 'Aspek perkembangan non akademis berhasil dihapus.');
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         $search = trim($this->search);

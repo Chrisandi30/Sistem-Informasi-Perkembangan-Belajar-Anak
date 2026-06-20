@@ -9,6 +9,7 @@
             confirmOpen: false,
         });
 
+        // Jalankan proses normalizeFieldValue pada halaman.
         const normalizeFieldValue = (field) => {
             if (field instanceof HTMLInputElement) {
                 if (field.type === 'checkbox' || field.type === 'radio') {
@@ -23,6 +24,7 @@
             return field.value ?? '';
         };
 
+        // Jalankan proses collectFormSignature pada halaman.
         const collectFormSignature = (form) => {
             return Array.from(form.querySelectorAll('input, select, textarea'))
                 .filter((field) => field.name || field.hasAttribute('wire:model') || field.hasAttribute('wire:model.defer') || field.hasAttribute('wire:model.live'))
@@ -33,6 +35,7 @@
                 .join('|');
         };
 
+        // Jalankan proses refreshGuardForm pada halaman.
         const refreshGuardForm = () => {
             state.activeForm = document.querySelector('form.form-shell');
             if (!state.activeForm) {
@@ -44,6 +47,7 @@
             delete state.activeForm.dataset.submitting;
         };
 
+        // Jalankan proses updateDirtyState pada halaman.
         const updateDirtyState = () => {
             if (!state.activeForm) {
                 return;
@@ -54,6 +58,7 @@
             state.activeForm.dataset.dirty = currentSignature === initialSignature ? '0' : '1';
         };
 
+        // Jalankan proses isFormDirty pada halaman.
         const isFormDirty = () => {
             if (!state.activeForm) {
                 return false;
@@ -67,6 +72,7 @@
             return state.activeForm.dataset.dirty === '1';
         };
 
+        // Jalankan proses shouldGuardNavigationLink pada halaman.
         const shouldGuardNavigationLink = (link, event) => {
             if (!link) {
                 return false;
@@ -101,6 +107,7 @@
             return true;
         };
 
+        // Jalankan proses confirmLeaveUnsaved pada halaman.
         const confirmLeaveUnsaved = (onConfirm) => {
             if (!isFormDirty()) {
                 onConfirm();

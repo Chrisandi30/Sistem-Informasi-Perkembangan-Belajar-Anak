@@ -43,6 +43,7 @@
     </div>
 
     <div class="table-responsive mt-2 review-table-wrap">
+        {{-- Tabel untuk menampilkan daftar data sistem. --}}
         <table class="table table-bordered table-sm align-middle review-list-table">
             <colgroup>
                 <col style="width: 26%;">

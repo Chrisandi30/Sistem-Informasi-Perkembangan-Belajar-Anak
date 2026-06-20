@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/MataPelajaranForm.php
+
 namespace App\Livewire\Admin;
 
 use App\Livewire\Concerns\ReturnsToIndex;
@@ -17,6 +19,7 @@ public ?MataPelajaran $mataPelajaran = null;
     public string $kelas_id = '';
     public bool $is_active = true;
 
+    // Isi kondisi awal saat halaman atau komponen dibuka.
     public function mount(?MataPelajaran $mataPelajaran = null): void
     {
 
@@ -29,6 +32,7 @@ $this->mataPelajaran = $mataPelajaran;
         }
     }
 
+    // Validasi lalu simpan data dari formulir.
     public function save()
     {
         $data = $this->validate([
@@ -54,11 +58,13 @@ $this->mataPelajaran = $mataPelajaran;
         return $this->redirectToIndex();
     }
 
+    // Periksa apakah formulir sedang dalam mode edit.
     private function isEditing(): bool
     {
         return $this->mataPelajaran instanceof MataPelajaran && $this->mataPelajaran->exists;
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         return view('livewire.admin.mata-pelajaran-form', [

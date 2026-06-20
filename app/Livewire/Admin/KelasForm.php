@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/KelasForm.php
+
 namespace App\Livewire\Admin;
 
 use App\Livewire\Concerns\ReturnsToIndex;
@@ -15,6 +17,7 @@ public ?Kelas $kelas = null;
 
     public string $nama_kelas = '';
 
+    // Isi kondisi awal saat halaman atau komponen dibuka.
     public function mount(?Kelas $kelas = null): void
     {
 
@@ -25,6 +28,7 @@ $this->kelas = $kelas;
         }
     }
 
+    // Validasi lalu simpan data dari formulir.
     public function save()
     {
         $data = $this->validate([
@@ -42,11 +46,13 @@ $this->kelas = $kelas;
         return $this->redirectToIndex();
     }
 
+    // Periksa apakah formulir sedang dalam mode edit.
     private function isEditing(): bool
     {
         return $this->kelas instanceof Kelas && $this->kelas->exists;
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         return view('livewire.admin.kelas-form', ['isEdit' => $this->isEditing()]);

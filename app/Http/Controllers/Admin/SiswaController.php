@@ -15,18 +15,21 @@ use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
 {
+    // Tampilkan daftar data pada halaman utama.
     public function index()
     {
         $siswas = Siswa::with(['kelas', 'user'])->latest()->paginate(10);
         return view('admin.siswa.index', compact('siswas'));
     }
 
+    // Tampilkan halaman untuk menambahkan data.
     public function create()
     {
         $kelas = Kelas::orderBy('nama_kelas')->get();
         return view('admin.siswa.create', compact('kelas'));
     }
 
+    // Tampilkan detail data yang dipilih.
     public function show(Request $request, Siswa $siswa)
     {
         $siswa->load(['kelas', 'tahunAjaran', 'user']);
@@ -35,6 +38,7 @@ class SiswaController extends Controller
         return view('admin.siswa.show', compact('siswa', 'returnTo'));
     }
 
+    // Validasi dan simpan data baru ke database.
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -90,12 +94,14 @@ class SiswaController extends Controller
         return redirect()->route('admin.siswa.index')->with('success', 'Siswa dan akun orang tua berhasil ditambahkan.');
     }
 
+    // Tampilkan halaman untuk mengubah data.
     public function edit(Siswa $siswa)
     {
         $kelas = Kelas::orderBy('nama_kelas')->get();
         return view('admin.siswa.edit', compact('siswa', 'kelas'));
     }
 
+    // Validasi dan simpan perubahan data.
     public function update(Request $request, Siswa $siswa)
     {
         $data = $request->validate([
@@ -157,6 +163,7 @@ class SiswaController extends Controller
         return redirect()->route('admin.siswa.index')->with('success', 'Data siswa berhasil diubah.');
     }
 
+    // Hapus data yang dipilih dari database.
     public function destroy(Siswa $siswa)
     {
         if ($siswa->pas_foto) {

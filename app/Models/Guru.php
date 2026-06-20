@@ -21,21 +21,25 @@ class Guru extends Model
         'kelas_id',
     ];
 
+    // Definisikan relasi model untuk data user.
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    // Siapkan data laporan berdasarkan kelas.
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
     }
 
+    // Definisikan relasi model untuk data perkembangans.
     public function perkembangans()
     {
         return $this->hasMany(Perkembangan::class);
     }
 
+    // Ubah kode jenis kelamin menjadi label yang mudah dibaca.
     public function getJenisKelaminLabelAttribute(): string
     {
         return match ($this->jenis_kelamin) {

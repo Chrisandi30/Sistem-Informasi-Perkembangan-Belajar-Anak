@@ -11,17 +11,21 @@
             pendingDelete: null,
         });
 
+        // Jalankan proses getAlertText pada halaman.
         const getAlertText = (selector) => {
             const element = document.querySelector(selector);
             return element ? element.textContent.trim() : '';
         };
 
+        // Jalankan proses getValidationErrors pada halaman.
         const getValidationErrors = () => Array.from(document.querySelectorAll('.error-list li'))
             .map((item) => item.textContent.trim())
             .filter(Boolean);
 
+        // Jalankan proses hasErrorState pada halaman.
         const hasErrorState = () => Boolean(getAlertText('.alert-danger') || getValidationErrors().length);
 
+        // Jalankan proses renderFeedback pada halaman.
         const renderFeedback = (type, message, options = {}) => {
             if (!message) {
                 return;
@@ -72,6 +76,7 @@
             }
         };
 
+        // Jalankan proses resolvePendingDelete pada halaman.
         const resolvePendingDelete = (forceSuccess = false) => {
             if (!state.pendingDelete) {
                 return;
@@ -88,6 +93,7 @@
             }
         };
 
+        // Jalankan proses showPageFeedback pada halaman.
         const showPageFeedback = () => {
             const currentSuccessMessage = getAlertText('.alert-success');
             const currentErrorMessage = getAlertText('.alert-danger');
@@ -132,6 +138,7 @@
             }
         };
 
+        // Jalankan proses bindLivewireHooks pada halaman.
         const bindLivewireHooks = () => {
             if (state.livewireHookBound || !window.Livewire || typeof window.Livewire.hook !== 'function') {
                 return;
@@ -155,6 +162,7 @@
             });
         };
 
+        // Jalankan proses bindObserver pada halaman.
         const bindObserver = () => {
             if (state.observerBound) {
                 return;
@@ -188,6 +196,7 @@
                         return;
                     }
 
+                    // Jalankan proses goToCancelTarget pada halaman.
                     const goToCancelTarget = () => {
                         if (window.tkWinfieldUi && typeof window.tkWinfieldUi.allowNextLeave === 'function') {
                             window.tkWinfieldUi.allowNextLeave();

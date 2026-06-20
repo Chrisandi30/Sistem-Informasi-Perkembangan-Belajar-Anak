@@ -1,8 +1,10 @@
+/* Atur struktur utama dan komponen responsif aplikasi. */
 .app-shell {
     min-height: 100vh;
     display: block;
 }
 
+/* Atur tombol pembuka sidebar pada layar kecil. */
 .mobile-sidebar-toggle {
     display: inline-flex;
     align-items: center;
@@ -52,6 +54,7 @@
     pointer-events: auto;
 }
 
+/* Atur posisi dan ukuran sidebar utama. */
 .sidebar {
     position: fixed;
     top: 0;
@@ -74,6 +77,7 @@
     box-shadow: 0 22px 60px rgba(15, 23, 42, 0.18);
 }
 
+/* Aktifkan area gulir pada daftar menu sidebar. */
 .sidebar-scroll-area {
     display: block !important;
     flex: 1 1 auto !important;
@@ -142,6 +146,7 @@
     display: none;
 }
 
+/* Susun komponen filter pada halaman review laporan. */
 .review-filters {
     display: grid;
     grid-template-columns: minmax(190px, 1.35fr) minmax(170px, 1.2fr) minmax(120px, .8fr) minmax(120px, .8fr) minmax(145px, .95fr);
@@ -162,6 +167,7 @@
     width: 100%;
 }
 
+/* Izinkan tabel digulir secara horizontal pada layar sempit. */
 .content-inner .table-responsive {
     width: 100%;
     max-width: 100%;
@@ -174,6 +180,7 @@
     cursor: default;
 }
 
+/* Sesuaikan tabel pada layar laptop berukuran sedang. */
 @media (max-width: 1200px) {
     .siswa-table th,
     .siswa-table td {
@@ -193,6 +200,7 @@
     }
 }
 
+/* Ubah layout utama ketika memasuki mode tablet dan mobile. */
 @media (max-width: 1000px) {
     .app-shell > section,
     .content-inner {
@@ -284,6 +292,7 @@
     }
 }
 
+/* Pertahankan layout sidebar tetap pada mode desktop. */
 @media (min-width: 1001px) {
     .app-shell {
         display: grid;
@@ -295,6 +304,7 @@
         display: none;
     }
 
+    /* Atur posisi dan ukuran sidebar utama. */
     .sidebar {
         position: sticky;
         top: 0;
@@ -417,6 +427,7 @@
         padding-top: 0 !important;
     }
 
+    /* Susun komponen filter pada halaman review laporan. */
     .review-filters {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -512,6 +523,7 @@
         margin-left: 4px;
     }
 
+    /* Izinkan tabel digulir secara horizontal pada layar sempit. */
     .content-inner .table-responsive {
         border-radius: 16px;
         scrollbar-width: thin;

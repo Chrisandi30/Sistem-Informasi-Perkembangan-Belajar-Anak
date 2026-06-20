@@ -24,16 +24,19 @@ class DetailPerkembangan extends Model
         'urutan',
     ];
 
+    // Siapkan data laporan perkembangan.
     public function perkembangan()
     {
         return $this->belongsTo(Perkembangan::class);
     }
 
+    // Definisikan relasi model untuk data mataPelajaran.
     public function mataPelajaran()
     {
         return $this->belongsTo(MataPelajaran::class);
     }
 
+    // Definisikan relasi model untuk data perkembanganNonAkademis.
     public function perkembanganNonAkademis()
     {
         return $this->belongsTo(PerkembanganNonAkademis::class);

@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/KepalaSekolah/ReviewTable.php
+
 namespace App\Livewire\KepalaSekolah;
 
 use App\Models\Kelas;
@@ -21,6 +23,7 @@ class ReviewTable extends Component
     public ?int $bulan = null;
     public ?int $tahun = null;
 
+    // Isi kondisi awal saat halaman atau komponen dibuka.
     public function mount(): void
     {
         // Default: tampilkan seluruh laporan; filter digunakan sesuai kebutuhan.
@@ -30,36 +33,43 @@ class ReviewTable extends Component
         $this->status = '';
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingSearch(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingPerPage(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingStatus(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingKelasId(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingBulan(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingTahun(): void
     {
         $this->resetPage();
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         $search = trim($this->search);

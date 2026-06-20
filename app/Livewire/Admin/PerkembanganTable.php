@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/PerkembanganTable.php
+
 namespace App\Livewire\Admin;
 
 use App\Models\Kelas;
@@ -19,31 +21,37 @@ class PerkembanganTable extends Component
     public string $tahun = '';
     public int $perPage = 5;
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingSearch(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingKelasId(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingBulan(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingTahun(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingPerPage(): void
     {
         $this->resetPage();
     }
 
+    // Sediakan daftar nama bulan untuk filter.
     private function monthOptions(): array
     {
         return [
@@ -62,6 +70,7 @@ class PerkembanganTable extends Component
         ];
     }
 
+    // Sediakan daftar tahun untuk filter.
     private function yearOptions(): array
     {
         $currentYear = now()->year;
@@ -75,6 +84,7 @@ class PerkembanganTable extends Component
             ->all();
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         $search = trim($this->search);

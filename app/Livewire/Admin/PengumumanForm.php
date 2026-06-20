@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/PengumumanForm.php
+
 namespace App\Livewire\Admin;
 
 use App\Livewire\Concerns\ReturnsToIndex;
@@ -17,6 +19,7 @@ public ?Pengumuman $pengumuman = null;
     public string $tanggal_berakhir = '';
     public string $isi = '';
 
+    // Isi kondisi awal saat halaman atau komponen dibuka.
     public function mount(?Pengumuman $pengumuman = null): void
     {
 
@@ -30,6 +33,7 @@ $this->pengumuman = $pengumuman;
         }
     }
 
+    // Validasi lalu simpan data dari formulir.
     public function save()
     {
         $data = $this->validate([
@@ -50,11 +54,13 @@ $this->pengumuman = $pengumuman;
         return $this->redirectToIndex();
     }
 
+    // Periksa apakah formulir sedang dalam mode edit.
     private function isEditing(): bool
     {
         return $this->pengumuman instanceof Pengumuman && $this->pengumuman->exists;
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         return view('livewire.admin.pengumuman-form', ['isEdit' => $this->isEditing()]);

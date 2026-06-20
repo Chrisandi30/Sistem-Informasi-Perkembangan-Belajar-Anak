@@ -192,6 +192,7 @@
                     <div class="flex min-h-[46px] min-w-[190px] max-w-[240px] items-center justify-center rounded-2xl border border-white/70 bg-white/15 px-4 py-2 text-center text-white">
                         <strong class="block break-words text-center text-[13px] leading-[1.25]">{{ $portalSiswa?->nama ?? $portalUser->username }}</strong>
                     </div>
+                    {{-- Form untuk menerima dan mengirim data pengguna. --}}
                     <form action="{{ route('logout') }}" method="post" class="m-0 logout-form">
                         @csrf
                         <input type="hidden" name="guard" value="orang_tua">
@@ -214,6 +215,7 @@
                     <div class="flex min-h-[54px] items-center justify-center rounded-2xl border border-white/70 bg-white/15 px-4 py-3 text-center text-white">
                         <strong class="block break-words text-center text-[13px] leading-[1.25]">{{ $portalSiswa?->nama ?? $portalUser->username }}</strong>
                     </div>
+                    {{-- Form untuk menerima dan mengirim data pengguna. --}}
                     <form action="{{ route('logout') }}" method="post" class="m-0 logout-form">
                         @csrf
                         <input type="hidden" name="guard" value="orang_tua">
@@ -247,6 +249,7 @@
 
     @stack('scripts')
     <script>
+        // Inisialisasi fungsi initPortalMobileMenu pada halaman.
         function initPortalMobileMenu() {
             const portalToggle = document.getElementById('portalToggle');
             const portalToggleIcon = document.getElementById('portalToggleIcon');

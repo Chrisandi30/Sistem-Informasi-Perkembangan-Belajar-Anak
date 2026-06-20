@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/GuruForm.php
+
 namespace App\Livewire\Admin;
 
 use App\Livewire\Concerns\ReturnsToIndex;
@@ -25,6 +27,7 @@ public ?Guru $guru = null;
     public string $username = '';
     public string $password = '';
 
+    // Isi kondisi awal saat halaman atau komponen dibuka.
     public function mount(?Guru $guru = null): void
     {
 
@@ -43,6 +46,7 @@ $this->guru = $guru;
         }
     }
 
+    // Validasi lalu simpan data dari formulir.
     public function save()
     {
         $hadUserAccount = (bool) $this->guru?->user_id;
@@ -123,16 +127,19 @@ $this->guru = $guru;
         return $this->redirectToIndex();
     }
 
+    // Tangani proses requires password.
     private function requiresPassword(): bool
     {
         return ! $this->isEditing() || ! $this->guru?->user_id;
     }
 
+    // Periksa apakah formulir sedang dalam mode edit.
     private function isEditing(): bool
     {
         return $this->guru instanceof Guru && $this->guru->exists;
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         return view('livewire.admin.guru-form', [

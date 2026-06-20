@@ -24,6 +24,7 @@ class PerkembanganNonAkademis extends Model
         'is_active' => 'boolean',
     ];
 
+    // Definisikan relasi model untuk data detailPerkembangans.
     public function detailPerkembangans()
     {
         return $this->hasMany(DetailPerkembangan::class);

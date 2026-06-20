@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 class LaporanController extends Controller
 {
+    // Siapkan data laporan berdasarkan kelas.
     public function kelas(Request $request)
     {
         $query = Kelas::with(['siswas.tahunAjaran', 'gurus'])->withCount('siswas')->orderBy('nama_kelas');
@@ -25,11 +26,13 @@ class LaporanController extends Controller
         return view('admin.laporan.kelas', compact('kelas', 'allKelas'));
     }
 
+    // Siapkan data laporan perkembangan.
     public function perkembangan(Request $request)
     {
         return redirect()->route('admin.perkembangan.index', $request->query());
     }
 
+    // Unduh laporan kelas dalam format PDF.
     public function exportKelasPdf(Request $request)
     {
         if (! $request->filled('kelas_id')) {
@@ -56,6 +59,7 @@ class LaporanController extends Controller
         return $pdf->download($name);
     }
 
+    // Tampilkan laporan kelas untuk dicetak.
     public function printKelas(Request $request)
     {
         if (! $request->filled('kelas_id')) {

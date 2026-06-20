@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/AkunForm.php
+
 namespace App\Livewire\Admin;
 
 use App\Livewire\Concerns\ReturnsToIndex;
@@ -20,6 +22,7 @@ public ?User $akun = null;
     public string $password = '';
     public string $password_confirmation = '';
 
+    // Isi kondisi awal saat halaman atau komponen dibuka.
     public function mount(?User $akun = null): void
     {
 
@@ -37,6 +40,7 @@ $this->akun = $akun;
         }
     }
 
+    // Validasi lalu simpan data dari formulir.
     public function save()
     {
         $data = $this->validate($this->rules());
@@ -72,6 +76,7 @@ $this->akun = $akun;
         return $this->redirectToIndex();
     }
 
+    // Tentukan aturan validasi data formulir.
     private function rules(): array
     {
         $allowedRoles = $this->isEditing()
@@ -88,11 +93,13 @@ $this->akun = $akun;
         ];
     }
 
+    // Periksa apakah formulir sedang dalam mode edit.
     private function isEditing(): bool
     {
         return $this->akun instanceof User && $this->akun->exists;
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         return view('livewire.admin.akun-form', [
@@ -103,6 +110,7 @@ $this->akun = $akun;
         ]);
     }
 
+    // Tangani proses role options.
     private function roleOptions(): array
     {
         return $this->isEditing()
@@ -110,6 +118,7 @@ $this->akun = $akun;
             : $this->creatableRoleOptions();
     }
 
+    // Tangani proses creatable role options.
     private function creatableRoleOptions(): array
     {
         return [
@@ -118,6 +127,7 @@ $this->akun = $akun;
         ];
     }
 
+    // Tangani proses editable role options.
     private function editableRoleOptions(): array
     {
         return match ($this->akun?->role) {

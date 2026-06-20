@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/AkunTable.php
+
 namespace App\Livewire\Admin;
 
 use App\Models\User;
@@ -16,16 +18,19 @@ class AkunTable extends Component
     public string $search = '';
     public int $perPage = 5;
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingSearch(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingPerPage(): void
     {
         $this->resetPage();
     }
 
+    // Hapus akun pengguna yang dipilih.
     public function deleteAkun(int $id): void
     {
         $user = User::findOrFail($id);
@@ -50,6 +55,7 @@ class AkunTable extends Component
         $this->dispatch('app-feedback', type: 'success', message: 'Akun berhasil dihapus.');
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         $search = trim($this->search);

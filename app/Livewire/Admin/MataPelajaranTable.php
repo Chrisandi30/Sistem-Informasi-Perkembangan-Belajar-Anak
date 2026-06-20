@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/MataPelajaranTable.php
+
 namespace App\Livewire\Admin;
 
 use App\Models\MataPelajaran;
@@ -15,16 +17,19 @@ class MataPelajaranTable extends Component
     public string $search = '';
     public int $perPage = 5;
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingSearch(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingPerPage(): void
     {
         $this->resetPage();
     }
 
+    // Tangani proses delete mata pelajaran.
     public function deleteMataPelajaran(int $id): void
     {
         $mataPelajaran = MataPelajaran::findOrFail($id);
@@ -34,6 +39,7 @@ class MataPelajaranTable extends Component
         $this->dispatch('app-feedback', type: 'success', message: 'Mata pelajaran berhasil dihapus.');
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         $search = trim($this->search);

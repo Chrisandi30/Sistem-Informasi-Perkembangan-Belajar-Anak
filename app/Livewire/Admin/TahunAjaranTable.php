@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/TahunAjaranTable.php
+
 namespace App\Livewire\Admin;
 
 use App\Models\TahunAjaran;
@@ -12,6 +14,7 @@ class TahunAjaranTable extends Component
 
     protected string $paginationTheme = 'bootstrap';
 
+    // Tangani proses activate tahun ajaran.
     public function activateTahunAjaran(int $id): void
     {
         TahunAjaran::query()->update(['is_active' => false]);
@@ -20,6 +23,7 @@ class TahunAjaranTable extends Component
         session()->flash('success', 'Tahun ajaran aktif berhasil diperbarui.');
     }
 
+    // Tangani proses delete tahun ajaran.
     public function deleteTahunAjaran(int $id): void
     {
         TahunAjaran::findOrFail($id)->delete();
@@ -27,6 +31,7 @@ class TahunAjaranTable extends Component
         $this->dispatch('app-feedback', type: 'success', message: 'Data tahun ajaran berhasil dihapus.');
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         $tahunAjaran = TahunAjaran::query()

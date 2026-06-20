@@ -27,31 +27,37 @@ class Perkembangan extends Model
         'validated_at' => 'datetime',
     ];
 
+    // Definisikan relasi model untuk data siswa.
     public function siswa()
     {
         return $this->belongsTo(Siswa::class);
     }
 
+    // Definisikan relasi model untuk data guru.
     public function guru()
     {
         return $this->belongsTo(Guru::class);
     }
 
+    // Siapkan data laporan berdasarkan kelas.
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
     }
 
+    // Definisikan relasi model untuk data validator.
     public function validator()
     {
         return $this->belongsTo(User::class, 'validated_by');
     }
 
+    // Definisikan relasi model untuk data detailPerkembangans.
     public function detailPerkembangans()
     {
         return $this->hasMany(DetailPerkembangan::class)->orderBy('urutan');
     }
 
+    // Kelompokkan detail perkembangan berdasarkan kategori.
     public function groupedDetailsByCategory()
     {
         return ($this->relationLoaded('detailPerkembangans')

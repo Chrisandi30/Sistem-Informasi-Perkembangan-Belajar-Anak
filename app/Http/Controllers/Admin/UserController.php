@@ -10,17 +10,20 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    // Tampilkan daftar data pada halaman utama.
     public function index()
     {
         $users = User::latest()->paginate(15);
         return view('admin.akun.index', compact('users'));
     }
 
+    // Tampilkan halaman untuk menambahkan data.
     public function create()
     {
         return view('admin.akun.create');
     }
 
+    // Validasi dan simpan data baru ke database.
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -35,11 +38,13 @@ class UserController extends Controller
         return redirect()->route('admin.akun.index')->with('success', 'Akun berhasil ditambahkan.');
     }
 
+    // Tampilkan halaman untuk mengubah data.
     public function edit(User $akun)
     {
         return view('admin.akun.edit', compact('akun'));
     }
 
+    // Validasi dan simpan perubahan data.
     public function update(Request $request, User $akun)
     {
         $allowedRoles = $akun->role === 'orang_tua'
@@ -67,6 +72,7 @@ class UserController extends Controller
         return redirect()->route('admin.akun.index')->with('success', 'Akun berhasil diubah.');
     }
 
+    // Hapus data yang dipilih dari database.
     public function destroy(User $akun)
     {
         if ($akun->id === auth()->id()) {

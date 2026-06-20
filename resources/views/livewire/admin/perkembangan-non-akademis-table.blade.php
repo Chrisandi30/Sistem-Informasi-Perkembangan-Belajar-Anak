@@ -11,6 +11,7 @@
     </div>
 
     <div class="table-responsive non-akademis-table-wrap">
+        {{-- Tabel untuk menampilkan daftar data sistem. --}}
         <table class="table table-bordered align-middle non-akademis-table min-w-[680px] table-fixed">
             <thead>
                 <tr>

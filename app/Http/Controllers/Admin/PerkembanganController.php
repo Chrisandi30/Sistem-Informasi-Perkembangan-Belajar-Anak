@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 class PerkembanganController extends Controller
 {
+    // Tampilkan daftar data pada halaman utama.
     public function index(Request $request)
     {
         $query = Perkembangan::with(['siswa.kelas', 'siswa.tahunAjaran', 'guru.kelas', 'kelas', 'detailPerkembangans'])
@@ -48,6 +49,7 @@ class PerkembanganController extends Controller
         return view('admin.perkembangan.index', compact('perkembangans', 'kelas', 'siswas', 'monthOptions', 'yearOptions'));
     }
 
+    // Unduh satu laporan perkembangan dalam format PDF.
     public function exportByPerkembangan(Perkembangan $perkembangan)
     {
         $perkembangan->load(['siswa.kelas', 'siswa.tahunAjaran', 'guru.kelas', 'kelas', 'detailPerkembangans']);
@@ -65,6 +67,7 @@ class PerkembanganController extends Controller
         return $pdf->download($filename);
     }
 
+    // Tampilkan satu laporan perkembangan untuk dicetak.
     public function printByPerkembangan(Perkembangan $perkembangan)
     {
         $perkembangan->load(['siswa.kelas', 'siswa.tahunAjaran', 'guru.kelas', 'kelas', 'detailPerkembangans']);
@@ -75,6 +78,7 @@ class PerkembanganController extends Controller
             'monthOptions' => $this->monthOptions(),
         ]);
     }
+    // Sediakan daftar nama bulan untuk filter.
     private function monthOptions(): array
     {
         return [
@@ -93,6 +97,7 @@ class PerkembanganController extends Controller
         ];
     }
 
+    // Sediakan daftar tahun untuk filter.
     private function yearOptions(array $years = []): array
     {
         $allYears = range(2020, 2100);

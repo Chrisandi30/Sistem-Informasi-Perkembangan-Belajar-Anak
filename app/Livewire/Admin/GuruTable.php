@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/GuruTable.php
+
 namespace App\Livewire\Admin;
 
 use App\Models\Guru;
@@ -16,16 +18,19 @@ class GuruTable extends Component
     public string $search = '';
     public int $perPage = 5;
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingSearch(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingPerPage(): void
     {
         $this->resetPage();
     }
 
+    // Hapus data guru yang dipilih.
     public function deleteGuru(int $id): void
     {
         DB::transaction(function () use ($id) {
@@ -43,6 +48,7 @@ class GuruTable extends Component
         $this->dispatch('app-feedback', type: 'success', message: 'Data guru berhasil dihapus.');
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         $search = trim($this->search);

@@ -25,6 +25,7 @@
     </div>
 
     <div class="table-responsive siswa-table-wrap overflow-x-auto">
+        {{-- Tabel untuk menampilkan daftar data sistem. --}}
         <table class="table table-bordered table-sm align-middle siswa-table w-full min-w-[760px] table-fixed">
             <colgroup>
                 <col class="w-[18%]">

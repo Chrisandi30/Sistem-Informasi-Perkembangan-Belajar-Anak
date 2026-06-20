@@ -11,6 +11,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class LaporanController extends Controller
 {
+    // Tampilkan daftar data pada halaman utama.
     public function index(Request $request)
     {
         $siswa = auth()->user()->siswa;

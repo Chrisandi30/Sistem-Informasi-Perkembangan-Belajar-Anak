@@ -22,16 +22,19 @@ class TahunAjaran extends Model
         'is_active' => 'boolean',
     ];
 
+    // Definisikan relasi model untuk data gurus.
     public function gurus()
     {
         return $this->hasMany(Guru::class);
     }
 
+    // Definisikan relasi model untuk data siswas.
     public function siswas()
     {
         return $this->hasMany(Siswa::class);
     }
 
+    // Definisikan relasi model untuk data perkembangans.
     public function perkembangans()
     {
         return $this->hasMany(Perkembangan::class);

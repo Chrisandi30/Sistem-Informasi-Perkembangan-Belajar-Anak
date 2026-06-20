@@ -14,6 +14,7 @@
     </div>
 
     <div class="table-responsive">
+        {{-- Tabel untuk menampilkan daftar data sistem. --}}
         <table class="table table-bordered align-middle pengumuman-table">
             <thead>
                 <tr>

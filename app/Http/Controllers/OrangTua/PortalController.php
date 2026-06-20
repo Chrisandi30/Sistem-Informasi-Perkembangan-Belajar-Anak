@@ -10,6 +10,7 @@ use App\Models\Perkembangan;
 
 class PortalController extends Controller
 {
+    // Tampilkan daftar data pada halaman utama.
     public function index()
     {
         $siswa = auth()->user()->siswa;

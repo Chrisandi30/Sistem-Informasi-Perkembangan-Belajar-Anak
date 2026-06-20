@@ -15,11 +15,13 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
+    // Susun data yang ditampilkan pada kartu statistik.
     private function statCard(string $label, string|int $value, string $note, string $accent, string $icon): array
     {
         return compact('label', 'value', 'note', 'accent', 'icon');
     }
 
+    // Tampilkan daftar data pada halaman utama.
     public function index()
     {
         $guardOrder = collect([

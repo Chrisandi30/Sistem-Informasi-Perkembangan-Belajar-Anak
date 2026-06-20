@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Guru/PerkembanganForm.php
+
 namespace App\Livewire\Guru;
 
 use App\Livewire\Concerns\ReturnsToIndex;
@@ -26,11 +28,13 @@ class PerkembanganForm extends Component
 
     private WhatsAppService $whatsAppService;
 
+    // Siapkan service yang dibutuhkan oleh komponen.
     public function boot(WhatsAppService $whatsAppService): void
     {
         $this->whatsAppService = $whatsAppService;
     }
 
+    // Isi kondisi awal saat halaman atau komponen dibuka.
     public function mount(?Perkembangan $perkembangan = null): void
     {
         $guru = auth()->user()?->guru;
@@ -68,11 +72,13 @@ class PerkembanganForm extends Component
         $this->syncDetailAspek();
     }
 
+    // Sinkronkan data setelah nilai formulir berubah.
     public function updatedSiswaId(): void
     {
         $this->syncDetailAspek();
     }
 
+    // Validasi lalu simpan data dari formulir.
     public function save()
     {
         $wasEditing = $this->isEditing();
@@ -158,11 +164,13 @@ class PerkembanganForm extends Component
         return $this->redirectToIndex();
     }
 
+    // Ambil data guru yang sedang login.
     private function currentGuru()
     {
         return auth()->user()?->guru;
     }
 
+    // Tentukan aturan validasi data formulir.
     private function rules(): array
     {
         return [
@@ -180,6 +188,7 @@ class PerkembanganForm extends Component
         ];
     }
 
+    // Tangani proses mapels.
     private function mapels(): Collection
     {
         $guru = $this->currentGuru();
@@ -190,6 +199,7 @@ class PerkembanganForm extends Component
             ->get(['id', 'nama_mapel']);
     }
 
+    // Tangani proses siswas.
     private function siswas(): Collection
     {
         $guru = $this->currentGuru();
@@ -197,6 +207,7 @@ class PerkembanganForm extends Component
         return Siswa::where('kelas_id', $guru->kelas_id)->orderBy('nama')->get(['id', 'nama']);
     }
 
+    // Tangani proses non academic aspects.
     private function nonAcademicAspects(): Collection
     {
         return PerkembanganNonAkademis::query()
@@ -207,6 +218,7 @@ class PerkembanganForm extends Component
             ->get(['id', 'kategori_aspek', 'nama_aspek', 'urutan']);
     }
 
+    // Tangani proses selected siswa.
     private function selectedSiswa(): ?Siswa
     {
         if ($this->siswa_id === '') {
@@ -216,6 +228,7 @@ class PerkembanganForm extends Component
         return $this->siswas()->firstWhere('id', (int) $this->siswa_id);
     }
 
+    // Sinkronkan rincian aspek perkembangan pada formulir.
     private function syncDetailAspek(): void
     {
         $current = collect($this->detail_aspek)
@@ -273,6 +286,7 @@ class PerkembanganForm extends Component
         $this->detail_aspek = $items->values()->all();
     }
 
+    // Pastikan seluruh mata pelajaran telah tersedia.
     private function validateAllSubjectsFilled(array $detailAspek, Collection $kelasIds): void
     {
         $sentIds = collect($detailAspek)
@@ -287,6 +301,7 @@ class PerkembanganForm extends Component
         abort_if($sentIds->diff($kelasIds)->isNotEmpty(), 422, 'Daftar mata pelajaran tidak sesuai dengan data admin.');
     }
 
+    // Pastikan minimal satu catatan perkembangan diisi.
     private function validateAnyDevelopmentFieldFilled(array $detailAspek): bool
     {
         $isValid = true;
@@ -306,6 +321,7 @@ class PerkembanganForm extends Component
         return $isValid;
     }
 
+    // Ubah teks kosong menjadi nilai null.
     private function optionalText(?string $value): ?string
     {
         $value = trim((string) $value);
@@ -313,16 +329,19 @@ class PerkembanganForm extends Component
         return $value === '' ? null : $value;
     }
 
+    // Buat kunci unik untuk rincian aspek perkembangan.
     private function detailKey(string $kategori, string $nama): string
     {
         return $kategori.'::'.$nama;
     }
 
+    // Sediakan daftar nama bulan untuk filter.
     private function monthOptions(): array
     {
         return [1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus', 9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'];
     }
 
+    // Sediakan daftar tahun untuk filter.
     private function yearOptions(array $years = []): array
     {
         $currentYear = now()->year;
@@ -335,11 +354,13 @@ class PerkembanganForm extends Component
             ->all();
     }
 
+    // Periksa apakah formulir sedang dalam mode edit.
     private function isEditing(): bool
     {
         return $this->perkembangan instanceof Perkembangan && $this->perkembangan->exists;
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         return view('livewire.guru.perkembangan-form', [

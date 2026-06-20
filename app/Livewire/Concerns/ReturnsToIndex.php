@@ -1,11 +1,14 @@
 <?php
 
+// Livewire: app/Livewire/Concerns/ReturnsToIndex.php
+
 namespace App\Livewire\Concerns;
 
 trait ReturnsToIndex
 {
     public string $returnTo = '';
 
+    // Simpan alamat halaman asal yang aman.
     protected function initializeReturnTo(string $defaultUrl): void
     {
         $candidate = (string) request()->query('return_to', '');
@@ -21,6 +24,7 @@ trait ReturnsToIndex
             : $defaultUrl;
     }
 
+    // Kembali ke halaman daftar sebelumnya.
     protected function redirectToIndex()
     {
         return $this->redirect($this->returnTo, navigate: true);

@@ -2,6 +2,7 @@
     // View: resources/views/guru/siswa/partials/table.blade.php
 @endphp
 <div class="table-responsive">
+    {{-- Tabel untuk menampilkan daftar data sistem. --}}
     <table class="table table-bordered table-sm align-middle">
         <colgroup>
             <col style="width: 70%;">
@@ -46,6 +47,7 @@
         @endif
     </div>
 
+    {{-- Form untuk menerima dan mengirim data pengguna. --}}
     <form method="get" action="{{ route('guru.siswa.index') }}" class="d-flex align-items-center gap-2">
         <input type="hidden" name="search" value="{{ $search }}">
         <label for="perPageGuruSiswa" class="text-muted small mb-0">Per page</label>

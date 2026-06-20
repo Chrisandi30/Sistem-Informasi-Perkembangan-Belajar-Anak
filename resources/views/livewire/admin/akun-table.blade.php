@@ -7,6 +7,7 @@
     </div>
 
     <div class="table-responsive">
+        {{-- Tabel untuk menampilkan daftar data sistem. --}}
         <table class="table table-bordered align-middle akun-table-fit" style="table-layout:auto;">
             <colgroup>
                 <col style="width: 32%;">

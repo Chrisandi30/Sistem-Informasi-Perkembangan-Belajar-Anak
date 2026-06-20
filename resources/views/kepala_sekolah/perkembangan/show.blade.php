@@ -115,6 +115,7 @@
                 <a href="{{ $returnTo }}" class="btn btn-cancel no-cancel-confirm">Kembali</a>
 
                 @if($perkembangan->status !== 'disetujui')
+                    {{-- Form untuk menerima dan mengirim data pengguna. --}}
                     <form method="post" action="{{ route('kepala-sekolah.review.approve', ['perkembangan' => $perkembangan, 'return_to' => $returnTo]) }}">
                         @csrf
                         <button class="btn btn-save" type="submit">Setujui</button>
@@ -128,6 +129,7 @@
                         Minta Revisi
                     </summary>
                     <div class="mt-3">
+                        {{-- Form untuk menerima dan mengirim data pengguna. --}}
                         <form method="post" action="{{ route('kepala-sekolah.review.reject', ['perkembangan' => $perkembangan, 'return_to' => $returnTo]) }}">
                             @csrf
                             <label class="form-label fw-bold">Catatan Revisi</label>

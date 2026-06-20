@@ -8,6 +8,7 @@
     </div>
 
     <div class="table-responsive">
+        {{-- Tabel untuk menampilkan daftar data sistem. --}}
         <table class="table table-bordered table-sm align-middle">
             <colgroup>
                 <col style="width: 70%;">

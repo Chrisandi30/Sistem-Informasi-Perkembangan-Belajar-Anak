@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class SiswaController extends Controller
 {
+    // Tampilkan daftar data pada halaman utama.
     public function index(Request $request)
     {
         $guru = auth()->user()->guru;

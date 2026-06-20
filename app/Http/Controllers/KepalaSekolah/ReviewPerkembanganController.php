@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class ReviewPerkembanganController extends Controller
 {
+    // Siapkan dependency yang digunakan oleh class.
     public function __construct(private readonly WhatsAppService $whatsAppService)
     {
     }
@@ -48,6 +49,7 @@ class ReviewPerkembanganController extends Controller
         return view('kepala_sekolah.perkembangan.show', compact('perkembangan', 'monthOptions', 'returnTo'));
     }
 
+    // Setujui laporan perkembangan yang telah diperiksa.
     public function approve(Request $request, Perkembangan $perkembangan)
     {
         abort_if($perkembangan->status === 'disetujui', 422, 'Laporan ini sudah disetujui.');
@@ -73,6 +75,7 @@ class ReviewPerkembanganController extends Controller
         return redirect()->to($returnTo)->with('success', 'Laporan berhasil disetujui.');
     }
 
+    // Kembalikan laporan kepada guru untuk direvisi.
     public function reject(Request $request, Perkembangan $perkembangan)
     {
         // Pastikan alasan revisi diisi sebelum laporan dikembalikan ke guru.

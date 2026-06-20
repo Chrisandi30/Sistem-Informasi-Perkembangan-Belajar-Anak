@@ -6,9 +6,13 @@
         const sidebarStorageKey = 'tk-winfield-sidebar-scroll';
         const menuStoragePrefix = 'tk-winfield-menu-';
 
+        // Jalankan proses getSidebar pada halaman.
         const getSidebar = () => document.querySelector('.sidebar');
+        // Jalankan proses getSidebarOverlay pada halaman.
         const getSidebarOverlay = () => document.getElementById('mobileSidebarOverlay');
+        // Jalankan proses getSidebarScrollArea pada halaman.
         const getSidebarScrollArea = () => document.querySelector('.sidebar-scroll-area');
+        // Jalankan proses isMobileViewport pada halaman.
         const isMobileViewport = () => window.innerWidth <= 1000;
 
         // Tutup sidebar dan aktifkan kembali scroll halaman utama.
@@ -21,6 +25,7 @@
             document.body.style.overflow = '';
         };
 
+        // Jalankan proses openMobileSidebar pada halaman.
         const openMobileSidebar = () => {
             const sidebar = getSidebar();
             const overlay = getSidebarOverlay();
@@ -34,6 +39,7 @@
             document.body.style.overflow = 'hidden';
         };
 
+        // Jalankan proses setMenuVisualState pada halaman.
         const setMenuVisualState = (menu, expanded) => {
             const links = menu.querySelector('.dropdown-links');
             if (!links) {
@@ -69,6 +75,7 @@
             }
         };
 
+        // Jalankan proses persistSidebarScroll pada halaman.
         const persistSidebarScroll = () => {
             const scrollArea = getSidebarScrollArea();
             if (!scrollArea) {
@@ -78,6 +85,7 @@
             sessionStorage.setItem(sidebarStorageKey, String(scrollArea.scrollTop));
         };
 
+        // Jalankan proses restoreMenuState pada halaman.
         const restoreMenuState = () => {
             document.querySelectorAll('.menu-dropdown[data-menu-key]').forEach((menu) => {
                 const key = menu.getAttribute('data-menu-key');
@@ -93,6 +101,7 @@
             });
         };
 
+        // Jalankan proses persistMenuState pada halaman.
         const persistMenuState = () => {
             document.querySelectorAll('.menu-dropdown[data-menu-key]').forEach((menu) => {
                 const key = menu.getAttribute('data-menu-key');
@@ -152,6 +161,7 @@
             }, 340);
         };
 
+        // Jalankan proses bindAnimatedMenus pada halaman.
         const bindAnimatedMenus = () => {
             document.querySelectorAll('.menu-dropdown[data-menu-key] > summary').forEach((summary) => {
                 if (summary.dataset.menuBound === '1') {
@@ -166,6 +176,7 @@
             });
         };
 
+        // Jalankan proses bindMobileSidebar pada halaman.
         const bindMobileSidebar = () => {
             const toggle = document.getElementById('mobileSidebarToggle');
             const innerToggle = document.getElementById('mobileSidebarInnerToggle');

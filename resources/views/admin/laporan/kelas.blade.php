@@ -23,6 +23,7 @@
 <div class="card">
     <div class="card-body p-0">
         <div class="table-responsive">
+            {{-- Tabel untuk menampilkan daftar data sistem. --}}
             <table class="table align-middle mb-0 laporan-kelas-table">
                 <thead>
                     <tr>

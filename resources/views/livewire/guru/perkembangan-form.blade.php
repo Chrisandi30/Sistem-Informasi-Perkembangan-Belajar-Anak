@@ -1,6 +1,7 @@
 @php
     // View: resources/views/livewire/guru/perkembangan-form.blade.php
 @endphp
+{{-- Form untuk menerima dan mengirim data pengguna. --}}
 <form wire:submit="save" class="card border-0 shadow-sm rounded-4 overflow-hidden">
     <div class="card-body p-4 p-lg-5">
         <div class="mb-5">

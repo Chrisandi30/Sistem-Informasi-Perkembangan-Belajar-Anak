@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/SiswaForm.php
+
 namespace App\Livewire\Admin;
 
 use App\Livewire\Concerns\ReturnsToIndex;
@@ -204,6 +206,7 @@ $this->siswa = $siswa;
         return $rules;
     }
 
+    // Tentukan pesan kesalahan validasi.
     private function messages(): array
     {
         return [
@@ -218,6 +221,7 @@ $this->siswa = $siswa;
         ];
     }
 
+    // Tangani proses nullable string.
     private function nullableString(?string $value): ?string
     {
         $value = trim((string) $value);
@@ -225,11 +229,13 @@ $this->siswa = $siswa;
         return $value === '' ? null : $value;
     }
 
+    // Periksa apakah formulir sedang dalam mode edit.
     private function isEditing(): bool
     {
         return $this->siswa instanceof Siswa && $this->siswa->exists;
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         return view('livewire.admin.siswa-form', [

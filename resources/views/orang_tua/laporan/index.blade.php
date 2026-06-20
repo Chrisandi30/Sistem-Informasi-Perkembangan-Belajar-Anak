@@ -12,6 +12,7 @@
 @endphp
         <div class="portal-mobile-card mb-4 rounded-[28px] border border-[var(--portal-line)] bg-white shadow-[0_16px_36px_rgba(41,60,89,0.08)]">
             <div class="p-[26px] max-[700px]:px-2 max-[700px]:py-3">
+                {{-- Form untuk menerima dan mengirim data pengguna. --}}
                 <form method="get" class="row g-3 align-items-end" id="orangTuaLaporanFilterForm">
                     <div class="col-md-4">
                         <label class="form-label fw-semibold">Bulan</label>
@@ -145,6 +146,7 @@
 
 @push('scripts')
     <script>
+        // Inisialisasi fungsi initOrangTuaLaporanAjax pada halaman.
         function initOrangTuaLaporanAjax() {
             const form = document.getElementById('orangTuaLaporanFilterForm');
             const results = document.getElementById('orangTuaLaporanResults');
@@ -156,6 +158,7 @@
 
             form.dataset.ajaxBound = 'true';
 
+            // Jalankan proses setLoadingState pada halaman.
             const setLoadingState = (isLoading) => {
                 if (!submitButton) {
                     return;
@@ -165,6 +168,7 @@
                 submitButton.textContent = isLoading ? 'Memuat...' : 'Tampilkan';
             };
 
+            // Jalankan proses loadResults pada halaman.
             const loadResults = async (url, pushHistory = true) => {
                 setLoadingState(true);
 

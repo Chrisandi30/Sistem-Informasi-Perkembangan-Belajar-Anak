@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Guru/PerkembanganTable.php
+
 namespace App\Livewire\Guru;
 
 use App\Models\Perkembangan;
@@ -19,31 +21,37 @@ class PerkembanganTable extends Component
     public string $tahun = '';
     public int $perPage = 5;
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingSearch(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingSiswaId(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingBulan(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingTahun(): void
     {
         $this->resetPage();
     }
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingPerPage(): void
     {
         $this->resetPage();
     }
 
+    // Hapus laporan perkembangan yang dipilih.
     public function deletePerkembangan(int $id): void
     {
         $guru = auth()->user()?->guru;
@@ -57,6 +65,7 @@ class PerkembanganTable extends Component
         session()->flash('success', 'Laporan berhasil dihapus.');
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         $guru = auth()->user()?->guru;
@@ -100,6 +109,7 @@ class PerkembanganTable extends Component
         return view('livewire.guru.perkembangan-table', compact('perkembangans', 'siswas', 'monthOptions', 'yearOptions'));
     }
 
+    // Sediakan daftar nama bulan untuk filter.
     private function monthOptions(): array
     {
         return [
@@ -118,6 +128,7 @@ class PerkembanganTable extends Component
         ];
     }
 
+    // Sediakan daftar tahun untuk filter.
     private function yearOptions(array $years = []): array
     {
         $currentYear = now()->year;

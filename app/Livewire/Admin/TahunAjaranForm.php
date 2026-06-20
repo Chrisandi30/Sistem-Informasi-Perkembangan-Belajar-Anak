@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/TahunAjaranForm.php
+
 namespace App\Livewire\Admin;
 
 use App\Livewire\Concerns\ReturnsToIndex;
@@ -17,6 +19,7 @@ public ?TahunAjaran $tahunAjaran = null;
     // Simpan nilai select sebagai string agar opsi edit selalu sesuai kondisi database.
     public string $is_active = '0';
 
+    // Isi kondisi awal saat halaman atau komponen dibuka.
     public function mount(?TahunAjaran $tahun_ajaran = null): void
     {
 
@@ -29,6 +32,7 @@ $this->tahunAjaran = $tahun_ajaran;
         }
     }
 
+    // Validasi lalu simpan data dari formulir.
     public function save()
     {
         $data = $this->validate([
@@ -54,11 +58,13 @@ $this->tahunAjaran = $tahun_ajaran;
         return $this->redirectToIndex();
     }
 
+    // Periksa apakah formulir sedang dalam mode edit.
     private function isEditing(): bool
     {
         return $this->tahunAjaran instanceof TahunAjaran && $this->tahunAjaran->exists;
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         return view('livewire.admin.tahun-ajaran-form', ['isEdit' => $this->isEditing()]);

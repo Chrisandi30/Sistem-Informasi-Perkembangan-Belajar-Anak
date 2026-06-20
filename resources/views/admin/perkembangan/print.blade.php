@@ -376,6 +376,7 @@
 
         <div class="print-page">
             <div class="header">
+                {{-- Tabel untuk menampilkan daftar data sistem. --}}
                 <table class="header-table">
                     <tr>
                         <td class="header-logo-cell">
@@ -395,6 +396,7 @@
             <div class="line"></div>
 
             <div class="meta-wrap">
+                {{-- Tabel untuk menampilkan daftar data sistem. --}}
                 <table class="meta-table">
                     <tr>
                         <td class="meta-label">Nama Anak</td>

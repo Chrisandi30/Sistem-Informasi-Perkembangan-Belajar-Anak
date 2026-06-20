@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/KelasTable.php
+
 namespace App\Livewire\Admin;
 
 use App\Models\Kelas;
@@ -15,11 +17,13 @@ class KelasTable extends Component
 
     public string $search = '';
 
+    // Kembalikan pagination ke halaman pertama saat filter berubah.
     public function updatingSearch(): void
     {
         $this->resetPage();
     }
 
+    // Hapus data kelas yang dipilih.
     public function deleteKelas(int $id): void
     {
         try {
@@ -32,6 +36,7 @@ class KelasTable extends Component
         }
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         $search = trim($this->search);

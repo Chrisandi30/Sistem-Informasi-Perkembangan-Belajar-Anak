@@ -9,6 +9,7 @@
         let livewireHookBound = false;
         let skipNextNavigateLoading = false;
 
+        // Jalankan proses showLoading pada halaman.
         const showLoading = (message = 'Memuat halaman...') => {
             if (loadingText) {
                 loadingText.textContent = message;
@@ -21,6 +22,7 @@
             document.body.classList.add('page-loading');
         };
 
+        // Jalankan proses hideLoading pada halaman.
         const hideLoading = () => {
             if (loadingOverlay) {
                 loadingOverlay.classList.remove('show');
@@ -29,6 +31,7 @@
             document.body.classList.remove('page-loading');
         };
 
+        // Jalankan proses redirectExpiredSession pada halaman.
         const redirectExpiredSession = () => {
             hideLoading();
 
@@ -53,6 +56,7 @@
             };
         }
 
+        // Jalankan proses navigateWithLoading pada halaman.
         const navigateWithLoading = (link) => {
             const href = link.getAttribute('href');
             if (!href) {
@@ -70,6 +74,7 @@
         };
 
 
+        // Jalankan proses initPasswordVisibilityToggle pada halaman.
         const initPasswordVisibilityToggle = () => {
             if (document.documentElement.dataset.passwordToggleBound === '1') {
                 return;
@@ -92,6 +97,7 @@
                 button.setAttribute('aria-label', isHidden ? 'Sembunyikan password akun' : 'Tampilkan password akun');
             });
         };
+        // Jalankan proses bindLivewireHooks pada halaman.
         const bindLivewireHooks = () => {
             if (livewireHookBound || !window.Livewire || typeof window.Livewire.hook !== 'function') {
                 return;

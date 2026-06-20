@@ -4,6 +4,7 @@
 @php
     // Form tambah dan edit siswa menggunakan komponen Livewire yang sama.
 @endphp
+{{-- Form untuk menerima dan mengirim data pengguna. --}}
 <form wire:submit="save" class="card card-body form-shell bg-white p-7" enctype="multipart/form-data">
     <div class="row g-3">
         <div class="col-md-4">

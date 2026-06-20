@@ -4,6 +4,7 @@
 <script>
     (function () {
         const authMeta = document.getElementById('appAuthMeta');
+        // Jalankan proses parseJsonAttribute pada halaman.
         const parseJsonAttribute = (value, fallback) => {
             if (typeof value !== 'string' || value === '') {
                 return fallback;
@@ -25,6 +26,7 @@
         const toggleBtn = document.getElementById('togglePassword');
         const passwordInput = document.getElementById('password');
 
+        // Jalankan proses showAuthLoading pada halaman.
         const showAuthLoading = (message = 'Sedang memproses...') => {
             if (loginLoadingText) {
                 loginLoadingText.textContent = message;
@@ -37,6 +39,7 @@
             document.body.classList.add('page-loading');
         };
 
+        // Jalankan proses hideAuthLoading pada halaman.
         const hideAuthLoading = () => {
             if (loginOverlay) {
                 loginOverlay.classList.remove('show');

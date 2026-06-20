@@ -10,17 +10,20 @@ use Illuminate\Http\Request;
 
 class PengumumanController extends Controller
 {
+    // Tampilkan daftar data pada halaman utama.
     public function index()
     {
         $pengumuman = Pengumuman::latest('tanggal_terbit')->paginate(10);
         return view('admin.pengumuman.index', compact('pengumuman'));
     }
 
+    // Tampilkan halaman untuk menambahkan data.
     public function create()
     {
         return view('admin.pengumuman.create');
     }
 
+    // Validasi dan simpan data baru ke database.
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -35,11 +38,13 @@ class PengumumanController extends Controller
         return redirect()->route('admin.pengumuman.index')->with('success', 'Pengumuman berhasil ditambahkan.');
     }
 
+    // Tampilkan halaman untuk mengubah data.
     public function edit(Pengumuman $pengumuman)
     {
         return view('admin.pengumuman.edit', compact('pengumuman'));
     }
 
+    // Validasi dan simpan perubahan data.
     public function update(Request $request, Pengumuman $pengumuman)
     {
         $data = $request->validate([
@@ -54,6 +59,7 @@ class PengumumanController extends Controller
         return redirect()->route('admin.pengumuman.index')->with('success', 'Pengumuman berhasil diubah.');
     }
 
+    // Hapus data yang dipilih dari database.
     public function destroy(Pengumuman $pengumuman)
     {
         $pengumuman->delete();

@@ -13,18 +13,21 @@ use Illuminate\Support\Facades\DB;
 
 class GuruController extends Controller
 {
+    // Tampilkan daftar data pada halaman utama.
     public function index()
     {
         $gurus = Guru::with(['kelas', 'user'])->latest()->paginate(10);
         return view('admin.guru.index', compact('gurus'));
     }
 
+    // Tampilkan halaman untuk menambahkan data.
     public function create()
     {
         $kelas = Kelas::orderBy('nama_kelas')->get();
         return view('admin.guru.create', compact('kelas'));
     }
 
+    // Validasi dan simpan data baru ke database.
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -62,12 +65,14 @@ class GuruController extends Controller
         return redirect()->route('admin.guru.index')->with('success', 'Guru dan akun login berhasil ditambahkan.');
     }
 
+    // Tampilkan halaman untuk mengubah data.
     public function edit(Guru $guru)
     {
         $kelas = Kelas::orderBy('nama_kelas')->get();
         return view('admin.guru.edit', compact('guru', 'kelas'));
     }
 
+    // Validasi dan simpan perubahan data.
     public function update(Request $request, Guru $guru)
     {
         $data = $request->validate([
@@ -106,6 +111,7 @@ class GuruController extends Controller
         return redirect()->route('admin.guru.index')->with('success', 'Data guru berhasil diubah.');
     }
 
+    // Hapus data yang dipilih dari database.
     public function destroy(Guru $guru)
     {
         $guru->user()->delete();

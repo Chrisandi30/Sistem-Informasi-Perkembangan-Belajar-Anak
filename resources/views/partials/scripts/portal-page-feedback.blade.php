@@ -7,15 +7,18 @@
             lastSignature: null,
         });
 
+        // Jalankan proses getSuccessMessage pada halaman.
         const getSuccessMessage = () => {
             const element = document.querySelector('.portal-alert-success');
             return element ? element.textContent.trim() : '';
         };
 
+        // Jalankan proses getErrorItems pada halaman.
         const getErrorItems = () => Array.from(document.querySelectorAll('.portal-alert-errors li'))
             .map((item) => item.textContent.trim())
             .filter(Boolean);
 
+        // Jalankan proses showPortalFeedback pada halaman.
         const showPortalFeedback = () => {
             const successMessage = getSuccessMessage();
             const errorItems = getErrorItems();

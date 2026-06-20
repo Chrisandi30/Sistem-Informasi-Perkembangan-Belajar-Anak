@@ -1,5 +1,7 @@
 <?php
 
+// Livewire: app/Livewire/Admin/PerkembanganNonAkademisForm.php
+
 namespace App\Livewire\Admin;
 
 use App\Livewire\Concerns\ReturnsToIndex;
@@ -17,6 +19,7 @@ public ?PerkembanganNonAkademis $perkembanganNonAkademis = null;
     public string $urutan = '1';
     public bool $is_active = true;
 
+    // Isi kondisi awal saat halaman atau komponen dibuka.
     public function mount(?PerkembanganNonAkademis $perkembanganNonAkademis = null): void
     {
 
@@ -31,6 +34,7 @@ $this->perkembanganNonAkademis = $perkembanganNonAkademis;
         }
     }
 
+    // Validasi lalu simpan data dari formulir.
     public function save()
     {
         $data = $this->validate([
@@ -58,11 +62,13 @@ $this->perkembanganNonAkademis = $perkembanganNonAkademis;
         return $this->redirectToIndex();
     }
 
+    // Periksa apakah formulir sedang dalam mode edit.
     private function isEditing(): bool
     {
         return $this->perkembanganNonAkademis instanceof PerkembanganNonAkademis && $this->perkembanganNonAkademis->exists;
     }
 
+    // Kirim data komponen ke tampilan Livewire.
     public function render()
     {
         return view('livewire.admin.perkembangan-non-akademis-form', [

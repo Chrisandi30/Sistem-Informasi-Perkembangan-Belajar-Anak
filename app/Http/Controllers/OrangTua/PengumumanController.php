@@ -9,6 +9,7 @@ use App\Models\Pengumuman;
 
 class PengumumanController extends Controller
 {
+    // Tampilkan daftar data pada halaman utama.
     public function index()
     {
         $today = now()->toDateString();

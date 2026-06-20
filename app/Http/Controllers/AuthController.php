@@ -11,11 +11,13 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    // Tampilkan halaman login pengguna.
     public function showLogin()
     {
         return view('auth.login');
     }
 
+    // Periksa kredensial dan buat sesi pengguna.
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -54,6 +56,7 @@ class AuthController extends Controller
         return redirect()->route('dashboard')->with('success', 'Login berhasil. Selamat menggunakan sistem.');
     }
 
+    // Akhiri sesi pengguna yang sedang aktif.
     public function logout(Request $request)
     {
         $guard = (string) $request->input('guard', '');

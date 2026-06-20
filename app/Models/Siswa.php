@@ -35,26 +35,31 @@ class Siswa extends Model
         'tanggal_lahir' => 'date',
     ];
 
+    // Siapkan data laporan berdasarkan kelas.
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
     }
 
+    // Definisikan relasi model untuk data tahunAjaran.
     public function tahunAjaran()
     {
         return $this->belongsTo(TahunAjaran::class);
     }
 
+    // Definisikan relasi model untuk data user.
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    // Definisikan relasi model untuk data perkembangans.
     public function perkembangans()
     {
         return $this->hasMany(Perkembangan::class);
     }
 
+    // Bentuk URL publik untuk pas foto siswa.
     public function getPasFotoUrlAttribute(): ?string
     {
         return $this->pas_foto
@@ -62,6 +67,7 @@ class Siswa extends Model
             : null;
     }
 
+    // Ubah kode jenis kelamin menjadi label yang mudah dibaca.
     public function getJenisKelaminLabelAttribute(): string
     {
         return match ($this->jenis_kelamin) {
@@ -71,6 +77,7 @@ class Siswa extends Model
         };
     }
 
+    // Gabungkan nama orang tua atau wali siswa.
     public function getNamaOrangTuaLabelAttribute(): string
     {
         $ayah = trim((string) $this->nama_ayah);

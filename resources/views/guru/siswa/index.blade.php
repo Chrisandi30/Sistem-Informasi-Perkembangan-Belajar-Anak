@@ -8,6 +8,7 @@
     <h5>Daftar Siswa Kelas {{ $guru->kelas->nama_kelas }}</h5>
 </div>
 
+{{-- Form untuk menerima dan mengirim data pengguna. --}}
 <form method="get" action="{{ route('guru.siswa.index') }}" class="mb-3" id="guruSiswaFilterForm">
     <div class="relative" style="max-width: 200px;">
         <span class="pointer-events-none absolute start-0 top-50 z-[2] translate-middle-y ms-3 text-[14px] text-[#8a96ab]"><i class="fas fa-search"></i></span>
@@ -24,6 +25,7 @@
 @push('page-scripts')
     @include('partials.scripts.app-feedback')
     <script>
+        // Inisialisasi fungsi initGuruSiswaAjax pada halaman.
         function initGuruSiswaAjax() {
             const form = document.getElementById('guruSiswaFilterForm');
             const results = document.getElementById('guruSiswaResults');
@@ -37,6 +39,7 @@
             form.dataset.ajaxBound = '1';
             let searchTimer = null;
 
+            // Jalankan proses scrollToPageTop pada halaman.
             const scrollToPageTop = () => {
                 if (document.activeElement instanceof HTMLElement) {
                     document.activeElement.blur();
@@ -51,6 +54,7 @@
                 });
             };
 
+            // Jalankan proses buildUrl pada halaman.
             const buildUrl = (url = form.action, keepPage = false) => {
                 const nextUrl = new URL(url, window.location.origin);
                 const search = searchInput?.value?.trim() || '';
@@ -71,6 +75,7 @@
                 return nextUrl;
             };
 
+            // Jalankan proses loadResults pada halaman.
             const loadResults = async (url, pushHistory = true) => {
                 try {
                     window.tkWinfieldUi?.hideLoading?.();

@@ -34,6 +34,7 @@
     </div>
 
     <div class="table-responsive perkembangan-table-wrap">
+        {{-- Tabel untuk menampilkan daftar data sistem. --}}
         <table class="table table-bordered table-sm align-middle perkembangan-list-table">
             <colgroup>
                 <col style="width: 28%;">
