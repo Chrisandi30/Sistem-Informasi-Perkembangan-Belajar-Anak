@@ -597,8 +597,8 @@
                 <button type="button" id="mobileSidebarToggle" class="mobile-sidebar-toggle" aria-label="Buka menu">
                     <i class="fas fa-bars"></i>
                 </button>
-                <div class="min-w-0 truncate text-[18px] font-extrabold text-[#1f2937]">
-                    <span>{{ $topbarTitle }}</span>
+                <div class="topbar-title-wrap min-w-0 truncate text-[18px] font-extrabold text-[#1f2937]">
+                    <span class="topbar-title-text">{{ $topbarTitle }}</span>
                 </div>
             </div>
             <div class="flex items-center gap-3">

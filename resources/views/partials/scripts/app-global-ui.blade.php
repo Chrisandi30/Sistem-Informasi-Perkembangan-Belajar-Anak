@@ -53,6 +53,17 @@
             };
         }
 
+        // Kembalikan tabel responsif ke kolom pertama saat halaman dibuka.
+        const resetResponsiveTableScroll = () => {
+            if (!window.matchMedia('(max-width: 700px)').matches) {
+                return;
+            }
+
+            document.querySelectorAll('.content-inner .table-responsive').forEach((tableWrapper) => {
+                tableWrapper.scrollLeft = 0;
+            });
+        };
+
         // Jalankan proses navigateWithLoading pada halaman.
         const navigateWithLoading = (link) => {
             const href = link.getAttribute('href');
@@ -128,13 +139,17 @@
 
         initPasswordVisibilityToggle();
 
-        window.addEventListener('pageshow', hideLoading);
-
+        requestAnimationFrame(resetResponsiveTableScroll);
+        window.addEventListener('pageshow', () => {
+            hideLoading();
+            requestAnimationFrame(resetResponsiveTableScroll);
+        });
         document.addEventListener('livewire:init', bindLivewireHooks);
         document.addEventListener('livewire:initialized', bindLivewireHooks);
         document.addEventListener('livewire:navigated', () => {
             bindLivewireHooks();
             hideLoading();
+            requestAnimationFrame(resetResponsiveTableScroll);
         });
         document.addEventListener('livewire:navigate', () => {
             if (window.tkWinfieldUi && typeof window.tkWinfieldUi.shouldHoldNavigationLoading === 'function' && window.tkWinfieldUi.shouldHoldNavigationLoading()) {

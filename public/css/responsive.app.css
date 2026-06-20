@@ -427,11 +427,19 @@
         font-size: 24px;
     }
 
+    .perkembangan-page-heading {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 14px !important;
+    }
+
     .perkembangan-page-heading h5,
     .review-page > h5 {
-        font-size: 18px;
-        line-height: 1.2;
-        white-space: nowrap;
+        width: 100% !important;
+        margin: 0 !important;
+        font-size: 20px !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
     }
 
     .standard-search-wrap,
@@ -571,5 +579,93 @@
 
     .content-inner .card.card-body.form-shell {
         padding: 20px 16px !important;
+    }
+
+    /* Pastikan judul topbar tampil utuh tanpa mengganggu tombol menu dan logout. */
+    .app-topbar .topbar-leading {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        overflow: visible !important;
+    }
+
+    .app-topbar .topbar-title-wrap {
+        min-width: 0 !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        white-space: nowrap !important;
+        font-size: 10px !important;
+        line-height: 1.15 !important;
+    }
+
+    .app-topbar .topbar-title-text {
+        display: block;
+        white-space: nowrap !important;
+    }
+
+    .app-topbar > .flex.items-center.gap-3 {
+        flex: 0 0 auto !important;
+        gap: 0 !important;
+    }
+
+    /* Paksa seluruh filter laporan tersusun vertikal dan tidak keluar layar. */
+    .content-inner .review-filters {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 10px !important;
+        overflow: visible !important;
+    }
+
+    .content-inner .review-filters > .review-filter,
+    .content-inner .review-filters > .review-filter-search {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .content-inner .review-filters .form-control,
+    .content-inner .review-filters .form-select {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .content-inner .perkembangan-filters {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 10px !important;
+    }
+
+    .content-inner .perkembangan-filters > div {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+
+    .content-inner .perkembangan-filters .form-control,
+    .content-inner .perkembangan-filters .form-select {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+
+    /* Mulai tabel dari kolom pertama dan tetap izinkan geser horizontal. */
+    .content-inner .table-responsive {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        direction: ltr;
+        scroll-behavior: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }
