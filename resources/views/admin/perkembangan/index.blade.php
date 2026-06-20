@@ -5,10 +5,7 @@
 @section('title', 'Perkembangan Siswa')
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-3 perkembangan-page-heading">
-    <h5>
-        <span class="page-title-desktop">Data Laporan Perkembangan</span>
-        <span class="page-title-mobile">Data Perkembangan</span>
-    </h5>
+    <h5>Data Laporan Perkembangan</h5>
 </div>
 
 <livewire:admin.perkembangan-table />
