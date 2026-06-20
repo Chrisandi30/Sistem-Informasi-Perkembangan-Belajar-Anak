@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/livewire/admin/tahun-ajaran-table.blade.php
-@endphp
 <div>
     <div class="table-responsive">
         {{-- Tabel untuk menampilkan daftar data sistem. --}}

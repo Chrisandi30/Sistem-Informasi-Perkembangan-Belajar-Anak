@@ -1,7 +1,4 @@
 <?php
-
-// Livewire: app/Livewire/Admin/GuruTable.php
-
 namespace App\Livewire\Admin;
 
 use App\Models\Guru;

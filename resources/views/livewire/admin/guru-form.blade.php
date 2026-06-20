@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/livewire/admin/guru-form.blade.php
-@endphp
 {{-- Form untuk menerima dan mengirim data pengguna. --}}
 <form wire:submit="save" class="card card-body form-shell bg-white p-7">
     <div class="row g-3">

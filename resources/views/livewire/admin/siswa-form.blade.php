@@ -1,7 +1,4 @@
 @php
-    // View: resources/views/livewire/admin/siswa-form.blade.php
-@endphp
-@php
     // Form tambah dan edit siswa menggunakan komponen Livewire yang sama.
 @endphp
 {{-- Form untuk menerima dan mengirim data pengguna. --}}

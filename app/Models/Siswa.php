@@ -1,7 +1,4 @@
 <?php
-
-// Model: app/Models/Siswa.php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;

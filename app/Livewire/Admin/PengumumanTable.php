@@ -1,7 +1,4 @@
 <?php
-
-// Livewire: app/Livewire/Admin/PengumumanTable.php
-
 namespace App\Livewire\Admin;
 
 use App\Models\Pengumuman;

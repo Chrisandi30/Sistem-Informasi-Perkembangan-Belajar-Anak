@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/layouts/orang_tua.blade.php
-@endphp
 <!doctype html>
 <html lang="id">
 <head>

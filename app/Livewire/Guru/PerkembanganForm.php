@@ -1,7 +1,4 @@
 <?php
-
-// Livewire: app/Livewire/Guru/PerkembanganForm.php
-
 namespace App\Livewire\Guru;
 
 use App\Livewire\Concerns\ReturnsToIndex;

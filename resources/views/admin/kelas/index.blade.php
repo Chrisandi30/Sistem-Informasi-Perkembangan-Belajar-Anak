@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/admin/kelas/index.blade.php
-@endphp
 @extends('layouts.app')
 @section('title', 'Daftar Kelas')
 @section('content')

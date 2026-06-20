@@ -1,7 +1,4 @@
 <?php
-
-// Livewire: app/Livewire/KepalaSekolah/ReviewTable.php
-
 namespace App\Livewire\KepalaSekolah;
 
 use App\Models\Kelas;

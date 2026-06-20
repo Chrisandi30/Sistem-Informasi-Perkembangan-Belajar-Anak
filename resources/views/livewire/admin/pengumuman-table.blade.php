@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/livewire/admin/pengumuman-table.blade.php
-@endphp
 <div>
     <style>
         .pengumuman-table th:nth-child(2),

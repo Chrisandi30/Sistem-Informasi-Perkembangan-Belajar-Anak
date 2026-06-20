@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/admin/akun/edit.blade.php
-@endphp
 @extends('layouts.app')
 @section('title', 'Edit Akun')
 @section('content')

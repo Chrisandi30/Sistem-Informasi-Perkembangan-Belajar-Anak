@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/admin/laporan/print-kelas.blade.php
-@endphp
 <!doctype html>
 <html lang="id">
 <head>

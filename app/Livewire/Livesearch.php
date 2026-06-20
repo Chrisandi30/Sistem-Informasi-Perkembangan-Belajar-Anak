@@ -1,7 +1,4 @@
 <?php
-
-// Livewire: app/Livewire/Livesearch.php
-
 namespace App\Livewire;
 
 use Livewire\Component;

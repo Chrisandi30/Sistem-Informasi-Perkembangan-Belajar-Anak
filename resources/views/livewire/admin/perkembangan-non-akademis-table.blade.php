@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/livewire/admin/perkembangan-non-akademis-table.blade.php
-@endphp
 <div>
     @php
         $nonAkademisActionButtonClass = 'btn btn-sm aksi-btn !inline-flex !h-[34px] !min-h-[34px] !w-[34px] !min-w-[34px] flex-none items-center justify-center rounded-[10px] !p-0 text-[0.78rem] leading-none';

@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/admin/perkembangan/pdf.blade.php
-@endphp
 <!doctype html>
 <html lang="id">
 <head>

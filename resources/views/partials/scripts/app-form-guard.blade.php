@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/partials/scripts/app-form-guard.blade.php
-@endphp
 <script>
     (function () {
         const state = window.__tkWinfieldFormGuard || (window.__tkWinfieldFormGuard = {

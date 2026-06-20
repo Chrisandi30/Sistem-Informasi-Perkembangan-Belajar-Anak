@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/admin/guru/index.blade.php
-@endphp
 @extends('layouts.app')
 @section('title', 'Daftar Guru')
 @section('content')

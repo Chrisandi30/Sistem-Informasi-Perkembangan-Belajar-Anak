@@ -1,7 +1,4 @@
 <?php
-
-// Livewire: app/Livewire/Guru/SiswaTable.php
-
 namespace App\Livewire\Guru;
 
 use App\Models\Siswa;

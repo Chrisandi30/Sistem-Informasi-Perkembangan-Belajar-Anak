@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/livewire/kepala-sekolah/review-table.blade.php
-@endphp
 <div>
     <div class="review-filters mb-4 mt-1" style="display:grid; grid-template-columns:minmax(240px,1.5fr) repeat(4,minmax(140px,1fr)); gap:12px; align-items:end;">
         <div class="review-filter review-filter-search" style="position:relative; min-width:0;">

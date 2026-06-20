@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/vendor/livewire/siswa-pagination.blade.php
-@endphp
 @if ($paginator->hasPages())
 <nav role="navigation" aria-label="Pagination Navigation">
     <div class="d-flex align-items-center gap-1 flex-wrap justify-content-center">

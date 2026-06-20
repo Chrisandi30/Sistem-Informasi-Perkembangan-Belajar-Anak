@@ -1,7 +1,4 @@
 <?php
-
-// Livewire: app/Livewire/Admin/TahunAjaranTable.php
-
 namespace App\Livewire\Admin;
 
 use App\Models\TahunAjaran;

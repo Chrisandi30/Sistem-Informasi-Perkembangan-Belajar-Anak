@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/admin/siswa/create.blade.php
-@endphp
 @extends('layouts.app')
 @section('title', 'Tambah Siswa')
 @section('content')

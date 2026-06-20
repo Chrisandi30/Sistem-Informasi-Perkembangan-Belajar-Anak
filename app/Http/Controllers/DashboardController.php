@@ -1,7 +1,4 @@
 <?php
-
-// Controller: app/Http/Controllers/DashboardController.php
-
 namespace App\Http\Controllers;
 
 use App\Models\Guru;

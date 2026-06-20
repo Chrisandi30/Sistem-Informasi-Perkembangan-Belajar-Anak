@@ -1,7 +1,4 @@
 <?php
-
-// Livewire: app/Livewire/Admin/SiswaTable.php
-
 namespace App\Livewire\Admin;
 
 use App\Models\Kelas;

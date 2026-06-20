@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/partials/scripts/app-sidebar-state.blade.php
-@endphp
 <script>
     (function () {
         const sidebarStorageKey = 'tk-winfield-sidebar-scroll';

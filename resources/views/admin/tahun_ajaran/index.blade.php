@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/admin/tahun_ajaran/index.blade.php
-@endphp
 @extends('layouts.app')
 @section('title', 'Daftar Tahun Ajaran')
 @section('content')

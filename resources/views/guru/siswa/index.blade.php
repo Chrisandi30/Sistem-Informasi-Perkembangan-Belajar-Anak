@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/guru/siswa/index.blade.php
-@endphp
 @extends('layouts.app')
 @section('title', 'Daftar Siswa Kelas ' . $guru->kelas->nama_kelas)
 @section('content')

@@ -1,7 +1,4 @@
 <?php
-
-// Livewire: app/Livewire/Admin/SiswaForm.php
-
 namespace App\Livewire\Admin;
 
 use App\Livewire\Concerns\ReturnsToIndex;

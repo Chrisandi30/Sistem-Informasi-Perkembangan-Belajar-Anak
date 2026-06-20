@@ -1,7 +1,4 @@
 <?php
-
-// Livewire: app/Livewire/Admin/MataPelajaranForm.php
-
 namespace App\Livewire\Admin;
 
 use App\Livewire\Concerns\ReturnsToIndex;

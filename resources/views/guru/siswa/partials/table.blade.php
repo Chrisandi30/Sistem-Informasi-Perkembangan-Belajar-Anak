@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/guru/siswa/partials/table.blade.php
-@endphp
 <div class="table-responsive">
     {{-- Tabel untuk menampilkan daftar data sistem. --}}
     <table class="table table-bordered table-sm align-middle">

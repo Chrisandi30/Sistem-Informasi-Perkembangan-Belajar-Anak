@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/layouts/app.blade.php
-@endphp
 <!doctype html>
 <html lang="id" class="h-full">
 <head>

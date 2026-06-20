@@ -1,7 +1,4 @@
 <?php
-
-// Livewire: app/Livewire/Guru/PerkembanganTable.php
-
 namespace App\Livewire\Guru;
 
 use App\Models\Perkembangan;

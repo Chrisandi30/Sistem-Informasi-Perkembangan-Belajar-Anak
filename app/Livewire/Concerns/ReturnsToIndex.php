@@ -1,7 +1,4 @@
 <?php
-
-// Livewire: app/Livewire/Concerns/ReturnsToIndex.php
-
 namespace App\Livewire\Concerns;
 
 trait ReturnsToIndex

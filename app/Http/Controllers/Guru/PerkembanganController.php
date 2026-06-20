@@ -1,7 +1,4 @@
 <?php
-
-// Controller: app/Http/Controllers/Guru/PerkembanganController.php
-
 namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;

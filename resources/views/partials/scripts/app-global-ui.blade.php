@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/partials/scripts/app-global-ui.blade.php
-@endphp
 <script>
     (function () {
         const loginUrl = @json(route('login'));

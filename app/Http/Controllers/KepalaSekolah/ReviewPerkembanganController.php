@@ -1,7 +1,4 @@
 <?php
-
-// Controller: app/Http/Controllers/KepalaSekolah/ReviewPerkembanganController.php
-
 namespace App\Http\Controllers\KepalaSekolah;
 
 use App\Http\Controllers\Controller;

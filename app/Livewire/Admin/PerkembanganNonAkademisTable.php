@@ -1,7 +1,4 @@
 <?php
-
-// Livewire: app/Livewire/Admin/PerkembanganNonAkademisTable.php
-
 namespace App\Livewire\Admin;
 
 use App\Models\PerkembanganNonAkademis;

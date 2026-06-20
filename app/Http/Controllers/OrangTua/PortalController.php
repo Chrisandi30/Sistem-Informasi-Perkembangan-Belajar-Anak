@@ -1,7 +1,4 @@
 <?php
-
-// Controller: app/Http/Controllers/OrangTua/PortalController.php
-
 namespace App\Http\Controllers\OrangTua;
 
 use App\Http\Controllers\Controller;

@@ -1,6 +1,3 @@
-@php
-    // View: resources/views/partials/scripts/app-auth-ui.blade.php
-@endphp
 <script>
     (function () {
         const authMeta = document.getElementById('appAuthMeta');

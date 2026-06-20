@@ -1,7 +1,4 @@
 <?php
-
-// Controller: app/Http/Controllers/PublicMediaController.php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
