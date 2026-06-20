@@ -290,6 +290,32 @@
     .guru-table td:nth-child(6) {
         white-space: nowrap;
     }
+
+    /* Samakan lebar search dan filter pada seluruh mode responsif. */
+    .review-filters {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    .review-filter {
+        width: 100% !important;
+    }
+
+    .standard-search-wrap,
+    .perkembangan-search,
+    .review-filter-search {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        flex: 0 0 100% !important;
+    }
+
+    .standard-search-wrap .form-control,
+    .perkembangan-search .form-control,
+    .review-filter-search .form-control {
+        display: block;
+        width: 100% !important;
+        max-width: none !important;
+    }
 }
 
 /* Pertahankan layout sidebar tetap pada mode desktop. */
@@ -306,7 +332,7 @@
 
     /* Atur posisi dan ukuran sidebar utama. */
     .sidebar {
-        position: sticky;
+        position: sticky !important;
         top: 0;
         z-index: auto;
         display: flex !important;
@@ -387,7 +413,7 @@
     }
 
     .topbar-title-mobile {
-        font-size: 13px;
+        font-size: 11px;
         white-space: nowrap;
     }
 

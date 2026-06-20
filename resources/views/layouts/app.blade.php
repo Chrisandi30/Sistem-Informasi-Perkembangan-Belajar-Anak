@@ -221,14 +221,6 @@
         background: #c8ced8;
         border-radius: 999px;
     }
-
-    @media (min-width: 1001px) {
-        .sidebar {
-            position: sticky !important;
-            top: 0;
-        }
-    }
-
     .content-inner h5 {
         font-size: 28px;
         font-weight: 800;
@@ -458,35 +450,6 @@
         width: 100% !important;
         max-width: none !important;
     }
-
-    /* Samakan lebar search dan filter pada seluruh mode responsif. */
-    @media (max-width: 1000px) {
-        .review-filters {
-            grid-template-columns: minmax(0, 1fr) !important;
-        }
-
-        .review-filter {
-            width: 100% !important;
-        }
-
-        .standard-search-wrap,
-        .perkembangan-search,
-        .review-filter-search {
-            display: block !important;
-            width: 100% !important;
-            max-width: none !important;
-            flex: 0 0 100% !important;
-        }
-
-        .standard-search-wrap .form-control,
-        .perkembangan-search .form-control,
-        .review-filter-search .form-control {
-            display: block;
-            width: 100% !important;
-            max-width: none !important;
-        }
-    }
-
 </style>
 <link rel="stylesheet" href="{{ asset('css/responsive.app.css') }}?v={{ filemtime(public_path('css/responsive.app.css')) }}">
 </head>
@@ -553,16 +516,11 @@
         request()->routeIs('guru.perkembangan.create') => 'Input Laporan',
         request()->routeIs('guru.perkembangan.show') => 'Detail Laporan',
         request()->routeIs('guru.perkembangan.edit') => 'Edit Laporan',
-        request()->routeIs('kepala-sekolah.review.*') => 'Review & Persetujuan Laporan',
+        request()->routeIs('kepala-sekolah.review.*') => 'Review & Persetujuan',
         request()->routeIs('kepala-sekolah.dashboard') => 'Dashboard',
         request()->routeIs('orang-tua.laporan.*') => 'Laporan Anak',
         request()->routeIs('orang-tua.pengumuman.*') => 'Pengumuman',
         default => 'Sistem Informasi TK',
-    };
-    $mobileTopbarTitle = match (true) {
-        request()->routeIs('kepala-sekolah.review.*') => 'Review & Persetujuan Laporan',
-        request()->routeIs('admin.laporan.perkembangan', 'admin.perkembangan.*') => 'Data Perkembangan',
-        default => $topbarTitle,
     };
 @endphp
 <div id="mobileSidebarOverlay" class="mobile-sidebar-overlay"></div>
