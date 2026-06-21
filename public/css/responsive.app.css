@@ -316,6 +316,23 @@
         width: 100% !important;
         max-width: none !important;
     }
+
+    /* Samakan seluruh Search admin, guru, dan kepala sekolah dengan lebar konten. */
+    html body .content-inner .responsive-search-field {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+
+    html body .content-inner .responsive-search-field > .relative,
+    html body .content-inner .responsive-search-field .form-control {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
 }
 
 /* Pertahankan layout sidebar tetap pada mode desktop. */
@@ -655,6 +672,25 @@
         width: 100% !important;
         min-width: 0 !important;
         max-width: 100% !important;
+    }
+
+    /* Tegaskan kembali lebar Search penuh pada layar ponsel. */
+    html body .content-inner .responsive-search-field,
+    html body .content-inner form .responsive-search-field {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    html body .content-inner .responsive-search-field > div,
+    html body .content-inner .responsive-search-field .form-control {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     /* Mulai tabel dari kolom pertama dan tetap izinkan geser horizontal. */

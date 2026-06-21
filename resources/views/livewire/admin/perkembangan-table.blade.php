@@ -1,6 +1,6 @@
 <div>
     <div class="row g-2 mb-3 align-items-end perkembangan-filters">
-        <div class="standard-search-wrap col-md-3 relative perkembangan-search">
+        <div class="standard-search-wrap responsive-search-field col-md-3 relative perkembangan-search">
             <span class="pointer-events-none absolute left-[14px] top-1/2 z-[2] -translate-y-1/2 text-[14px] text-[#8a96ab]"><i class="fas fa-search"></i></span>
             <input type="text" class="form-control pl-10" placeholder="Search" wire:model.live.debounce.300ms="search">
         </div>

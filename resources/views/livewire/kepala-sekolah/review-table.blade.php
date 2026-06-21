@@ -1,6 +1,6 @@
 <div>
     <div class="review-filters mb-4 mt-1" style="display:grid; grid-template-columns:minmax(240px,1.5fr) repeat(4,minmax(140px,1fr)); gap:12px; align-items:end;">
-        <div class="review-filter review-filter-search" style="position:relative; min-width:0;">
+        <div class="review-filter review-filter-search responsive-search-field" style="position:relative; min-width:0;">
             <span class="pointer-events-none" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); z-index:2; font-size:14px; color:#8a96ab;">
                 <i class="fas fa-search"></i>
             </span>

@@ -6,7 +6,7 @@
         }
     </style>
 
-    <div class="standard-search-wrap relative mb-3" style="max-width: 220px;">
+    <div class="standard-search-wrap responsive-search-field relative mb-3" style="max-width: 220px;">
         <span class="pointer-events-none absolute left-[14px] top-1/2 z-[2] -translate-y-1/2 text-[14px] text-[#8a96ab]"><i class="fas fa-search"></i></span><input type="text" class="form-control pl-10" placeholder="Search" wire:model.live.debounce.300ms="search">
     </div>
 
