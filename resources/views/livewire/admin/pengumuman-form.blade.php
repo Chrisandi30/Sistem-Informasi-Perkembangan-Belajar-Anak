@@ -8,12 +8,18 @@
         </div>
         <div class="mb-3 md:mb-0">
             <label class="form-label">Tanggal Terbit</label>
-            <input type="date" wire:model.defer="tanggal_terbit" class="form-control" required>
+            <div class="mobile-date-field">
+                <input type="date" wire:model.defer="tanggal_terbit" class="form-control" required>
+                <i class="fas fa-calendar-days mobile-date-icon" aria-hidden="true"></i>
+            </div>
             @error('tanggal_terbit') <small class="text-danger">{{ $message }}</small> @enderror
         </div>
         <div class="mb-3 md:mb-0">
             <label class="form-label">Tanggal Berakhir</label>
-            <input type="date" wire:model.defer="tanggal_berakhir" class="form-control" required>
+            <div class="mobile-date-field">
+                <input type="date" wire:model.defer="tanggal_berakhir" class="form-control" required>
+                <i class="fas fa-calendar-days mobile-date-icon" aria-hidden="true"></i>
+            </div>
             @error('tanggal_berakhir') <small class="text-danger">{{ $message }}</small> @enderror
         </div>
     </div>

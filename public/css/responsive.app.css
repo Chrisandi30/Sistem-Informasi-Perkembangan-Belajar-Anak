@@ -391,6 +391,11 @@
     }
 }
 
+/* Sembunyikan ikon kalender tambahan di luar mode ponsel. */
+.mobile-date-icon {
+    display: none;
+}
+
 /* Penyesuaian komponen untuk layar ponsel. */
 @media (max-width: 700px) {
     /* Jaga input tanggal tetap penuh dan dapat dipilih pada browser ponsel. */
@@ -424,6 +429,30 @@
         padding: 2px;
         opacity: 1;
         cursor: pointer;
+    }
+
+    /* Tampilkan ikon kalender sendiri karena Safari dapat menyembunyikan ikon bawaan. */
+    .content-inner .mobile-date-field {
+        position: relative;
+        width: 100%;
+    }
+
+    .content-inner .mobile-date-field .form-control {
+        width: 100% !important;
+        padding-right: 46px !important;
+    }
+
+    .content-inner .mobile-date-field .mobile-date-icon {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        z-index: 2;
+        transform: translateY(-50%);
+        color: #1f2937;
+        font-size: 17px;
+        line-height: 1;
+        pointer-events: none;
     }
     .topbar-title-desktop,
     .page-title-desktop {
@@ -460,19 +489,11 @@
         font-size: 24px;
     }
 
-    .perkembangan-page-heading {
-        display: block !important;
-        width: 100% !important;
-        margin-bottom: 14px !important;
-    }
-
     .perkembangan-page-heading h5,
     .review-page > h5 {
-        width: 100% !important;
-        margin: 0 !important;
-        font-size: 20px !important;
-        line-height: 1.2 !important;
-        white-space: nowrap !important;
+        font-size: 18px;
+        line-height: 1.2;
+        white-space: nowrap;
     }
 
     .standard-search-wrap,
@@ -614,31 +635,7 @@
         padding: 20px 16px !important;
     }
 
-    /* Pastikan judul topbar tampil utuh tanpa mengganggu tombol menu dan logout. */
-    .app-topbar .topbar-leading {
-        flex: 1 1 auto !important;
-        min-width: 0 !important;
-        overflow: visible !important;
-    }
 
-    .app-topbar .topbar-title-wrap {
-        min-width: 0 !important;
-        overflow: visible !important;
-        text-overflow: clip !important;
-        white-space: nowrap !important;
-        font-size: 10px !important;
-        line-height: 1.15 !important;
-    }
-
-    .app-topbar .topbar-title-text {
-        display: block;
-        white-space: nowrap !important;
-    }
-
-    .app-topbar > .flex.items-center.gap-3 {
-        flex: 0 0 auto !important;
-        gap: 0 !important;
-    }
 
     /* Paksa seluruh filter laporan tersusun vertikal dan tidak keluar layar. */
     .content-inner .review-filters {
