@@ -1,4 +1,61 @@
-<div>
+<div class="kepsek-review-component">
+    <style>
+        /* Atur filter Review secara mandiri agar konsisten di hosting. */
+        @media (max-width: 1000px) {
+            .kepsek-review-component {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow: visible !important;
+            }
+
+            .kepsek-review-component .review-filters {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                width: 100% !important;
+                min-width: 0 !important;
+                max-width: 100% !important;
+                gap: 10px !important;
+                overflow: visible !important;
+            }
+
+            .kepsek-review-component .review-filters > .review-filter {
+                position: relative !important;
+                display: block !important;
+                width: 100% !important;
+                min-width: 0 !important;
+                max-width: 100% !important;
+                flex: 0 0 auto !important;
+            }
+
+            .kepsek-review-component .review-filters .form-control,
+            .kepsek-review-component .review-filters .form-select {
+                display: block !important;
+                width: 100% !important;
+                min-width: 0 !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .kepsek-review-component .review-filter-search > span {
+                position: absolute !important;
+                left: 16px !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                z-index: 2 !important;
+            }
+
+            .kepsek-review-component .review-table-wrap {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+    </style>
     <div class="review-filters mb-4 mt-1">
         <div class="review-filter review-filter-search responsive-search-field">
             <span class="pointer-events-none" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); z-index:2; font-size:14px; color:#8a96ab;">
