@@ -7,7 +7,7 @@
 
 {{-- Form untuk menerima dan mengirim data pengguna. --}}
 <form method="get" action="{{ route('guru.siswa.index') }}" class="mb-3" id="guruSiswaFilterForm">
-    <div class="responsive-search-field relative" style="max-width: 200px;">
+    <div class="responsive-search-field relative">
         <span class="pointer-events-none absolute start-0 top-50 z-[2] translate-middle-y ms-3 text-[14px] text-[#8a96ab]"><i class="fas fa-search"></i></span>
         <input type="text" name="search" value="{{ $search }}" class="form-control" style="padding-left: 44px;" placeholder="Search" autocomplete="off">
     </div>

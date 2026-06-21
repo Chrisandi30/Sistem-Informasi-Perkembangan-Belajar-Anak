@@ -167,6 +167,22 @@
     width: 100%;
 }
 
+/* Pertahankan ukuran ringkas Search pada desktop. */
+.responsive-search-field {
+    width: 100%;
+    max-width: 220px;
+}
+
+.responsive-search-field .form-control {
+    width: 100%;
+}
+
+/* Biarkan Search yang sejajar dengan filter mengikuti kolom desktopnya. */
+.review-filters > .responsive-search-field,
+.row > .responsive-search-field {
+    max-width: none;
+}
+
 /* Izinkan tabel digulir secara horizontal pada layar sempit. */
 .content-inner .table-responsive {
     width: 100%;

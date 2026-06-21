@@ -4,7 +4,7 @@
         $guruActionButtonClass = 'btn btn-sm aksi-btn !inline-flex !h-[34px] !min-h-[34px] !w-[34px] !min-w-[34px] flex-none items-center justify-center rounded-[10px] !p-0 text-[0.78rem] leading-none';
     @endphp
 
-    <div class="standard-search-wrap responsive-search-field relative mb-3" style="max-width: 200px;">
+    <div class="standard-search-wrap responsive-search-field relative mb-3">
         <span class="pointer-events-none absolute left-[14px] top-1/2 z-[2] -translate-y-1/2 text-[14px] text-[#8a96ab]"><i class="fas fa-search"></i></span><input type="text" class="form-control pl-10" placeholder="Search" wire:model.live.debounce.300ms="search">
     </div>
 
