@@ -442,6 +442,14 @@
         padding-right: 46px !important;
     }
 
+    /* Sembunyikan ikon bawaan browser agar tidak bertumpuk dengan ikon kalender tambahan. */
+    .content-inner .mobile-date-field input[type="date"]::-webkit-calendar-picker-indicator {
+        opacity: 0 !important;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+    }
+
     .content-inner .mobile-date-field .mobile-date-icon {
         display: block;
         position: absolute;

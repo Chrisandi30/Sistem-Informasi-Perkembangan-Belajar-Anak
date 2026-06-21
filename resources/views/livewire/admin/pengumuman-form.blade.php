@@ -10,7 +10,7 @@
             <label class="form-label">Tanggal Terbit</label>
             <div class="mobile-date-field">
                 <input type="date" wire:model.defer="tanggal_terbit" class="form-control" required>
-                <i class="fas fa-calendar-days mobile-date-icon" aria-hidden="true"></i>
+                <i class="far fa-calendar mobile-date-icon" aria-hidden="true"></i>
             </div>
             @error('tanggal_terbit') <small class="text-danger">{{ $message }}</small> @enderror
         </div>
@@ -18,7 +18,7 @@
             <label class="form-label">Tanggal Berakhir</label>
             <div class="mobile-date-field">
                 <input type="date" wire:model.defer="tanggal_berakhir" class="form-control" required>
-                <i class="fas fa-calendar-days mobile-date-icon" aria-hidden="true"></i>
+                <i class="far fa-calendar mobile-date-icon" aria-hidden="true"></i>
             </div>
             @error('tanggal_berakhir') <small class="text-danger">{{ $message }}</small> @enderror
         </div>

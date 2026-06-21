@@ -28,7 +28,7 @@
             <label class="form-label">Tanggal Lahir</label>
             <div class="mobile-date-field">
                 <input type="date" wire:model.defer="tanggal_lahir" class="form-control">
-                <i class="fas fa-calendar-days mobile-date-icon" aria-hidden="true"></i>
+                <i class="far fa-calendar mobile-date-icon" aria-hidden="true"></i>
             </div>
             @error('tanggal_lahir') <small class="text-danger">{{ $message }}</small> @enderror
         </div>

@@ -452,6 +452,25 @@
     }
 </style>
 <link rel="stylesheet" href="{{ asset('css/responsive.app.css') }}?v={{ filemtime(public_path('css/responsive.app.css')) }}">
+<style>
+    /* Samakan ukuran teks responsif antara localhost dan Safari hosting. */
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+
+    @media (max-width: 700px) {
+        .app-topbar .topbar-leading > div {
+            font-size: 18px !important;
+            line-height: 1.2 !important;
+        }
+
+        .content-inner h5 {
+            font-size: 18px !important;
+            line-height: 1.2 !important;
+        }
+    }
+</style>
 </head>
 <body class="m-0 h-full bg-[var(--bg)] text-[var(--text)] [font-family:'Inter',sans-serif]">
 <div id="appLoadingOverlay" class="app-loading-overlay" aria-hidden="true">
