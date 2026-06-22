@@ -3,6 +3,46 @@
 @endphp
 {{-- Form untuk menerima dan mengirim data pengguna. --}}
 <form wire:submit="save" class="card card-body form-shell bg-white p-7" enctype="multipart/form-data">
+    <style>
+        /* Ikon tanggal khusus form ini agar konsisten pada browser HP. */
+        .mobile-date-icon {
+            display: none;
+        }
+
+        @media (max-width: 700px) {
+            .mobile-date-field {
+                position: relative !important;
+                display: block !important;
+                width: 100% !important;
+            }
+
+            .mobile-date-field .form-control {
+                width: 100% !important;
+                padding-right: 46px !important;
+                box-sizing: border-box !important;
+            }
+
+            .mobile-date-field input[type="date"]::-webkit-calendar-picker-indicator {
+                opacity: 0 !important;
+                width: 32px !important;
+                height: 32px !important;
+                cursor: pointer;
+            }
+
+            .mobile-date-field .mobile-date-icon {
+                position: absolute !important;
+                top: 50% !important;
+                right: 16px !important;
+                z-index: 2 !important;
+                display: block !important;
+                transform: translateY(-50%) !important;
+                color: #1f2937 !important;
+                font-size: 17px !important;
+                line-height: 1 !important;
+                pointer-events: none !important;
+            }
+        }
+    </style>
     <div class="row g-3">
         <div class="col-md-4">
             <label class="form-label">Nama</label>
