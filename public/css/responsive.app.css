@@ -365,6 +365,7 @@
         width: 100% !important;
         max-width: 200px !important;
     }
+
     .app-shell {
         display: grid;
         grid-template-columns: 248px 1fr;
@@ -654,8 +655,6 @@
     .content-inner .card.card-body.form-shell {
         padding: 20px 16px !important;
     }
-
-
 
     /* Paksa seluruh filter laporan tersusun vertikal dan tidak keluar layar. */
     .content-inner .review-filters {
