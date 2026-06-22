@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Daftar Siswa Kelas ' . $guru->kelas->nama_kelas)
 @section('content')
+@include('partials.styles.responsive-search-field')
 <div class="d-flex justify-content-between mb-3">
     <h5>Daftar Siswa Kelas {{ $guru->kelas->nama_kelas }}</h5>
 </div>

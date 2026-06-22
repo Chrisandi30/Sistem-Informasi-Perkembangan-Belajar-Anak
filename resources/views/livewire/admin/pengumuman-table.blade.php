@@ -1,4 +1,5 @@
 <div>
+    @include('partials.styles.responsive-search-field')
     <style>
         .pengumuman-table th:nth-child(2),
         .pengumuman-table td:nth-child(2) {

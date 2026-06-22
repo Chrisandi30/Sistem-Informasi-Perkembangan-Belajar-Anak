@@ -1,4 +1,5 @@
 <div>
+    @include('partials.styles.responsive-search-field')
     @php
         $guruCellClass = '!px-4 align-middle';
         $guruActionButtonClass = 'btn btn-sm aksi-btn !inline-flex !h-[34px] !min-h-[34px] !w-[34px] !min-w-[34px] flex-none items-center justify-center rounded-[10px] !p-0 text-[0.78rem] leading-none';
