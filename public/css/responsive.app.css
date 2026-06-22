@@ -353,6 +353,18 @@
 
 /* Pertahankan layout sidebar tetap pada mode desktop. */
 @media (min-width: 1001px) {
+    /* Samakan lebar seluruh Search desktop dengan ukuran standar. */
+    html body .content-inner .responsive-search-field {
+        width: 200px !important;
+        min-width: 0 !important;
+        max-width: 200px !important;
+        flex: 0 0 200px !important;
+    }
+
+    html body .content-inner .responsive-search-field .form-control {
+        width: 100% !important;
+        max-width: 200px !important;
+    }
     .app-shell {
         display: grid;
         grid-template-columns: 248px 1fr;

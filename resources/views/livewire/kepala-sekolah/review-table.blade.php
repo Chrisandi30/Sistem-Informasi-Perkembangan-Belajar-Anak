@@ -1,5 +1,29 @@
 <div class="kepsek-review-component">
     <style>
+        /* Jaga ikon Search tetap berada di dalam input pada desktop. */
+        .kepsek-review-component .review-filter-search {
+            position: relative !important;
+        }
+
+        .kepsek-review-component .review-filter-search > span {
+            position: absolute !important;
+            left: 16px !important;
+            top: 50% !important;
+            z-index: 2 !important;
+            transform: translateY(-50%) !important;
+        }
+
+        @media (min-width: 1001px) {
+            .kepsek-review-component .review-filters {
+                grid-template-columns: 200px repeat(4, minmax(140px, 1fr)) !important;
+            }
+
+            .kepsek-review-component .review-filter-search {
+                width: 200px !important;
+                max-width: 200px !important;
+            }
+        }
+
         /* Atur filter Review secara mandiri agar konsisten di hosting. */
         @media (max-width: 1000px) {
             .kepsek-review-component {
@@ -57,7 +81,7 @@
         }
     </style>
     <div class="review-filters mb-4 mt-1">
-        <div class="review-filter review-filter-search responsive-search-field">
+        <div class="review-filter review-filter-search responsive-search-field" style="position: relative;">
             <span class="pointer-events-none" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); z-index:2; font-size:14px; color:#8a96ab;">
                 <i class="fas fa-search"></i>
             </span>
