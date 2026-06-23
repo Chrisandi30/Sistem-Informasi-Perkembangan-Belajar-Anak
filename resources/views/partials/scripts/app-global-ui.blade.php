@@ -5,9 +5,19 @@
         const loadingText = document.getElementById('appLoadingText');
         let livewireHookBound = false;
         let skipNextNavigateLoading = false;
+        const minimumLoadingDuration = 250;
+        let loadingShownAt = 0;
+        let hideLoadingTimer = null;
 
-        // Jalankan proses showLoading pada halaman.
+        // Tampilkan loading dan catat waktu mulai agar animasi sempat terlihat.
         const showLoading = (message = 'Memuat halaman...') => {
+            if (hideLoadingTimer) {
+                clearTimeout(hideLoadingTimer);
+                hideLoadingTimer = null;
+            }
+
+            loadingShownAt = performance.now();
+
             if (loadingText) {
                 loadingText.textContent = message;
             }
@@ -19,13 +29,24 @@
             document.body.classList.add('page-loading');
         };
 
-        // Jalankan proses hideLoading pada halaman.
+        // Sembunyikan loading setelah durasi minimum 250 ms terpenuhi.
         const hideLoading = () => {
-            if (loadingOverlay) {
-                loadingOverlay.classList.remove('show');
+            const elapsed = loadingShownAt > 0 ? performance.now() - loadingShownAt : minimumLoadingDuration;
+            const remaining = Math.max(0, minimumLoadingDuration - elapsed);
+
+            if (hideLoadingTimer) {
+                clearTimeout(hideLoadingTimer);
             }
 
-            document.body.classList.remove('page-loading');
+            hideLoadingTimer = setTimeout(() => {
+                if (loadingOverlay) {
+                    loadingOverlay.classList.remove('show');
+                }
+
+                document.body.classList.remove('page-loading');
+                loadingShownAt = 0;
+                hideLoadingTimer = null;
+            }, remaining);
         };
 
         // Jalankan proses redirectExpiredSession pada halaman.
