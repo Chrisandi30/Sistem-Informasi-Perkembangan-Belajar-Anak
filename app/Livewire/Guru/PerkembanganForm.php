@@ -250,6 +250,56 @@ class PerkembanganForm extends Component
                     'perlu_diperhatikan' => $currentItem['perlu_diperhatikan'] ?? ($detail->perlu_diperhatikan ?? ''),
                 ];
             });
+
+            // Tambahkan mapel aktif yang dibuat setelah laporan lama tersimpan.
+            $existingMapelIds = $items->pluck('mata_pelajaran_id')
+                ->filter()
+                ->map(fn ($id) => (int) $id);
+            $existingDetailKeys = $items
+                ->map(fn ($item) => $this->detailKey($item['kategori_aspek'], $item['nama_aspek']));
+
+            foreach ($this->mapels()->values() as $mapel) {
+                $key = $this->detailKey('Aspek Akademis', $mapel->nama_mapel);
+
+                if ($existingMapelIds->contains((int) $mapel->id) || $existingDetailKeys->contains($key)) {
+                    continue;
+                }
+
+                $currentItem = $current->get($key, []);
+                $items->push([
+                    'kategori_aspek' => 'Aspek Akademis',
+                    'nama_aspek' => $mapel->nama_mapel,
+                    'mata_pelajaran_id' => (int) $mapel->id,
+                    'perkembangan_non_akademis_id' => null,
+                    'hal_berkembang' => $currentItem['hal_berkembang'] ?? '',
+                    'perlu_diperhatikan' => $currentItem['perlu_diperhatikan'] ?? '',
+                ]);
+            }
+
+            // Tambahkan aspek non akademis aktif yang dibuat setelah laporan lama tersimpan.
+            $existingNonAcademicIds = $items->pluck('perkembangan_non_akademis_id')
+                ->filter()
+                ->map(fn ($id) => (int) $id);
+            $existingDetailKeys = $items
+                ->map(fn ($item) => $this->detailKey($item['kategori_aspek'], $item['nama_aspek']));
+
+            foreach ($this->nonAcademicAspects() as $aspek) {
+                $key = $this->detailKey($aspek->kategori_aspek, $aspek->nama_aspek);
+
+                if ($existingNonAcademicIds->contains((int) $aspek->id) || $existingDetailKeys->contains($key)) {
+                    continue;
+                }
+
+                $currentItem = $current->get($key, []);
+                $items->push([
+                    'kategori_aspek' => $aspek->kategori_aspek,
+                    'nama_aspek' => $aspek->nama_aspek,
+                    'mata_pelajaran_id' => null,
+                    'perkembangan_non_akademis_id' => (int) $aspek->id,
+                    'hal_berkembang' => $currentItem['hal_berkembang'] ?? '',
+                    'perlu_diperhatikan' => $currentItem['perlu_diperhatikan'] ?? '',
+                ]);
+            }
         } else {
             foreach ($this->mapels()->values() as $mapel) {
                 $key = $this->detailKey('Aspek Akademis', $mapel->nama_mapel);
